@@ -1,2 +1,14 @@
-- name: Index
+- name: Overview
   href: index.md
+- name: Quickstart
+  href: quickstart.md
+- name: Architecture overview
+  href: architecture.md
+- name: Networking
+  href: networking.md
+- name: Identity and access
+  href: identity-access.md
+- name: Support model
+  href: support-model.md
+- name: Supported regions
+  href: supported-regions.md
