@@ -58,9 +58,9 @@ You can configure permissions at different levels of granularity:
 
 For information on Entra ID integration and Azure role assignments, see [Identity and access](identity-access.md).
 
-## Architecture diagram
+<!-- ## Architecture diagram
 
-<!-- TODO: insert architecture diagram before publication -->
+TODO: insert architecture diagram before publication -->
 
 ## Component summary
 
