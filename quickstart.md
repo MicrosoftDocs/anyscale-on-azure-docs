@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Deploy Anyscale on Azure | Microsoft Learn"
 description: Deploy your first Anyscale cloud on Azure Kubernetes Service — configure your subscription, provision infrastructure, register via the Azure portal, and install the ingress controller.
-author: tdwyer
-ms.author: tdwyer
+author: kaysieyu
+ms.author: kaysieyu
 ms.date: 04/03/2026
 ms.topic: quickstart
 ---
@@ -17,9 +17,9 @@ Before you begin, make sure you have:
 
 - An Azure subscription with owner or administrator role
 - Permission to create service principals from external Entra tenants
-- An existing AKS cluster with [OIDC issuer enabled](https://learn.microsoft.com/azure/aks/use-oidc-issuer)
+- An existing AKS cluster with [OIDC issuer enabled](/azure/aks/use-oidc-issuer)
 - The following tools installed locally:
-  - [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli)
+  - [Azure CLI](/cli/azure/install-azure-cli)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/)
   - [Helm](https://helm.sh/docs/intro/install/)
   - [Terraform](https://developer.hashicorp.com/terraform/install)
@@ -59,7 +59,7 @@ done
 
 Use the Anyscale Terraform module in the [Azure Samples repository](https://github.com/Azure-Samples/anyscale-on-azure) to provision the AKS cluster and supporting Azure resources (storage account, managed identities, and role assignments).
 
-The module README walks through authentication, variable configuration, and `terraform apply`. If you don't already have an AKS cluster with OIDC issuer enabled, see [Create an AKS cluster](https://learn.microsoft.com/azure/aks/learn/quick-kubernetes-deploy-cli) and [Enable OIDC issuer](https://learn.microsoft.com/azure/aks/use-oidc-issuer) in the Azure documentation.
+The module README walks through authentication, variable configuration, and `terraform apply`. If you don't already have an AKS cluster with OIDC issuer enabled, see [Create an AKS cluster](/azure/aks/learn/quick-kubernetes-deploy-cli) and [Enable OIDC issuer](/azure/aks/use-oidc-issuer) in the Azure documentation.
 
 After `terraform apply` completes, save the following values from the module output:
 

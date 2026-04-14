@@ -1,8 +1,8 @@
 ---
 title: Anyscale on Azure support model | Microsoft Learn
 description: Understand how to get support for Anyscale on Azure, including how to open cases, escalation paths, and the responsibilities of Anyscale and Microsoft.
-author: tdwyer
-ms.author: tdwyer
+author: kaysieyu
+ms.author: kaysieyu
 ms.date: 04/03/2026
 ms.topic: conceptual
 ---

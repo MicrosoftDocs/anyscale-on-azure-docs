@@ -1,8 +1,8 @@
 ---
 title: Anyscale on Azure supported regions | Microsoft Learn
 description: View the Azure regions where Anyscale on Azure is available and find links to Microsoft's regional availability documentation for GPU and compute SKUs.
-author: tdwyer
-ms.author: tdwyer
+author: kaysieyu
+ms.author: kaysieyu
 ms.date: 04/03/2026
 ms.topic: reference
 ---
@@ -33,9 +33,9 @@ Anyscale on Azure is available in the following Azure regions during Public Prev
 
 GPU and high-performance compute SKU availability varies by region. Anyscale does not maintain its own matrix of Azure VM SKU availability. For current regional availability of GPU instances (NC, ND, NV series), see the Microsoft documentation:
 
-- [Azure GPU-optimized virtual machine sizes](https://learn.microsoft.com/azure/virtual-machines/sizes-gpu)
+- [Azure GPU-optimized virtual machine sizes](/azure/virtual-machines/sizes-gpu)
 - [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/)
-- [Azure Kubernetes Service supported VM sizes](https://learn.microsoft.com/azure/aks/quotas-skus-regions)
+- [Azure Kubernetes Service supported VM sizes](/azure/aks/quotas-skus-regions)
 
 ## Regional behavior
 

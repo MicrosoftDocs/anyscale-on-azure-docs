@@ -1,8 +1,8 @@
 ---
 title: Identity and access in Anyscale on Azure | Microsoft Learn
 description: Learn how Anyscale on Azure integrates with Microsoft Entra ID for single sign-on and uses Azure managed identities and built-in roles to control access to resources.
-author: tdwyer
-ms.author: tdwyer
+author: kaysieyu
+ms.author: kaysieyu
 ms.date: 04/03/2026
 ms.topic: conceptual
 ---

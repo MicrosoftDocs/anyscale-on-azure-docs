@@ -1,8 +1,8 @@
 ---
 title: Anyscale on Azure architecture overview | Microsoft Learn
 description: Learn how Anyscale on Azure is structured, including the control plane and data plane components, the Kubernetes operator model, and how they interact within your Azure tenant.
-author: tdwyer
-ms.author: tdwyer
+author: kaysieyu
+ms.author: kaysieyu
 ms.date: 04/03/2026
 ms.topic: conceptual
 ---
