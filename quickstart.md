@@ -79,7 +79,7 @@ Go to `https://aka.ms/<anyscale-public-preview-alias>` in the Azure portal.
 
 <!-- TODO: confirm the aka.ms short link for Public Preview with Elizabeth/Anyscale before publication -->
 
-:::image type="content" source="media/quickstart/quickstart-anyscale-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
+:::image type="content" source="media/quickstart/quickstart-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
 
 ### 2b: Fill in the Basics tab
 
