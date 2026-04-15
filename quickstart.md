@@ -140,45 +140,9 @@ Review your configuration, then select **Create**.
 
 The portal creates the required storage, managed identity, and service account, and installs the Anyscale Kubernetes operator automatically.
 
-## Step 3: Update your Anyscale cloud configuration
+## Step 3: Install the Nginx ingress controller
 
-### 3a: Sign in to Anyscale
-
-```bash
-export ANYSCALE_HOST=https://console.azure.anyscale.com
-anyscale login
-```
-
-Add `ANYSCALE_HOST` to your shell configuration (`.bashrc` or `.zshrc`) so it persists across sessions.
-
-### 3b: Find your Anyscale cloud ID
-
-```bash
-anyscale cloud list
-```
-
-### 3c: Download and edit your cloud configuration
-
-```bash
-anyscale cloud get --id <your-cloud-id> > cloud-config.yaml
-```
-
-Open `cloud-config.yaml` and add the operator identity from your Anyscale cloud resource:
-
-```yaml
-kubernetes_config:
-  anyscale_operator_iam_identity: <anyscale-operator-principal-id>
-```
-
-Apply the update:
-
-```bash
-anyscale cloud update --id <your-cloud-id> -f cloud-config.yaml
-```
-
-## Step 4: Install the Nginx ingress controller
-
-### 4a: Get AKS credentials
+### 3a: Get AKS credentials
 
 ```bash
 az aks get-credentials \
@@ -187,7 +151,7 @@ az aks get-credentials \
   --overwrite-existing
 ```
 
-### 4b: Install nginx-ingress
+### 3b: Install nginx-ingress
 
 Create a file named `sample-values_nginx.yaml`:
 
@@ -225,7 +189,14 @@ helm upgrade ingress-nginx ingress-nginx/ingress-nginx \
 
 In the Azure portal, navigate to your Anyscale cloud resource and confirm the **Status** shows **Succeeded**.
 
-You can also verify from the Anyscale CLI:
+You can also verify from the Anyscale CLI. First sign in:
+
+```bash
+export ANYSCALE_HOST=https://console.azure.anyscale.com
+anyscale login
+```
+
+Add `ANYSCALE_HOST` to your shell configuration (`.bashrc` or `.zshrc`) so it persists across sessions. Then run:
 
 ```bash
 anyscale cloud verify --name <cloud-name>
