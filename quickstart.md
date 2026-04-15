@@ -85,8 +85,6 @@ Go to `https://aka.ms/<anyscale-public-preview-alias>` in the Azure portal.
 
 Select **Create** on the Anyscale clouds page.
 
-:::image type="content" source="media/quickstart/quickstart-create-basics-empty.png" alt-text="Create Anyscale cloud wizard open at the Basics tab with empty subscription, resource group, cloud name, and region fields.":::
-
 Fill in the following fields:
 
 1. Confirm the **Subscription** matches your Terraform deployment.
@@ -187,12 +185,45 @@ helm upgrade ingress-nginx nginx/ingress-nginx \
 
 ## Verify the deployment
 
-<!-- TODO: add steps to verify the cloud is healthy after all four steps complete -->
-<!-- Suggested content: anyscale cloud verify --id <cloud-id>, expected output, portal resource status -->
+In the Azure portal, navigate to your Anyscale cloud resource and confirm the **Status** shows **Succeeded**.
+
+You can also verify from the Anyscale CLI:
+
+```bash
+anyscale cloud verify --name <cloud-name>
+```
+
+A healthy cloud returns output similar to:
+
+```plaintext
+Cloud <cloud-name> is healthy.
+```
+
+<!-- TODO: confirm exact CLI command and expected output with Anyscale engineering before publication -->
 
 ## Run your first workload
 
-Sign in to [console.azure.anyscale.com](https://console.azure.anyscale.com) and launch a workspace or submit a job from your cloud. For full platform usage documentation, see [docs.anyscale.com](https://docs.anyscale.com).
+1. Sign in to [console.azure.anyscale.com](https://console.azure.anyscale.com).
+
+1. Select your cloud from the cloud picker.
+
+1. Select **Workspaces** > **New workspace**.
+
+1. When the workspace is running, open a terminal and run the following code to confirm Ray is connected to your cluster:
+
+   ```python
+   import ray
+   ray.init()
+   print(ray.cluster_resources())
+   ```
+
+   The output lists the CPU and memory resources available in your cluster, for example:
+
+   ```plaintext
+   {'CPU': 12.0, 'memory': 50000000000.0, 'node:__internal_head__': 1.0, ...}
+   ```
+
+<!-- TODO: confirm workspace launch steps and expected output with Anyscale engineering before publication -->
 
 ## Next steps
 
