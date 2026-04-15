@@ -49,7 +49,7 @@ This polling model means all network connections originate from your cluster out
 
 ## Managed identities and permissions
 
-The operator authenticates to Azure services using a managed identity provisioned by the Terraform module. This identity is scoped to the resources in your resource group.
+The operator authenticates to Azure services using a managed identity provisioned by the portal during cloud creation. This identity is scoped to the resources in your resource group.
 
 You can configure permissions at different levels of granularity:
 

@@ -41,7 +41,7 @@ GPU and high-performance compute SKU availability varies by region. Anyscale doe
 
 All Anyscale clouds are region-specific. A cloud created in `eastus` can only run workloads on AKS node pools in `eastus`. Cross-region replication and multi-region clusters are not supported in Public Preview.
 
-When you provision your AKS cluster with the Terraform module, the `azure_location` variable sets the region for all resources in the cloud.
+The region you select when creating the AKS cluster and Anyscale cloud resource sets the region for all resources in the cloud.
 
 ## Request a new region
 

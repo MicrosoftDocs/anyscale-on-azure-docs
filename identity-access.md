@@ -25,7 +25,7 @@ SSO is configured automatically when you create your Anyscale cloud through the 
 
 ## Managed identities
 
-The Anyscale Terraform module creates Azure managed identities in your resource group. There are two distinct identities:
+When you create an Anyscale cloud resource through the Azure portal, the portal creates Azure managed identities in your resource group. There are two distinct identities:
 
 **Anyscale Operator managed identity** — Governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. This identity is configured during setup and referenced in your cloud configuration YAML.
 
@@ -60,7 +60,7 @@ The person running the [Quickstart](quickstart.md) must have the following permi
 
 | Permission | Required for |
 |-----------|--------------|
-| Subscription Owner or Contributor + User Access Administrator | Terraform module deployment and role assignments |
+| Subscription Owner or Contributor + User Access Administrator | AKS cluster creation and cloud resource setup |
 | Permission to create service principals from external tenants | Running `az ad sp create` in Step 1 |
 
 After setup is complete, day-to-day Anyscale operations (launching workloads, managing jobs) require only the Anyscale-level roles assigned through the Anyscale console, not elevated Azure permissions.
