@@ -46,9 +46,10 @@ Azure managed identities govern access to cloud resources. You can use a single 
 
 Anyscale on Azure is currently in Public Preview. The following limitations apply:
 
-- Cloud creation and deletion require the Azure portal. The `anyscale cloud setup` and `anyscale cloud delete` CLI commands aren't supported.
+- Cloud creation and deletion require the Azure portal. The following CLI commands aren't supported: `anyscale cloud setup`, `anyscale cloud register`, `anyscale cloud delete`, `anyscale cloud resource create`, and `anyscale cloud resource delete`.
 - Only AKS-based deployment is supported. VM stack features and Anyscale-hosted clouds aren't available.
-- Some CLI commands are unavailable, including SSH access and image pull/push commands.
+- The following CLI commands aren't supported: `anyscale workspace_v2 ssh`, `anyscale workspace_v2 pull`, and all `anyscale image` commands.
+- The Global Resource Scheduler (GRS) isn't supported.
 
 ## Get started
 
