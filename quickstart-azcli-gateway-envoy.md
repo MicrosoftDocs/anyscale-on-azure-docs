@@ -13,7 +13,6 @@ ms.topic: quickstart
 > [!div class="op_multi_selector" title1="Provisioning" title2="Ingress"]
 > - [(Azure CLI | Nginx)](quickstart-azcli-ingress-nginx.md)
 > - [(Azure CLI | Envoy Gateway)](quickstart-azcli-gateway-envoy.md)
-> - [(Terraform | Nginx)](quickstart-terraform-ingress-nginx.md)
 
 This quickstart walks you through deploying Anyscale on an existing Azure Kubernetes Service (AKS) cluster using the Envoy Gateway ingress controller. By the end, you'll have a registered Anyscale cloud and be ready to run Ray workloads.
 
