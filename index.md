@@ -54,7 +54,7 @@ Anyscale on Azure is currently in Public Preview. The following limitations appl
 
 ## Get started with Anyscale on Azure
 
-To deploy your first Anyscale cloud on Azure, see the [Quickstart](quickstart-azcli-gateway-envoy.md).
+To deploy your first Anyscale cloud on Azure, see the [Quickstart](quickstart-azure-cli-gateway-envoy.md).
 
 ## Learn more about Anyscale on Azure
 

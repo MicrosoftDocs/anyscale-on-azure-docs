@@ -37,5 +37,5 @@ The region you select when creating the AKS cluster and Anyscale cloud resource 
 
 ## Next steps
 
-- [Quickstart](quickstart-azcli-gateway-envoy.md)—deploy your first Anyscale cloud
+- [Quickstart](quickstart-azure-cli-gateway-envoy.md)—deploy your first Anyscale cloud
 - [Architecture overview](architecture.md)—understand the deployment model

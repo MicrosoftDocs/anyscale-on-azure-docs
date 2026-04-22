@@ -79,4 +79,4 @@ For information on Entra ID integration and Azure role assignments, see [Identit
 
 - [Networking](networking.md)—required egress domains and traffic flow details
 - [Identity and access](identity-access.md)—Entra ID SSO and Azure role assignments
-- [Quickstart](quickstart-azcli-gateway-envoy.md)—deploy your first Anyscale cloud on Azure
+- [Quickstart](quickstart-azure-cli-gateway-envoy.md)—deploy your first Anyscale cloud on Azure

@@ -110,4 +110,4 @@ Private clusters (no public node IPs) are supported. Configure the ingress contr
 
 - [Architecture overview](architecture.md)—how the control plane and data plane interact
 - [Identity and access](identity-access.md)—managed identity and Entra ID configuration
-- [Quickstart](quickstart-azcli-gateway-envoy.md)—deploy your first Anyscale cloud on Azure
+- [Quickstart](quickstart-azure-cli-gateway-envoy.md)—deploy your first Anyscale cloud on Azure
