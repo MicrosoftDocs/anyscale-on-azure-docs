@@ -1,11 +1,7 @@
 - name: Overview
   href: index.md
 - name: Quickstart
-  items:
-  - name: With Envoy Gateway
-    href: quickstart-azcli-gateway-envoy.md
-  - name: With Ingress-Nginx
-    href: quickstart-azcli-ingress-nginx.md
+  href: quickstart-azcli-gateway-envoy.md
 - name: Architecture overview
   href: architecture.md
 - name: Networking
