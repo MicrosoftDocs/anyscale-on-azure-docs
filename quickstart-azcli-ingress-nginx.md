@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Deploy Anyscale on Azure | Microsoft Learn"
+title: "Quickstart: Anyscale on Azure—Ingress-Nginx | Microsoft Learn"
 description: Deploy your first Anyscale cloud on Azure Kubernetes Service using the Azure CLI and the Nginx ingress controller. Configure your subscription, create an AKS cluster, and register via the Azure portal.
 author: kaysieyu
 ms.author: kaysieyu
@@ -7,7 +7,7 @@ ms.date: 04/15/2026
 ms.topic: quickstart
 ---
 
-# Quickstart: Deploy Anyscale on Azure
+# Quickstart: Anyscale on Azure—Ingress-Nginx
 
 > [!div class="op_multi_selector" title1="Quickstart" title2="Ingress"]
 > - [Envoy Gateway](quickstart-azcli-gateway-envoy.md)
