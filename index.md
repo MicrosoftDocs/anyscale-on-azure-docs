@@ -17,8 +17,8 @@ The platform is developed jointly by Anyscale and Microsoft as an Azure Native I
 
 Anyscale on Azure separates responsibilities into two planes:
 
-- **Control plane** — Hosted by Anyscale in Azure. Handles scheduling, monitoring, job management, and the Anyscale console. You interact with it through the Azure portal, the Anyscale CLI, or the Anyscale SDK.
-- **Data plane** — Runs inside your Azure subscription, on your AKS cluster. Your Ray workloads, container images, and data stay within your own tenant.
+- **Control plane**—Hosted by Anyscale in Azure. Handles scheduling, monitoring, job management, and the Anyscale console. You interact with it through the Azure portal, the Anyscale CLI, or the Anyscale SDK.
+- **Data plane**—Runs inside your Azure subscription, on your AKS cluster. Your Ray workloads, container images, and data stay within your own tenant.
 
 For a detailed breakdown of these components, see [Architecture overview](architecture.md).
 
@@ -63,4 +63,4 @@ To deploy your first Anyscale cloud on Azure, see the [Quickstart](quickstart-az
 - [Identity and access](identity-access.md)
 - [Support model](support-model.md)
 - [Supported regions](supported-regions.md)
-- [Anyscale documentation](https://docs.anyscale.com) — full platform reference
+- [Anyscale documentation](https://docs.anyscale.com)—full platform reference

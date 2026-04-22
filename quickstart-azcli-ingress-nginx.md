@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Deploy Anyscale on Azure | Microsoft Learn"
-description: Deploy your first Anyscale cloud on Azure Kubernetes Service — configure your subscription, provision infrastructure with the Azure CLI, register via the Azure portal, and install the ingress controller.
+description: Deploy your first Anyscale cloud on Azure Kubernetes Service—configure your subscription, provision infrastructure with the Azure CLI, register via the Azure portal, and install the ingress controller.
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/15/2026
@@ -70,7 +70,7 @@ az group create \
 
 ### 1b: Create the AKS cluster
 
-Before creating the cluster, confirm you have sufficient quota for the VM SKU you plan to use in your chosen region. Ray workloads require at least 4 vCPUs per worker node — `Standard_D4s_v5` or equivalent is a good starting point. Check your current quota:
+Before creating the cluster, confirm you have sufficient quota for the VM SKU you plan to use in your chosen region. Ray workloads require at least 4 vCPUs per worker node—`Standard_D4s_v5` or equivalent is a good starting point. Check your current quota:
 
 ```azurecli
 az vm list-usage --location <location> --query "[?contains(name.value, 'standardDSv5Family')]" -o table
@@ -93,7 +93,7 @@ az aks create \
 ```
 
 
-After the cluster is created, save the resource group name and cluster name — you'll need them in Steps 2 and 3.
+After the cluster is created, save the resource group name and cluster name—you'll need them in Steps 2 and 3.
 
 ### Node pools and workload placement (optional)
 

@@ -28,6 +28,6 @@ Anyscale on Azure is currently in Public Preview. Support during Public Preview 
 
 ## Next steps
 
-- [Quickstart](quickstart-azcli-gateway-envoy.md) — deploy your first Anyscale cloud
-- [Architecture overview](architecture.md) — understand the deployment model
+- [Quickstart](quickstart-azcli-gateway-envoy.md)—deploy your first Anyscale cloud
+- [Architecture overview](architecture.md)—understand the deployment model
 - [Supported regions](supported-regions.md)

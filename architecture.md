@@ -37,12 +37,12 @@ All compute, data, and networking resources in the data plane are owned by your 
 
 ## Kubernetes operator model
 
-The Anyscale operator is a Kubernetes controller deployed into your AKS cluster via Helm. It:
+The Anyscale operator is a Kubernetes controller installed into your AKS cluster automatically by the Azure portal during cloud creation. It:
 
 1. Polls the control plane endpoint (`<cloud-id>.anyscale-cloud.dev`) for pending operations
 2. Creates and manages Kubernetes resources (pods, services, ingress rules) for Ray clusters
 3. Reports cluster health and telemetry back to the control plane
-4. Manages the Nginx ingress controller for head node access
+4. Manages the ingress or gateway controller for head node access
 
 This polling model means all network connections originate from your cluster outbound to Anyscale's control plane. No inbound firewall rules are required. For details on required egress domains and ports, see [Networking](networking.md).
 
@@ -52,8 +52,8 @@ The operator authenticates to Azure services using a managed identity provisione
 
 You can configure permissions at different levels of granularity:
 
-- **Shared identity** — One managed identity covers all workloads in the cloud
-- **Granular identity mapping** — Map separate identities to individual users, projects, or workload types via cloud IAM configuration
+- **Shared identity**—One managed identity covers all workloads in the cloud
+- **Granular identity mapping**—Map separate identities to individual users, projects, or workload types via cloud IAM configuration
 
 For information on Entra ID integration and Azure role assignments, see [Identity and access](identity-access.md).
 
@@ -70,13 +70,13 @@ For information on Entra ID integration and Azure role assignments, see [Identit
 | Anyscale console | Anyscale-hosted Azure | Anyscale |
 | Scheduling and management APIs | Anyscale-hosted Azure | Anyscale |
 | AKS cluster | Your Azure subscription | You |
-| Anyscale Kubernetes operator | Your AKS cluster | Anyscale (deployed via Helm) |
+| Anyscale Kubernetes operator | Your AKS cluster | Anyscale (installed by Azure portal) |
 | Ray clusters | Your AKS cluster | You |
 | Azure Blob Storage / ADLS | Your Azure subscription | You |
 | Azure Load Balancer | Your Azure subscription | You |
 
 ## Next steps
 
-- [Networking](networking.md) — required egress domains and traffic flow details
-- [Identity and access](identity-access.md) — Entra ID SSO and Azure role assignments
-- [Quickstart](quickstart-azcli-gateway-envoy.md) — deploy your first Anyscale cloud on Azure
+- [Networking](networking.md)—required egress domains and traffic flow details
+- [Identity and access](identity-access.md)—Entra ID SSO and Azure role assignments
+- [Quickstart](quickstart-azcli-gateway-envoy.md)—deploy your first Anyscale cloud on Azure

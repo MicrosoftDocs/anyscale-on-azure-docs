@@ -13,7 +13,7 @@ Anyscale on Azure uses Microsoft Entra ID for authentication and Azure managed i
 
 ## Entra ID single sign-on
 
-Anyscale on Azure integrates with Entra ID to provide single sign-on (SSO) across your Azure tenant. Users sign in at [console.azure.anyscale.com](https://console.azure.anyscale.com) using their Azure credentials — no separate Anyscale identity is required.
+Anyscale on Azure integrates with Entra ID to provide single sign-on (SSO) across your Azure tenant. Users sign in at [console.azure.anyscale.com](https://console.azure.anyscale.com) using their Azure credentials—no separate Anyscale identity is required.
 
 **How it works:**
 
@@ -27,9 +27,9 @@ SSO is configured automatically when you create your Anyscale cloud through the 
 
 When you create an Anyscale cloud resource through the Azure portal, the portal creates Azure managed identities in your resource group. There are two distinct identities:
 
-**Anyscale Operator managed identity** — Governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. This identity is configured automatically when you create the cloud resource through the Azure portal.
+**Anyscale Operator managed identity**—Governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. This identity is configured automatically when you create the cloud resource through the Azure portal.
 
-**Cluster managed identity** — The default identity used by Anyscale when deploying clusters. By default, all workloads share this identity. You can create additional identities and map them to specific users, projects, or workload types for finer-grained access control.
+**Cluster managed identity**—The default identity used by Anyscale when deploying clusters. By default, all workloads share this identity. You can create additional identities and map them to specific users, projects, or workload types for finer-grained access control.
 
 ### Default configuration
 
@@ -72,14 +72,14 @@ For a full reference of Anyscale platform roles and permissions, see the Anyscal
 
 ## Next steps
 
-- [Architecture overview](architecture.md) — how managed identities fit into the overall architecture
-- [Networking](networking.md) — egress domains and network security considerations
-- [Quickstart](quickstart-azcli-gateway-envoy.md) — step-by-step setup including service principal creation
+- [Architecture overview](architecture.md)—how managed identities fit into the overall architecture
+- [Networking](networking.md)—egress domains and network security considerations
+- [Quickstart](quickstart-azcli-gateway-envoy.md)—step-by-step setup including service principal creation
 
 ### Azure service integration guides (Anyscale docs)
 
-- [Managed identities for AKS](https://docs.anyscale.com/admin/azure/aks-iam) — configure per-workload identity mapping
-- [Access blob storage and ADLS](https://docs.anyscale.com/admin/azure/storage) — grant storage roles to managed identities
-- [Configure shared storage with Azure Blob PVC](https://docs.anyscale.com/admin/azure/pvc) — set up persistent volume claims for AKS
-- [Access Azure Container Registry](https://docs.anyscale.com/admin/azure/container-registry) — attach ACR pull permissions to your cluster
+- [Managed identities for AKS](https://docs.anyscale.com/admin/azure/aks-iam)—configure per-workload identity mapping
+- [Access blob storage and ADLS](https://docs.anyscale.com/admin/azure/storage)—grant storage roles to managed identities
+- [Configure shared storage with Azure Blob PVC](https://docs.anyscale.com/admin/azure/pvc)—set up persistent volume claims for AKS
+- [Access Azure Container Registry](https://docs.anyscale.com/admin/azure/container-registry)—attach ACR pull permissions to your cluster
 

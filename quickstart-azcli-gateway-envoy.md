@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Deploy Anyscale on Azure (Envoy Gateway) | Microsoft Learn"
-description: Deploy your first Anyscale cloud on Azure Kubernetes Service — configure your subscription, provision infrastructure with the Azure CLI, register via the Azure portal, and install the Envoy Gateway ingress controller.
+description: Deploy your first Anyscale cloud on Azure Kubernetes Service—configure your subscription, provision infrastructure with the Azure CLI, register via the Azure portal, and install the Envoy Gateway ingress controller.
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/16/2026
@@ -71,7 +71,7 @@ az group create \
 
 ### 1b: Create the AKS cluster
 
-Before creating the cluster, confirm you have sufficient quota for the VM SKU you plan to use in your chosen region. Ray workloads require at least 4 vCPUs per worker node — `Standard_D4s_v5` or equivalent is a good starting point. Check your current quota:
+Before creating the cluster, confirm you have sufficient quota for the VM SKU you plan to use in your chosen region. Ray workloads require at least 4 vCPUs per worker node—`Standard_D4s_v5` or equivalent is a good starting point. Check your current quota:
 
 ```azurecli
 az vm list-usage --location <location> --query "[?contains(name.value, 'standardDSv5Family')]" -o table
@@ -94,7 +94,7 @@ az aks create \
 ```
 
 
-After the cluster is created, save the resource group name and cluster name — you'll need them in Steps 2 and 3.
+After the cluster is created, save the resource group name and cluster name—you'll need them in Steps 2 and 3.
 
 ### Node pools and workload placement (optional)
 
@@ -338,7 +338,6 @@ anyscale cloud verify --id <cloud-id>
 The CLI prompts you to select your `kubectl` context and confirm the operator namespace. After confirming, a healthy cloud returns output similar to:
 
 ```plaintext
-✅ Gateway Support             PASSED
 Overall Result: ALL 1 cloud resources verified successfully
 ```
 

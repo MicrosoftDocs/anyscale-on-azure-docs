@@ -35,11 +35,7 @@ All Anyscale clouds are region-specific. A cloud created in `eastus` can only ru
 
 The region you select when creating the AKS cluster and Anyscale cloud resource sets the region for all resources in the cloud.
 
-## Request a new region
-
-If your required region is not listed, contact Anyscale to request support. Provide your Azure subscription ID and the target region.
-
 ## Next steps
 
-- [Quickstart](quickstart-azcli-gateway-envoy.md) — deploy your first Anyscale cloud
-- [Architecture overview](architecture.md) — understand the deployment model
+- [Quickstart](quickstart-azcli-gateway-envoy.md)—deploy your first Anyscale cloud
+- [Architecture overview](architecture.md)—understand the deployment model
