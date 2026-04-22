@@ -150,15 +150,14 @@ The portal creates the required storage, managed identity, and service account, 
 
 ## Step 3: Install the Envoy Gateway ingress controller
 
-The TLS certificate secrets (`anyscale-<cloud-resource-id>-certificate` and `anyscale-svc-<cloud-resource-id>-certificate`) are created automatically by the Anyscale operator after installation. The `<cloud-resource-id>` is derived from the `global.cloudDeploymentId` value in the Anyscale operator Helm release, with underscores converted to hyphens.
+The TLS certificate secrets (`anyscale-<cloud-resource-id>-certificate` and `anyscale-svc-<cloud-resource-id>-certificate`) are created automatically by the Anyscale operator after installation. Find the Cloud Resource ID in the Anyscale console under your cloud's settings.
 
-To retrieve it, run:
+| Identifier | Format | Where to find it | Used for |
+|---|---|---|---|
+| **Cloud ID** | `cld_*` | `anyscale cloud list` or the Anyscale console | `anyscale cloud verify --id` |
+| **Cloud Resource ID** | `cldrsrc_*` | Anyscale console, cloud settings page | TLS cert secret names in `gateway.yaml` |
 
-```bash
-helm get values anyscaleoperator -n anyscale-operator | grep cloudDeploymentId
-```
-
-The output looks like `cloudDeploymentId: cldrsrc_<id>`. Use this value throughout Step 3, replacing underscores with hyphens: `cldrsrc-<id>`.
+Use the Cloud Resource ID throughout Step 3, replacing underscores with hyphens: `cldrsrc-<id>`.
 
 ### 3a: Get AKS credentials
 
