@@ -27,9 +27,9 @@ SSO is configured automatically when you create your Anyscale cloud through the 
 
 When you create an Anyscale cloud resource through the Azure portal, the portal creates Azure managed identities in your resource group. There are two distinct identities:
 
-**Anyscale Operator managed identity**—Governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. This identity is configured automatically when you create the cloud resource through the Azure portal.
+**Anyscale Operator managed identity**: Governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. This identity is configured automatically when you create the cloud resource through the Azure portal.
 
-**Cluster managed identity**—The default identity used by Anyscale when deploying clusters. By default, all workloads share this identity. You can create additional identities and map them to specific users, projects, or workload types for finer-grained access control.
+**Cluster managed identity**: The default identity used by Anyscale when deploying clusters. By default, all workloads share this identity. You can create additional identities and map them to specific users, projects, or workload types for finer-grained access control.
 
 ### Default configuration
 

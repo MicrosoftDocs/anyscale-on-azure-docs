@@ -52,8 +52,8 @@ The operator authenticates to Azure services using a managed identity provisione
 
 You can configure permissions at different levels of granularity:
 
-- **Shared identity**—One managed identity covers all workloads in the cloud
-- **Granular identity mapping**—Map separate identities to individual users, projects, or workload types via cloud IAM configuration
+- **Shared identity**: One managed identity covers all workloads in the cloud
+- **Granular identity mapping**: Map separate identities to individual users, projects, or workload types via cloud IAM configuration
 
 For information on Entra ID integration and Azure role assignments, see [Identity and access](identity-access.md).
 
