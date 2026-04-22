@@ -99,6 +99,10 @@ After the cluster is created, save the resource group name and cluster name — 
 
 By default, Ray head nodes and worker nodes share the default node pool. For production workloads, you can create dedicated AKS node pools for Ray workloads and use Kubernetes taints and tolerations to steer Ray pods to those nodes. Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloads from scheduling on it, then configure matching tolerations in your Anyscale cluster configuration so Ray pods are admitted to the tainted pool. This keeps Ray workers isolated from operator and system pods on the default node pool.
 
+### Node pools and workload placement (optional)
+
+By default, Ray head nodes and worker nodes share the default node pool. For production workloads, you can create dedicated AKS node pools for Ray workloads and use Kubernetes taints and tolerations to steer Ray pods to those nodes. Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloads from scheduling on it, then configure matching tolerations in your Anyscale cluster configuration so Ray pods are admitted to the tainted pool. This keeps Ray workers isolated from operator and system pods on the default node pool.
+
 ## Step 2: Create an Anyscale cloud resource
 
 ### 2a: Navigate to the Anyscale clouds page
