@@ -24,7 +24,7 @@ Four primary traffic paths connect Anyscale's components:
 | 1 | Client -> control plane | Console access, CLI commands, and SDK calls via `console.azure.anyscale.com` |
 | 2 | Client -> AKS cluster | Dashboard access, job submission, and service requests via Azure Load Balancer |
 | 3 | AKS cluster -> control plane | Operator polling for scheduling instructions; telemetry and health reporting |
-| 4 | AKS cluster -> Azure resources | Application data access (Azure Blob Storage, Container Registry) |
+| 4 | AKS cluster <-> Azure resources | Application data access (Azure Blob Storage, Container Registry) |
 
 ## Operator and Ray cluster communication
 
