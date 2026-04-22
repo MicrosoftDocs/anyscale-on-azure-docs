@@ -31,8 +31,7 @@ The data plane runs inside your Azure subscription and consists of:
 - Your **AKS cluster**, which hosts all Ray workloads
 - The **Anyscale Kubernetes operator**, which manages Ray cluster lifecycles
 - **Azure storage** (Blob Storage or ADLS) for artifacts and datasets
-- **Azure Container Registry (ACR)** for custom container images
-- **Azure Key Vault** for secrets
+- **Azure Load Balancer** for client access to Ray clusters
 
 All compute, data, and networking resources in the data plane are owned by your subscription. Anyscale has no direct access to your cluster nodes or your data.
 
@@ -60,8 +59,8 @@ For information on Entra ID integration and Azure role assignments, see [Identit
 
 ## Architecture diagram
 
-:::image type="complex" source="media/architecture/architecture-overview.png" alt-text="Anyscale on Azure architecture showing three layers: Internal Users, Anyscale Control Plane, and Customer Data Plane.":::
-   The diagram has three horizontal swim lanes. The top lane (Internal Users) shows a developer connecting to the Anyscale console via HTTPS. The middle lane (Anyscale Control Plane, in Anyscale's Azure tenant) shows the Anyscale console, scheduling and job management APIs, cloud lifecycle management APIs, and a monitoring and logging dashboard. The bottom lane (Customer Data Plane, in the customer's Azure subscription) shows a Virtual Network containing an AKS cluster. Inside the AKS cluster, the Anyscale Kubernetes operator polls the control plane outbound over HTTPS and deploys Ray workloads. Ray workloads are divided into two groups: Jobs and Workspaces (a Ray head node with worker pods) and Services (a Ray Serve head pod routing to replica pods). A Managed Identities resource provides workload identity via OIDC to both the operator and the Ray pods. Outside the VNet but within the customer subscription, an Azure Storage Account receives artifact writes and provides dataset reads to the Ray workloads. A legend identifies solid blue lines as HTTPS/API calls, dashed blue lines as control and polling flows, solid green lines as Ray cluster internal flows, dashed green lines as operator deploy and manage actions, and solid azure-blue lines as storage read/write flows.
+:::image type="complex" source="media/architecture/anyscale-on-azure-architecture.png" alt-text="Anyscale on Azure architecture with two planes: Anyscale Control Plane on the left and Customer Data Plane on the right, connected by arrows.":::
+   The diagram shows two bordered boxes side by side. The left box (Anyscale Control Plane, in Anyscale's Azure tenant) contains three components stacked vertically: Scheduling and Job Management, Anyscale Console, and REST API / SDK. The right box (Customer Data Plane, in your Azure subscription / AKS cluster) contains the Anyscale Kubernetes Operator in the center, with two Ray Cluster boxes to its right. The top Ray Cluster shows a head node and N worker nodes; the bottom Ray Cluster shows a head node and N replicas. Two arrows run between the planes: one from the control plane to the operator labeled "deploys clusters, runs jobs / services", and one back labeled "logs, metrics". From the operator, two arrows point right labeled "deploys and manages", one to each Ray Cluster. Below both boxes, a Developer / ML Engineer / Data Scientist figure connects to the control plane with an arrow labeled "deploy, configure, monitor" and to the Customer Data Plane with an arrow labeled "interact with Ray clusters".
 :::image-end:::
 
 ## Component summary
@@ -74,8 +73,7 @@ For information on Entra ID integration and Azure role assignments, see [Identit
 | Anyscale Kubernetes operator | Your AKS cluster | Anyscale (deployed via Helm) |
 | Ray clusters | Your AKS cluster | You |
 | Azure Blob Storage / ADLS | Your Azure subscription | You |
-| Azure Container Registry | Your Azure subscription | You |
-| Azure Key Vault | Your Azure subscription | You |
+| Azure Load Balancer | Your Azure subscription | You |
 
 ## Next steps
 

@@ -4,7 +4,7 @@
   items:
   - name: With Envoy Gateway
     href: quickstart-azcli-gateway-envoy.md
-  - name: With Nginx
+  - name: With Ingress-Nginx
     href: quickstart-azcli-ingress-nginx.md
 - name: Architecture overview
   href: architecture.md

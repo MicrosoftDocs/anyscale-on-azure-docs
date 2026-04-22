@@ -24,7 +24,7 @@ Four primary traffic paths connect Anyscale's components:
 | 1 | Client → control plane | Console access, CLI commands, and SDK calls via `console.azure.anyscale.com` |
 | 2 | Client → AKS cluster | Dashboard access, job submission, and service requests via Azure Load Balancer |
 | 3 | AKS cluster → control plane | Operator polling for scheduling instructions; telemetry and health reporting |
-| 4 | AKS cluster → Azure resources | Application data access (Azure Blob Storage, Container Registry, Key Vault) |
+| 4 | AKS cluster → Azure resources | Application data access (Azure Blob Storage, Container Registry) |
 
 ## Operator and Ray cluster communication
 
@@ -36,7 +36,7 @@ The Anyscale Kubernetes operator polls Anyscale's control plane for pending oper
 
 ## Client access to Ray clusters
 
-Clients reach Ray cluster head nodes and Anyscale Services through an Azure Load Balancer fronting the Nginx ingress controller in your AKS cluster.
+Clients reach Ray cluster head nodes and Anyscale Services through an Azure Load Balancer fronting the ingress or gateway controller in your AKS cluster.
 
 :::image type="complex" source="media/networking/azure-client-flows.png" alt-text="Authenticated user with two flows: to Anyscale control plane (1) and to Ray cluster nodes via Azure Load Balancer in customer AKS (2).":::
    Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (left) contains the Anyscale Control Plane. The Customer Azure Tenant (right) contains a VNet, inside which an Azure Kubernetes Service box holds a Ray Cluster (containing Head Node and Worker Node); an Azure Load Balancer sits outside the AKS box but within the customer tenant. An Authenticated User box sits outside both tenants. Two numbered flows originate from the Authenticated User: flow 1 (direct arrow) to the Anyscale Control Plane; flow 2 (arrow) to the Azure Load Balancer, which routes traffic into the Ray Cluster.
@@ -45,7 +45,7 @@ Clients reach Ray cluster head nodes and Anyscale Services through an Azure Load
 The ingress controller terminates TLS and forwards traffic to port 80 of the head pod. DNS for `*.i.anyscaleuserdata.com` (head node access) and `*.s.anyscaleuserdata.com` (service requests) resolves to the load balancer address.
 
 > [!IMPORTANT]
-> The Nginx ingress controller requires a Layer 4 (TCP) load balancer. Azure Load Balancer (standard SKU) satisfies this requirement. Application Gateway is not supported as the primary ingress load balancer.
+> Anyscale on Azure requires a Layer 4 (TCP) load balancer. Azure Load Balancer (standard SKU) satisfies this requirement. Application Gateway is not supported as the primary ingress load balancer.
 
 ## Container image flow
 

@@ -1,5 +1,6 @@
 {
   "build": {
+    "dest": "_site",
     "content": [
       {
         "files": [
@@ -12,6 +13,9 @@
           "_themes/**",
           "**/docfx.json",
           "_repo.en-us/**",
+          ".claude/**",
+          "tools/**",
+          "_site/**",
           "README.md",
           "LICENSE",
           "LICENSE-CODE",
@@ -31,7 +35,10 @@
           "**/includes/**",
           "_themes/**",
           "**/docfx.json",
-          "_repo.en-us/**"
+          "_repo.en-us/**",
+          ".claude/**",
+          "tools/**",
+          "_site/**"
         ]
       }
     ],

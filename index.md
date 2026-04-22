@@ -38,6 +38,7 @@ Anyscale on Azure works with the Azure services you use:
 | Azure Kubernetes Service (AKS) | Compute platform for Ray workloads |
 | Azure Blob Storage / ADLS | Artifact storage and dataset access |
 | Azure Container Registry (ACR) | Custom container image distribution |
+| Azure Load Balancer | Client access to Ray clusters and services |
 
 **Managed permissions**
 Azure managed identities govern access to cloud resources. You can use a single shared identity or map permissions granularly to users, projects, or workload types.

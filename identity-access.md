@@ -17,7 +17,7 @@ Anyscale on Azure integrates with Entra ID to provide single sign-on (SSO) acros
 
 **How it works:**
 
-1. The user navigates to `console.azure.anyscale.com` and selects **Sign in with Microsoft**.
+1. The user navigates to `console.azure.anyscale.com` and selects **Continue with Microsoft**.
 2. Entra ID authenticates the user and issues a token.
 3. Anyscale validates the token and maps the user to their Anyscale organization.
 
@@ -39,7 +39,6 @@ By default, a single cluster managed identity is shared across all workloads in 
 |------|-------|---------|
 | Storage Blob Data Contributor | Storage account | Read and write artifacts and datasets |
 | AcrPull | Container registry | Pull container images |
-| Key Vault Secrets User | Key Vault | Read secrets at runtime |
 
 ### Granular identity mapping
 
@@ -83,4 +82,4 @@ For a full reference of Anyscale platform roles and permissions, see the Anyscal
 - [Access blob storage and ADLS](https://docs.anyscale.com/admin/azure/storage) — grant storage roles to managed identities
 - [Configure shared storage with Azure Blob PVC](https://docs.anyscale.com/admin/azure/pvc) — set up persistent volume claims for AKS
 - [Access Azure Container Registry](https://docs.anyscale.com/admin/azure/container-registry) — attach ACR pull permissions to your cluster
-- [Use Key Vault secrets](https://docs.anyscale.com/admin/azure/key-vault) — grant Key Vault Secrets User role to managed identities
+
