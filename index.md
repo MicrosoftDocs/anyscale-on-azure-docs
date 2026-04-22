@@ -31,10 +31,11 @@ All Anyscale cloud resources on Azure use Kubernetes. Anyscale deploys an operat
 Your team signs in to Anyscale using their existing Azure credentials. No separate identity provider setup is required. For details, see [Identity and access](identity-access.md).
 
 **Azure service integrations**
-Anyscale on Azure works with the Azure services you use for storage, secrets, and container images:
+Anyscale on Azure works with the Azure services you use:
 
 | Service | Use |
 |---------|-----|
+| Azure Kubernetes Service (AKS) | Compute platform for Ray workloads |
 | Azure Blob Storage / ADLS | Artifact storage and dataset access |
 | Azure Container Registry (ACR) | Custom container image distribution |
 
