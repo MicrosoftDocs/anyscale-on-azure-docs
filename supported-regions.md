@@ -3,7 +3,7 @@ title: Anyscale on Azure supported regions | Microsoft Learn
 description: View the Azure regions where Anyscale on Azure is available and find links to Microsoft's regional availability documentation for GPU and compute SKUs.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 04/03/2026
+ms.date: 04/22/2026
 ms.topic: reference
 ---
 
@@ -15,19 +15,11 @@ Anyscale on Azure is available in the following Azure regions during Public Prev
 
 | Region | Azure region name |
 |--------|------------------|
+| West Central US | `westcentralus` |
 | East US | `eastus` |
 | East US 2 | `eastus2` |
 | West US 2 | `westus2` |
 | West US 3 | `westus3` |
-| Central US | `centralus` |
-| North Central US | `northcentralus` |
-| South Central US | `southcentralus` |
-| West Europe | `westeurope` |
-| North Europe | `northeurope` |
-| Southeast Asia | `southeastasia` |
-
-> [!NOTE]
-> This table is a placeholder. Replace with the confirmed list of supported regions before publication. Contact Anyscale to verify which regions are available at launch.
 
 ## GPU and compute availability
 
