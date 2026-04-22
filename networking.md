@@ -16,7 +16,7 @@ Anyscale on Azure uses an egress-only network model. All connections originate f
 Four primary traffic paths connect Anyscale's components:
 
 :::image type="complex" source="media/networking/azure-network-flows.png" alt-text="Four numbered network flows between client, Anyscale control plane, AKS cluster, and Azure storage and registry resources.":::
-   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (top) contains the Anyscale Control Plane. The Customer Azure Tenant (bottom) contains the AKS Cluster (labeled "Anyscale Operator + Ray Cluster") and Azure Resources (labeled "Blob Storage / Container Registry"). A Client box sits outside both tenants. Four numbered flows connect the components: flow 1 (solid arrow) from Client to Anyscale Control Plane; flow 2 (dashed arrow) from AKS Cluster to Anyscale Control Plane; flow 3 (solid arrow) from Client to AKS Cluster; flow 4 (bidirectional solid arrow) between AKS Cluster and Azure Resources.
+   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (top) contains the Anyscale Control Plane. The Customer Azure Tenant (bottom) contains the AKS Cluster (labeled "Anyscale Operator + Ray Cluster") and Azure Resources (labeled "Blob Storage / Container Registry / Load Balancer"). A Client box sits outside both tenants. Four numbered flows connect the components: flow 1 (solid arrow) from Client to Anyscale Control Plane; flow 2 (dashed arrow) from AKS Cluster to Anyscale Control Plane; flow 3 (solid arrow) from Client to AKS Cluster; flow 4 (bidirectional solid arrow) between AKS Cluster and Azure Resources.
 :::image-end:::
 
 | # | Flow | Description |
