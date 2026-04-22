@@ -1,6 +1,6 @@
 ---
-title: "Quickstart: Deploy Anyscale on Azure (Envoy Gateway) | Microsoft Learn"
-description: Deploy your first Anyscale cloud on Azure Kubernetes Service—configure your subscription, provision infrastructure with the Azure CLI, register via the Azure portal, and install the Envoy gateway controller.
+title: "Quickstart: Deploy Anyscale on Azure | Microsoft Learn"
+description: Deploy your first Anyscale cloud on Azure Kubernetes Service using the Azure CLI and the Envoy gateway controller. Configure your subscription, create an AKS cluster, and register via the Azure portal.
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/16/2026
@@ -16,7 +16,7 @@ ms.topic: quickstart
 
 This quickstart walks you through deploying Anyscale on an existing Azure Kubernetes Service (AKS) cluster using the Envoy gateway controller. By the end, you'll have a registered Anyscale cloud and be ready to run Ray workloads.
 
-## Prerequisites
+## Prerequisites and required tools
 
 Before you begin, make sure you have:
 
@@ -30,7 +30,7 @@ Before you begin, make sure you have:
 
 You must be enrolled in the Anyscale on Azure Public Preview. Contact [Anyscale support](https://docs.anyscale.com/support) to enroll and provide your Azure subscription ID and preferred deployment regions.
 
-## Step 0: Configure your Azure subscription
+## Step 0: configure your Azure subscription
 
 ### 0a: Create the Anyscale service principal
 
@@ -57,7 +57,7 @@ for provider in Microsoft.Storage Microsoft.ManagedIdentity Microsoft.Authorizat
 done
 ```
 
-## Step 1: Provision Azure resources
+## Step 1: provision Azure resources
 
 ### 1a: Create or select a resource group
 
@@ -100,7 +100,7 @@ After the cluster is created, save the resource group name and cluster name—yo
 
 By default, Ray head nodes and worker nodes share the default node pool. For production workloads, you can create dedicated AKS node pools for Ray workloads and use Kubernetes taints and tolerations to steer Ray pods to those nodes. Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloads from scheduling on it, then configure matching tolerations in your Anyscale cluster configuration so Ray pods are admitted to the tainted pool. This keeps Ray workers isolated from operator and system pods on the default node pool.
 
-## Step 2: Create an Anyscale cloud resource
+## Step 2: create an Anyscale cloud resource
 
 ### 2a: Navigate to the Anyscale clouds page
 
@@ -148,7 +148,7 @@ Azure validates your configuration before enabling the **Create** button. Once v
 
 The portal creates the required storage, managed identity, and service account, and installs the Anyscale Kubernetes operator automatically.
 
-## Step 3: Install the Envoy gateway controller
+## Step 3: install the Envoy gateway controller
 
 The TLS certificate secrets (`anyscale-<cloud-resource-id>-certificate` and `anyscale-svc-<cloud-resource-id>-certificate`) are created automatically by the Anyscale operator after installation. Find the Cloud Resource ID in the Anyscale console under your cloud's settings.
 
@@ -180,7 +180,7 @@ kubectl wait --for=condition=available deployment/envoy-gateway \
   -n envoy-gateway-system --timeout=120s
 ```
 
-### 3c: Create and apply `envoyproxy.yaml`
+### 3c: Create and apply envoyproxy.yaml
 
 ```yaml
 apiVersion: gateway.envoyproxy.io/v1alpha1
@@ -202,7 +202,7 @@ spec:
 kubectl apply -f envoyproxy.yaml
 ```
 
-### 3d: Create and apply `gatewayclass.yaml`
+### 3d: Create and apply gatewayclass.yaml
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
@@ -222,7 +222,7 @@ spec:
 kubectl apply -f gatewayclass.yaml
 ```
 
-### 3e: Create and apply `gateway.yaml`
+### 3e: Create and apply gateway.yaml
 
 Replace `<cloud-resource-id>` with the value from Step 3 (the `global.cloudDeploymentId` value with underscores converted to hyphens, e.g. `cldrsrc-<id>`).
 
