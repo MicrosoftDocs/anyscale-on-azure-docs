@@ -10,8 +10,8 @@ ms.topic: quickstart
 # Quickstart: Deploy Anyscale on Azure
 
 > [!div class="op_multi_selector" title1="Provisioning" title2="Ingress"]
-> - [(Azure CLI | Nginx)](quickstart-azcli-ingress-nginx.md)
-> - [(Azure CLI | Envoy Gateway)](quickstart-azcli-gateway-envoy.md)
+> - [Envoy Gateway](quickstart-azcli-gateway-envoy.md)
+> - [Ingress-Nginx](quickstart-azcli-ingress-nginx.md)
 
 This quickstart walks you through deploying Anyscale on an existing Azure Kubernetes Service (AKS) cluster. By the end, you'll have a registered Anyscale cloud and be ready to run Ray workloads.
 
@@ -25,7 +25,7 @@ Before you begin, make sure you have:
   - [Azure CLI](/cli/azure/install-azure-cli)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/)
   - [Helm](https://helm.sh/docs/intro/install/)
-  - [Anyscale CLI](https://docs.anyscale.com/reference/anyscale-cli): `pip install anyscale`
+  - [Anyscale CLI](https://docs.anyscale.com/reference/quickstart-cli): `pip install anyscale`
 
 You must be enrolled in the Anyscale on Azure Public Preview. Contact [Anyscale support](https://docs.anyscale.com/support) to enroll and provide your Azure subscription ID and preferred deployment regions.
 
@@ -95,6 +95,10 @@ az aks create \
 
 After the cluster is created, save the resource group name and cluster name — you'll need them in Steps 2 and 3.
 
+### Node pools and workload placement (optional)
+
+By default, Ray head nodes and worker nodes share the default node pool. For production workloads, you can create dedicated AKS node pools for Ray workloads and use Kubernetes taints and tolerations to steer Ray pods to those nodes. Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloads from scheduling on it, then configure matching tolerations in your Anyscale cluster configuration so Ray pods are admitted to the tainted pool. This keeps Ray workers isolated from operator and system pods on the default node pool.
+
 ## Step 2: Create an Anyscale cloud resource
 
 ### 2a: Navigate to the Anyscale clouds page
@@ -139,7 +143,7 @@ Select **Review + create**.
 
 :::image type="content" source="media/quickstart/quickstart-review-create-summary.png" alt-text="Review + create tab showing a summary of the Basics and Cloud storage settings configuration.":::
 
-Review your configuration, then select **Create**.
+Azure validates your configuration before enabling the **Create** button. Once validation passes, select **Create**.
 
 The portal creates the required storage, managed identity, and service account, and installs the Anyscale Kubernetes operator automatically.
 
