@@ -93,9 +93,9 @@ After the cluster is created, save the resource group name and cluster name — 
 
 ## Step 2: Create an Anyscale cloud resource
 
-### 2a: Navigate to the Public Preview portal
+### 2a: Navigate to the Anyscale clouds page
 
-Go to `https://aka.ms/<anyscale-public-preview-alias>` in the Azure portal.
+In the [Azure portal](https://portal.azure.com), search for **Anyscale** in the global search bar and select **Anyscale** from the results.
 
 
 :::image type="content" source="media/quickstart/quickstart-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
