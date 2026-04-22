@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Deploy Anyscale on Azure (Envoy Gateway) | Microsoft Learn"
-description: Deploy your first Anyscale cloud on Azure Kubernetes Service—configure your subscription, provision infrastructure with the Azure CLI, register via the Azure portal, and install the Envoy Gateway ingress controller.
+description: Deploy your first Anyscale cloud on Azure Kubernetes Service—configure your subscription, provision infrastructure with the Azure CLI, register via the Azure portal, and install the Envoy gateway controller.
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/16/2026
@@ -10,11 +10,11 @@ ms.topic: quickstart
 
 # Quickstart: Deploy Anyscale on Azure
 
-> [!div class="op_multi_selector" title1="Ingress controller"]
-> - [(Envoy Gateway)](quickstart-azcli-gateway-envoy.md)
-> - [(Nginx)](quickstart-azcli-ingress-nginx.md)
+> [!div class="op_multi_selector" title1="Quickstart" title2="Ingress"]
+> - [Envoy Gateway](quickstart-azcli-gateway-envoy.md)
+> - [Ingress-Nginx](quickstart-azcli-ingress-nginx.md)
 
-This quickstart walks you through deploying Anyscale on an existing Azure Kubernetes Service (AKS) cluster using the Envoy Gateway ingress controller. By the end, you'll have a registered Anyscale cloud and be ready to run Ray workloads.
+This quickstart walks you through deploying Anyscale on an existing Azure Kubernetes Service (AKS) cluster using the Envoy gateway controller. By the end, you'll have a registered Anyscale cloud and be ready to run Ray workloads.
 
 ## Prerequisites
 
@@ -148,7 +148,7 @@ Azure validates your configuration before enabling the **Create** button. Once v
 
 The portal creates the required storage, managed identity, and service account, and installs the Anyscale Kubernetes operator automatically.
 
-## Step 3: Install the Envoy Gateway ingress controller
+## Step 3: Install the Envoy gateway controller
 
 The TLS certificate secrets (`anyscale-<cloud-resource-id>-certificate` and `anyscale-svc-<cloud-resource-id>-certificate`) are created automatically by the Anyscale operator after installation. Find the Cloud Resource ID in the Anyscale console under your cloud's settings.
 
