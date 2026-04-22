@@ -28,7 +28,7 @@ Before you begin, make sure you have:
   - [Helm](https://helm.sh/docs/intro/install/)
   - [Anyscale CLI](https://docs.anyscale.com/reference/quickstart-cli): `pip install anyscale`
 
-You must be enrolled in the Anyscale on Azure Public Preview. Contact [Anyscale support](https://docs.anyscale.com/support) to enroll and provide your Azure subscription ID and preferred deployment regions.
+You must be enrolled in the Anyscale on Azure Public Preview. Contact [Anyscale support](https://www.anyscale.com/support) to enroll and provide your Azure subscription ID and preferred deployment regions.
 
 ## Step 0: configure your Azure subscription
 
