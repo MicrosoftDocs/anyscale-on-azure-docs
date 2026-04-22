@@ -41,5 +41,5 @@ If your required region is not listed, contact Anyscale to request support. Prov
 
 ## Next steps
 
-- [Quickstart](quickstart.md) — deploy your first Anyscale cloud
+- [Quickstart](quickstart-azcli-gateway-envoy.md) — deploy your first Anyscale cloud
 - [Architecture overview](architecture.md) — understand the deployment model

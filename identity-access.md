@@ -56,7 +56,7 @@ During setup, you create a service principal in your tenant from Anyscale's Entr
 
 ## Azure role requirements for setup
 
-The person running the [Quickstart](quickstart.md) must have the following permissions on the target subscription:
+The person running the [Quickstart](quickstart-azcli-gateway-envoy.md) must have the following permissions on the target subscription:
 
 | Permission | Required for |
 |-----------|--------------|
@@ -75,7 +75,7 @@ For a full reference of Anyscale platform roles and permissions, see [Anyscale r
 
 - [Architecture overview](architecture.md) — how managed identities fit into the overall architecture
 - [Networking](networking.md) — egress domains and network security considerations
-- [Quickstart](quickstart.md) — step-by-step setup including service principal creation
+- [Quickstart](quickstart-azcli-gateway-envoy.md) — step-by-step setup including service principal creation
 
 ### Azure service integration guides (Anyscale docs)
 
