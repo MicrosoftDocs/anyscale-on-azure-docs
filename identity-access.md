@@ -1,6 +1,6 @@
 ---
-title: Identity and access in Anyscale on Azure | Microsoft Learn
-description: Learn how Anyscale on Azure integrates with Microsoft Entra ID for single sign-on and uses Azure managed identities and built-in roles to control access to resources.
+title: Identity and Access in Anyscale on Azure | Microsoft Learn
+description: Learn how Anyscale on Azure integrates with Microsoft Entra ID for single sign-on and uses Azure managed identities and roles to control access to cloud resources.
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/03/2026
@@ -23,7 +23,7 @@ Anyscale on Azure integrates with Entra ID to provide single sign-on (SSO) acros
 
 SSO is configured automatically when you create your Anyscale cloud through the Azure portal. No additional Entra ID application registration is required from your side.
 
-## Managed identities
+## Managed identities and their roles
 
 When you create an Anyscale cloud resource through the Azure portal, the portal creates Azure managed identities in your resource group. There are two distinct identities:
 
@@ -46,7 +46,7 @@ For environments where different teams or workload types need separate permissio
 
 This is configured in the Anyscale console under **Cloud settings > IAM**. For step-by-step instructions, see [Managed identities for AKS](https://docs.anyscale.com/admin/azure/aks-iam) in the Anyscale documentation.
 
-## Service principal
+## Service principal for cloud registration
 
 During setup, you create a service principal in your tenant from Anyscale's Entra application (app ID `086bc555-6989-4362-ba30-fded273e432b`). This service principal allows Anyscale's control plane to authenticate against your Azure subscription during the cloud registration flow.
 
