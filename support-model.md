@@ -1,5 +1,5 @@
 ---
-title: Anyscale on Azure support model | Microsoft Learn
+title: Anyscale on Azure Support Model | Microsoft Learn
 description: Learn how to get support for Anyscale on Azure. Support requests are handled through Azure Support and routed to the appropriate team.
 author: kaysieyu
 ms.author: kaysieyu
