@@ -12,7 +12,7 @@ ms.topic: conceptual
 Anyscale on Azure support is handled through Azure Support. Whether your issue is related to the Azure infrastructure, AKS configuration, or the Anyscale platform itself, open a support request through the Azure portal and the support team will route your case appropriately.
 
 > [!NOTE]
-> Customers who have direct support channels set up with Anyscale Support may choose to contact Anyscale Support directly for Anyscale platform issues.
+> Customers who have direct support channels set up with Anyscale Support may choose to contact Anyscale Support directly for Anyscale platform issues. Anyscale on Azure support SLAs are at the [Enterprise tier](https://www.anyscale.com/support) at launch.
 
 ## How to get support
 
