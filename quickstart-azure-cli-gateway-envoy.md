@@ -107,7 +107,7 @@ By default, Ray head nodes and worker nodes share the default node pool. For pro
 
 In the [Azure portal](https://portal.azure.com), search for **Anyscale** in the global search bar and select **Anyscale** from the results.
 
-:::image type="content" source="media/quickstart/quickstart-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
+:::image type="content" source="media/quickstart/quickstart-anyscale-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
 
 ### 2b: Fill in the Basics tab
 
@@ -117,37 +117,58 @@ Fill in the following fields:
 
 1. Confirm the **Subscription** matches the subscription you used in Step 1.
 2. Select the **Resource group** you created or used in Step 1.
-3. Enter a unique **Cloud name** (alphanumeric characters only).
+3. Enter a unique **Cloud name**.
 4. Select the same **Region** you used in Step 1.
+5. Select your **Cluster** from the dropdown.
 
-:::image type="content" source="media/quickstart/quickstart-create-basics-filled.png" alt-text="Basics tab with subscription, resource group, cloud name, and region filled in.":::
+Leave **Support tier** at the default value.
 
-Select **Next**.
-
-### 2c: Fill in the Cloud storage settings tab
-
-:::image type="content" source="media/quickstart/quickstart-create-cloud-storage-settings.png" alt-text="Cloud storage settings tab with storage account name and AKS cluster fields filled in.":::
-
-1. Enter a unique **Storage account name** (3–24 lowercase alphanumeric characters).
-2. Select your **AKS cluster** from the dropdown.
+:::image type="content" source="media/quickstart/quickstart-create-basics-filled.png" alt-text="Basics tab with subscription, resource group, cloud name, region, and AKS cluster filled in.":::
 
 Select **Next**.
 
-### 2d: Add tags (optional)
+### 2c: Configure Infrastructure settings
 
-:::image type="content" source="media/quickstart/quickstart-create-tags.png" alt-text="Tags tab showing name and value fields for adding resource tags for billing and cost management.":::
+The portal pre-populates a storage account name and operator identity name. Accept the defaults or enter custom names:
+
+- **Storage account name**: 3–24 lowercase alphanumeric characters.
+- **Operator identity name**: the managed identity used by the Anyscale operator.
+
+:::image type="content" source="media/quickstart/quickstart-create-infrastructure-settings.png" alt-text="Infrastructure settings tab showing storage account and managed identity configuration with default values pre-populated.":::
+
+Select **Next**.
+
+### 2d: Configure Container registry settings
+
+The portal pre-populates an Azure Container Registry (ACR) name. ACR is used for container image builds. Accept the default or enter a custom name.
+
+:::image type="content" source="media/quickstart/quickstart-create-container-registry-settings.png" alt-text="Container registry settings tab with ACR mode set to Create new ACR and an auto-generated ACR name.":::
+
+Select **Next**.
+
+### 2e: Review Operator settings
+
+The Operator settings tab shows pre-populated values for the Anyscale operator. Leave these at their defaults.
+
+:::image type="content" source="media/quickstart/quickstart-create-operator-settings.png" alt-text="Operator settings tab showing pre-populated extension resource name, control plane URL, and authentication audience.":::
+
+Select **Next**.
+
+### 2f: Add tags (optional)
 
 Add name/value tag pairs to categorize the created resources for billing and cost management. Tags are optional.
 
-Select **Review + create**.
+:::image type="content" source="media/quickstart/quickstart-create-tags.png" alt-text="Tags tab showing name and value fields for adding resource tags for billing and cost management.":::
 
-### 2e: Review and create
+Select **Next**.
 
-:::image type="content" source="media/quickstart/quickstart-review-create-summary.png" alt-text="Review + create tab showing a summary of the Basics and Cloud storage settings configuration.":::
+### 2g: Review and submit
+
+:::image type="content" source="media/quickstart/quickstart-review-submit-summary.png" alt-text="Review + submit tab showing a summary of the cloud configuration across all tabs.":::
 
 Azure validates your configuration before enabling the **Create** button. Once validation passes, select **Create**.
 
-The portal creates the required storage, managed identity, and service account, and installs the Anyscale Kubernetes operator automatically.
+The portal creates the required storage, managed identity, container registry, and service account, and installs the Anyscale Kubernetes operator automatically. Wait for the deployment to complete before proceeding to Step 3.
 
 ## Step 3: install the Envoy gateway controller
 
@@ -168,6 +189,14 @@ az aks get-credentials \
   --name <your-aks-cluster-name> \
   --overwrite-existing
 ```
+
+Confirm the Anyscale operator is running:
+
+```bash
+kubectl get pods -n anyscale-operator
+```
+
+The operator pod should show a status of `Running`.
 
 ### 3b: Install Envoy Gateway
 
@@ -302,16 +331,14 @@ This updates only the gateway settings. All other operator configuration set dur
 
 ## Verify the deployment
 
-In the Azure portal, navigate to your Anyscale cloud resource and confirm the **Status** shows **Succeeded**.
-
-You can also verify from the Anyscale CLI. First, set the Anyscale console URL and sign in:
+Verify the deployment from the Anyscale CLI. First, set the Anyscale console URL and sign in:
 
 ```bash
 export ANYSCALE_HOST=https://console.azure.anyscale.com
 anyscale login
 ```
 
-To avoid setting `ANYSCALE_HOST` each session, add the following to your shell configuration (`.bashrc` or `.zshrc`):
+To avoid setting `ANYSCALE_HOST` each session, add the following to your shell configuration file (for example, `.bashrc` or `.zshrc`) and start a new shell:
 
 ```bash
 export ANYSCALE_HOST=https://console.azure.anyscale.com
