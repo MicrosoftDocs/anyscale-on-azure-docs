@@ -4,6 +4,7 @@ description: Anyscale on Azure is a managed Ray platform that runs on your Azure
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/03/2026
+ms.service: azure-kubernetes-service
 ms.topic: overview
 ---
 

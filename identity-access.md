@@ -4,6 +4,7 @@ description: Learn how Anyscale on Azure integrates with Microsoft Entra ID for 
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/03/2026
+ms.service: azure-kubernetes-service
 ms.topic: conceptual
 ---
 

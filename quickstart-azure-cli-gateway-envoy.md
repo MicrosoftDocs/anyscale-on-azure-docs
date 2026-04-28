@@ -4,6 +4,7 @@ description: Deploy your first Anyscale cloud on Azure Kubernetes Service using 
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/16/2026
+ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ---
 

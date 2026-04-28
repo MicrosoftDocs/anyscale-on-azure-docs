@@ -4,6 +4,7 @@ description: Learn how Anyscale on Azure is structured, including the control pl
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/03/2026
+ms.service: azure-kubernetes-service
 ms.topic: conceptual
 ---
 
