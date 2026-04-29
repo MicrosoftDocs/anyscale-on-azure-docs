@@ -292,20 +292,13 @@ Overall Result: ALL 1 cloud resources verified successfully
    max_retries: 1
    ```
 
-1. Submit the job, using the cloud ID from the verify step:
+1. Submit the job, using the cloud name as it appears in the Anyscale console or `anyscale cloud list` (it starts with `/subscriptions/`):
 
    ```bash
-   anyscale job submit -f job.yaml --cloud <cloud-id>
+   anyscale job submit -f job.yaml --cloud <cloud-name>
    ```
 
-   When the job completes, the output includes:
-
-   ```plaintext
-   Hello from one of the Running Ray Tasks!
-   The job result is [0, 2, 4, 6, 8]
-   ```
-
-   You can also view job status and logs in the [Anyscale console](https://console.azure.anyscale.com).
+   The command returns a URL to track job status and view output in the Anyscale console.
 
 
 ## Next steps
