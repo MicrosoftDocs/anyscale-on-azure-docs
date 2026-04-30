@@ -71,7 +71,7 @@ After setup, day-to-day Anyscale operations such as launching workloads and mana
 
 ## Anyscale platform roles
 
-Anyscale roles control access within the Anyscale platform. These roles are separate from Azure role-based access control (RBAC) and are managed in the Anyscale console.
+Anyscale roles control access to Anyscale on Azure resources. You manage them in the Azure portal.
 
 For a full reference of Anyscale platform roles and permissions, see the [Anyscale documentation](https://docs.anyscale.com).
 

@@ -32,6 +32,8 @@ Enroll in the Anyscale on Azure Public Preview before you start. Contact [Anysca
 
 ## Step 0: configure your Azure subscription
 
+Step 0a requires permission to create service principals from external Microsoft Entra tenants. Review the prerequisite above before you proceed.
+
 ### 0a: create the Anyscale service principal
 
 To establish trust with the Anyscale control plane, run the following command:
@@ -328,6 +330,8 @@ az k8s-extension update \
 ```
 
 This command updates only the gateway settings. The update preserves all other operator configuration set during portal installation.
+
+Anyscale on Azure installs the operator as an AKS extension, not a standalone Helm release. Use `az k8s-extension update --configuration-settings` to pass Helm values to the operator. Don't use the Helm CLI directly to configure the operator.
 
 ## Verify the deployment
 

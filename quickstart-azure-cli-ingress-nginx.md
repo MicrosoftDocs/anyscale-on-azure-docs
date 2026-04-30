@@ -32,6 +32,8 @@ Enroll in the Anyscale on Azure Public Preview before you start. Contact [Anysca
 
 ## Step 0: configure your Azure subscription
 
+Step 0a requires permission to create service principals from external Microsoft Entra tenants. Review the prerequisite above before you proceed.
+
 ### 0a: create the Anyscale service principal
 
 To establish trust with the Anyscale control plane, run the following command:
