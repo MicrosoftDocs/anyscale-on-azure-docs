@@ -8,7 +8,7 @@ ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ---
 
-# Support model
+# Anyscale on Azure support model
 
 Azure Support handles all Anyscale on Azure support requests. Open a support request through the Azure portal whether your issue concerns Azure infrastructure, AKS configuration, or the Anyscale platform itself. The support team routes your case appropriately.
 

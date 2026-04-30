@@ -8,7 +8,7 @@ ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ---
 
-# Architecture overview
+# Anyscale on Azure architecture overview
 
 Anyscale on Azure separates the platform into two distinct planes. The **control plane** is managed by Anyscale and hosted in Azure. The **data plane** runs entirely within your Azure subscription. This separation keeps your workloads, data, and container images inside your tenant while Anyscale handles orchestration and management.
 

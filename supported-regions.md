@@ -8,7 +8,7 @@ ms.service: azure-kubernetes-service
 ms.topic: reference
 ---
 
-# Supported regions
+# Anyscale on Azure supported regions
 
 Anyscale on Azure is available in the following Azure regions during Public Preview. Contact [Anyscale support](https://www.anyscale.com/support) to request enrollment and specify your preferred region.
 

@@ -8,7 +8,7 @@ ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ---
 
-# Networking
+# Anyscale on Azure networking
 
 Anyscale on Azure uses an egress-only network model. All connections originate from the Anyscale Kubernetes operator and Ray clusters in your AKS cluster outbound to the Anyscale control plane and external services. You don't need inbound firewall rules to reach your cluster from Anyscale.
 
