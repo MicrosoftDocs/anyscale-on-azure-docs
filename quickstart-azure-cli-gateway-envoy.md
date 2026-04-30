@@ -279,7 +279,7 @@ spec:
   - name: https
     port: 443
     protocol: HTTPS
-    hostname: '*.i.anyscaleuserdata.com'
+    hostname: '*.i.azure.anyscaleuserdata.com'
     tls:
       mode: Terminate
       certificateRefs:
@@ -291,7 +291,7 @@ spec:
   - name: https-session
     port: 443
     protocol: HTTPS
-    hostname: '*.s.anyscaleuserdata.com'
+    hostname: '*.s.azure.anyscaleuserdata.com'
     tls:
       mode: Terminate
       certificateRefs:

@@ -17,7 +17,7 @@ Anyscale on Azure uses an egress-only network model. All connections originate f
 Four primary traffic paths connect the Anyscale components:
 
 :::image type="complex" source="media/networking/azure-network-flows.png" alt-text="Four numbered network flows between client, Anyscale control plane, AKS cluster, and Azure storage and registry resources.":::
-   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (top) contains the Anyscale Control Plane. The Customer Azure Tenant (bottom) contains the AKS Cluster, labeled "Anyscale Operator and Ray Cluster", and Azure Resources, labeled "Blob Storage, Container Registry, Load Balancer". A Client box sits outside both tenants. Four numbered flows connect the components: flow 1 is a solid arrow from Client to Anyscale Control Plane. Flow 2 is a dashed arrow from AKS Cluster to Anyscale Control Plane. Flow 3 is a solid arrow from Client to AKS Cluster. Flow 4 is a bidirectional solid arrow between AKS Cluster and Azure Resources.
+   Two dashed-border tenant boxes divide the diagram. The top box is the Anyscale Azure Tenant, which contains the Anyscale Control Plane. The bottom box is the Customer Azure Tenant. It contains an AKS Cluster labeled "Anyscale Operator + Ray Cluster" and Azure Resources labeled "Blob Storage / Container Registry / Load Balancer". A Client box sits outside both tenants. Flow 1 runs from Client to Anyscale Control Plane. Flow 2 runs from Client to AKS Cluster. Flow 3 runs from AKS Cluster to Anyscale Control Plane. Flow 4 runs in both directions between AKS Cluster and Azure Resources.
 :::image-end:::
 
 | # | Flow | Description |
@@ -32,7 +32,7 @@ Four primary traffic paths connect the Anyscale components:
 The Anyscale Kubernetes operator polls the Anyscale control plane for pending operations and reports Ray cluster health. This polling pattern means all connections from your cluster are outbound. You don't need inbound rules on your AKS nodes.
 
 :::image type="complex" source="media/networking/azure-aks-to-control-plane.png" alt-text="Operator Pod in AKS with two outbound connections to Anyscale control plane: operator polling (1) and Ray cluster health reporting (2).":::
-   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (left) contains the Anyscale Control Plane. The Customer Azure Tenant (right) contains a VNet, inside which an Azure Kubernetes Service box holds the Anyscale Operator Pod and a Ray Cluster that contains a Head Node and Worker Node. Two numbered arrows run from the customer tenant to the control plane: flow 1 originates from the Anyscale Operator Pod for operator polling, and flow 2 originates from the Ray Cluster for health reporting. Both arrows are outbound only.
+   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (left) contains the Anyscale Control Plane. The Customer Azure Tenant (right) contains a VNet. Inside the VNet, an Azure Kubernetes Services box holds the Anyscale Operator Pod and a Ray Cluster with a Head Node and Worker Nodes. Flow 1 runs from the Anyscale Operator Pod to the control plane for operator polling. Flow 2 runs from the Ray Cluster to the control plane for health reporting. Both flows are outbound only.
 :::image-end:::
 
 | # | Flow | Description |
@@ -45,7 +45,7 @@ The Anyscale Kubernetes operator polls the Anyscale control plane for pending op
 Clients reach Ray cluster head nodes and Anyscale Services through an Azure Load Balancer that fronts the ingress or gateway controller in your AKS cluster.
 
 :::image type="complex" source="media/networking/azure-client-flows.png" alt-text="Authenticated user with two flows: to Anyscale control plane (1) and to Ray cluster nodes via Azure Load Balancer in customer AKS (2).":::
-   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (left) contains the Anyscale Control Plane. The Customer Azure Tenant (right) contains a VNet, inside which an Azure Kubernetes Service box holds a Ray Cluster that contains a Head Node and Worker Node. An Azure Load Balancer sits outside the AKS box but within the customer tenant. An Authenticated User box sits outside both tenants. Two numbered flows originate from the Authenticated User: flow 1 is a direct arrow to the Anyscale Control Plane, and flow 2 is an arrow to the Azure Load Balancer, which routes traffic into the Ray Cluster.
+   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (left) contains the Anyscale Control Plane. The Customer Azure Tenant (right) contains a VNet. Inside the VNet, an Azure Kubernetes Services box holds a Ray Cluster with a Head Node and Worker Nodes. An Azure Load Balancer sits inside the VNet but outside the AKS box. An Authenticated User box sits outside both tenants. Flow 1 runs from the user to the Anyscale Control Plane. Flow 2 runs from the user through the Azure Load Balancer into the Ray Cluster.
 :::image-end:::
 
 | # | Flow | Description |
@@ -53,7 +53,7 @@ Clients reach Ray cluster head nodes and Anyscale Services through an Azure Load
 | 1 | Client to control plane | Console access, CLI commands, and SDK calls. |
 | 2 | Client to AKS cluster | Dashboard access, job submission, and service requests through Azure Load Balancer. |
 
-The ingress controller terminates TLS and forwards traffic to port 80 of the head pod. DNS for `*.i.anyscaleuserdata.com`, which provides head node access, and `*.s.anyscaleuserdata.com`, which routes service requests, resolves to the load balancer address.
+The ingress controller terminates TLS and forwards traffic to port 80 of the head pod. DNS for `*.i.azure.anyscaleuserdata.com`, which provides head node access, and `*.s.azure.anyscaleuserdata.com`, which routes service requests, resolves to the load balancer address.
 
 > [!IMPORTANT]
 > Anyscale on Azure requires a Layer 4 (TCP) load balancer. Azure Load Balancer (standard SKU) satisfies this requirement. Anyscale on Azure doesn't support Application Gateway as the primary ingress load balancer.
@@ -63,14 +63,14 @@ The ingress controller terminates TLS and forwards traffic to port 80 of the hea
 The Anyscale operator pulls base images from the Anyscale container registry. Workloads can also pull from your Azure Container Registry (ACR).
 
 :::image type="complex" source="media/networking/azure-container-images.png" alt-text="Image pulls: operator and Ray cluster pull from Anyscale Container Registry (1, 2); Ray cluster optionally pulls from Azure Container Registry (3).":::
-   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (left) contains the Anyscale Container Registry. The Customer Azure Tenant (right) contains a VNet, inside which an Azure Kubernetes Service box holds the Anyscale Operator Pod and a Ray Cluster that contains a Head Node and Worker Node. An optional Azure Container Registry sits outside the AKS box within the customer tenant. Three numbered flows show image pulls: flow 1 runs from the Anyscale Operator Pod to the Anyscale Container Registry. Flow 2 runs from the Ray Cluster to the Anyscale Container Registry. Flow 3, which is optional, runs from the Ray Cluster to the Azure Container Registry.
+   Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (left) contains the Anyscale Control Plane and the Anyscale Container Registry. The Customer Azure Tenant (right) contains a VNet. Inside the VNet, an Azure Kubernetes Services box holds the Anyscale Operator Pod and a Ray Cluster with a Head Node and Worker Nodes. An Azure Container Registry (Optional) sits inside the Customer Azure Tenant but outside the VNet. Flow 1 runs from the Anyscale Operator Pod to the Anyscale Container Registry. Flow 2 runs from the Ray Cluster to the Anyscale Container Registry. Flow 3 (optional) runs from the Ray Cluster to the Azure Container Registry.
 :::image-end:::
 
 | # | Flow | Description |
 |---|------|-------------|
-| 1 | Operator to Anyscale registry | The operator pulls base images from the Anyscale container registry. |
-| 2 | Ray cluster to Anyscale registry | Workloads pull base images from the Anyscale container registry. |
-| 3 | Ray cluster to Azure Container Registry | Workloads optionally pull custom images from your ACR. |
+| 1 | Operator to Anyscale registry | Base images for the Anyscale operator come from the Anyscale container registry. |
+| 2 | Ray cluster to Anyscale registry | Base images for Ray cluster workloads come from the Anyscale container registry. |
+| 3 | Ray cluster to Azure Container Registry | Custom images for Ray cluster workloads optionally come from your ACR. |
 
 ## Required egress domains
 
@@ -89,9 +89,9 @@ Configure your AKS cluster's egress rules to allow outbound HTTPS (port 443) tra
 
 | Domain | Purpose |
 |--------|---------|
-| `*.i.anyscaleuserdata.com` | Ray dashboard, terminal, and Jupyter access |
-| `vscode-*.i.anyscaleuserdata.com` | VS Code access |
-| `*.s.anyscaleuserdata.com` | Anyscale Services request routing |
+| `*.i.azure.anyscaleuserdata.com` | Ray dashboard, terminal, and Jupyter access |
+| `vscode-*.i.azure.anyscaleuserdata.com` | VS Code access |
+| `*.s.azure.anyscaleuserdata.com` | Anyscale Services request routing |
 
 ### Strict egress filtering
 
