@@ -105,6 +105,9 @@ Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloa
 
 ## Step 2: create an Anyscale cloud resource
 
+> [!NOTE]
+> The Anyscale Operator is also available through the Azure Marketplace, but Anyscale doesn't recommend that route. Use the Anyscale Clouds Resource Provider in the Azure portal instead.
+
 ### 2a: navigate to the Anyscale clouds page
 
 In the [Azure portal](https://portal.azure.com), search for **Anyscale** in the global search bar and select **Anyscale** from the results.
