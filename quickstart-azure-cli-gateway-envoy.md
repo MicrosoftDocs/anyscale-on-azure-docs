@@ -32,7 +32,7 @@ Enroll in the Anyscale on Azure Public Preview before you start. Contact [Anysca
 
 ## Step 0: configure your Azure subscription
 
-### 0a: Create the Anyscale service principal
+### 0a: create the Anyscale service principal
 
 To establish trust with the Anyscale control plane, run the following command:
 
@@ -40,7 +40,7 @@ To establish trust with the Anyscale control plane, run the following command:
 az ad sp create --id 086bc555-6989-4362-ba30-fded273e432b
 ```
 
-### 0b: Register required resource providers
+### 0b: register required resource providers
 
 Check which providers are already registered:
 
@@ -59,7 +59,7 @@ done
 
 ## Step 1: provision Azure resources
 
-### 1a: Create or select a resource group
+### 1a: create or select a resource group
 
 You can use an existing resource group or create a new one in one of the [supported regions](supported-regions.md):
 
@@ -69,7 +69,7 @@ az group create \
   --location <location>
 ```
 
-### 1b: Create the AKS cluster
+### 1b: create the AKS cluster
 
 Before you create the cluster, confirm you have sufficient quota for the VM SKU you plan to use in your chosen region. Ray workloads require at least 4 vCPUs per worker node. `Standard_D4s_v5` or equivalent is a good starting point. Check your current quota:
 
@@ -103,13 +103,13 @@ Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloa
 
 ## Step 2: create an Anyscale cloud resource
 
-### 2a: Navigate to the Anyscale clouds page
+### 2a: navigate to the Anyscale clouds page
 
 In the [Azure portal](https://portal.azure.com), search for **Anyscale** in the global search bar and select **Anyscale** from the results.
 
 :::image type="content" source="media/quickstart/quickstart-anyscale-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
 
-### 2b: Fill in the Basics tab
+### 2b: fill in the Basics tab
 
 Select **Create** on the Anyscale clouds page.
 
@@ -127,7 +127,7 @@ Leave **Support tier** at the default value.
 
 Select **Next**.
 
-### 2c: Configure Infrastructure settings
+### 2c: configure infrastructure settings
 
 The portal pre-populates a storage account name and operator identity name. Accept the defaults or enter custom names:
 
@@ -138,7 +138,7 @@ The portal pre-populates a storage account name and operator identity name. Acce
 
 Select **Next**.
 
-### 2d: Configure Container registry settings
+### 2d: configure container registry settings
 
 The portal pre-populates an Azure Container Registry (ACR) name. Anyscale uses ACR for container image builds. Accept the default or enter a custom name.
 
@@ -146,7 +146,7 @@ The portal pre-populates an Azure Container Registry (ACR) name. Anyscale uses A
 
 Select **Next**.
 
-### 2e: Review Operator settings
+### 2e: review operator settings
 
 The Operator settings tab shows pre-populated values for the Anyscale operator. Leave these at their defaults.
 
@@ -154,7 +154,7 @@ The Operator settings tab shows pre-populated values for the Anyscale operator. 
 
 Select **Next**.
 
-### 2f: Add tags (optional)
+### 2f: add tags (optional)
 
 Add name/value tag pairs to categorize the created resources for billing and cost management. Tags are optional.
 
@@ -162,7 +162,7 @@ Add name/value tag pairs to categorize the created resources for billing and cos
 
 Select **Next**.
 
-### 2g: Review and submit
+### 2g: review and submit
 
 :::image type="content" source="media/quickstart/quickstart-review-submit-summary.png" alt-text="Review + submit tab showing a summary of the cloud configuration across all tabs.":::
 
@@ -181,7 +181,7 @@ After installation, the Anyscale operator creates the TLS certificate secrets (`
 
 Throughout Step 3, replace underscores in the Cloud Resource ID with hyphens: `cldrsrc-<id>`.
 
-### 3a: Get AKS credentials
+### 3a: get AKS credentials
 
 ```bash
 az aks get-credentials \
@@ -198,7 +198,7 @@ kubectl get pods -n anyscale-operator
 
 The operator pod should show a status of `Running`.
 
-### 3b: Install Envoy Gateway
+### 3b: install Envoy Gateway
 
 ```bash
 helm install eg oci://docker.io/envoyproxy/gateway-helm \
@@ -210,7 +210,7 @@ kubectl wait --for=condition=available deployment/envoy-gateway \
   -n envoy-gateway-system --timeout=120s
 ```
 
-### 3c: Create and apply envoyproxy.yaml
+### 3c: create and apply envoyproxy.yaml
 
 ```yaml
 apiVersion: gateway.envoyproxy.io/v1alpha1
@@ -232,7 +232,7 @@ spec:
 kubectl apply -f envoyproxy.yaml
 ```
 
-### 3d: Create and apply gatewayclass.yaml
+### 3d: create and apply gatewayclass.yaml
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
@@ -252,7 +252,7 @@ spec:
 kubectl apply -f gatewayclass.yaml
 ```
 
-### 3e: Create and apply gateway.yaml
+### 3e: create and apply gateway.yaml
 
 Replace `<cloud-resource-id>` with the value from the table at the start of Step 3. Take the `global.cloudDeploymentId` value and convert underscores to hyphens, for example `cldrsrc-<id>`.
 
@@ -307,7 +307,7 @@ After applying, retrieve the load balancer address:
 kubectl get gateway gateway -n anyscale-operator -o jsonpath='{.status.addresses[0].value}'
 ```
 
-### 3f: Configure the Anyscale operator with gateway settings
+### 3f: configure the Anyscale operator with gateway settings
 
 Update the operator extension configuration. Replace `<cluster-name>`, `<resource-group>`, and `<gateway-lb-address>` with your values:
 
