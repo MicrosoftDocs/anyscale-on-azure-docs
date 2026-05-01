@@ -10,7 +10,7 @@ ms.topic: how-to
 
 # Configure container image builds for an existing cloud
 
-When you create an Anyscale cloud through the Azure portal, container image build support is configured by default using an Azure Container Registry (ACR). This configuration is optional and can be skipped at creation time. If your cloud was created without ACR configured, you can enable it manually using the steps in this article.
+When you create an Anyscale cloud through the Azure portal, container image build support is configured by default using an Azure Container Registry (ACR). This configuration is optional and can be skipped at creation time. If your cloud was created without ACR configured, you can enable it manually. To do so, you need an ACR, the cloud record updated with its resource ID, three RBAC role assignments on the ACR, and the Anyscale operator on version **≥ 1.5.1**. Each requirement is covered by a step in this article.
 
 If you attempt an image build on a cloud without ACR configured, the operation fails with this error:
 
@@ -28,18 +28,6 @@ Error: Cloud does not have ACR configuration. Please configure ACR for the cloud
   - Resource group name
   - Azure Kubernetes Service (AKS) cluster name
   - Anyscale operator workload identity name (commonly `<cloud-name>-anyscale-operator-identity`)
-
-## What needs to be configured
-
-Enabling container image build requires four things, each covered by a step in this article:
-
-1. An ACR for the cloud to use, either an existing one or a newly created one.
-2. The Anyscale cloud resource updated with `properties.acrResourceId` pointing at that ACR.
-3. Three RBAC role assignments scoped to the ACR:
-   - `AcrPull` for the **AKS kubelet identity**, so nodes can pull built images.
-   - `AcrPush` for the **Anyscale operator workload identity**, so the build manager can push images.
-   - `Container Registry Tasks Contributor` for the **Anyscale operator workload identity**, so the build manager can drive ACR Tasks.
-4. The Anyscale operator running version **≥ 1.5.1**, restarted after the cloud record is updated.
 
 ## Step 1: (Optional) Create an ACR
 
@@ -123,7 +111,7 @@ OPERATOR_PRINCIPAL_ID=$(az identity show \
 
 ### Assign the roles
 
-**AcrPull for the AKS kubelet identity** — worker nodes pull images that the build manager has pushed:
+Assign `AcrPull` to the AKS kubelet identity so worker nodes can pull images that the build manager has pushed.
 
 ```azurecli
 az role assignment create \
@@ -132,7 +120,7 @@ az role assignment create \
   --scope $ACR_RESOURCE_ID
 ```
 
-**AcrPush for the Anyscale operator workload identity** — worker nodes pull images that the build manager pushes to the registry:
+Assign `AcrPush` to the Anyscale operator workload identity so the build manager can push built images into the registry.
 
 ```azurecli
 az role assignment create \
@@ -141,7 +129,7 @@ az role assignment create \
   --scope $ACR_RESOURCE_ID
 ```
 
-**Container Registry Tasks Contributor for the Anyscale operator workload identity** — the operator creates and runs ACR Tasks to execute image builds:
+Assign `Container Registry Tasks Contributor` to the Anyscale operator workload identity so the operator can create and run ACR Tasks to execute image builds.
 
 ```azurecli
 az role assignment create \
@@ -154,7 +142,13 @@ az role assignment create \
 
 The operator registers container image build support during startup. It must be on version **≥ 1.5.1** and must start *after* the cloud record has an `acrResourceId`.
 
-**If the operator was installed via the AKS cluster extension**, upgrade it:
+If the operator is already on ≥ 1.5.1, a rollout restart is sufficient:
+
+```bash
+kubectl -n anyscale-operator rollout restart deployment/anyscale-operator
+```
+
+Otherwise, upgrade it using the Azure CLI:
 
 ```azurecli
 az k8s-extension update \
@@ -166,23 +160,18 @@ az k8s-extension update \
   --version 1.5.1
 ```
 
-**If the operator was installed via Helm**, upgrade to at least `1.5.1`:
-
-```bash
-helm upgrade anyscale-operator <chart> \
-  --namespace anyscale-operator \
-  --version 1.5.1 \
-  -f <values-file>
-```
-
-**If the operator is already on ≥ 1.5.1**, a rollout restart is sufficient:
-
-```bash
-kubectl -n anyscale-operator rollout restart deployment/anyscale-operator
-```
+> [!NOTE]
+> If you onboarded during the Anyscale on Azure Private Preview and installed the operator via Helm rather than the AKS cluster extension, upgrade using `helm upgrade` instead:
+>
+> ```bash
+> helm upgrade anyscale-operator <chart> \
+>   --namespace anyscale-operator \
+>   --version 1.5.1 \
+>   -f <values-file>
+> ```
 
 ## Next steps
 
-- [Identity and access](identity-access.md) — managed identities and role assignments in Anyscale on Azure
-- [Architecture overview](architecture.md) — how the data plane components fit together
-- [Quickstart](quickstart-azure-cli-gateway-envoy.md) — deploy your first Anyscale cloud on Azure
+- [Identity and access](identity-access.md) for managed identities and role assignments in Anyscale on Azure.
+- [Architecture overview](architecture.md) for how the data plane components fit together.
+- [Quickstart](quickstart-azure-cli-gateway-envoy.md) to deploy your first Anyscale cloud on Azure.
