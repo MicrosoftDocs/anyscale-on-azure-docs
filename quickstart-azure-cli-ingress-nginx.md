@@ -148,7 +148,7 @@ Select **Next**.
 Anyscale uses Azure Container Registry (ACR) for container image builds. Select an **ACR mode**:
 
 - **Create new ACR** (default). The portal pre-populates a name. Accept the default or enter a custom name. Role assignments are configured automatically.
-- **Use Existing ACR**. Provide an existing ACR resource ID. Role assignments are configured automatically.
+- **Use Existing ACR**. Select an existing ACR from the dropdown. Role assignments are configured automatically.
 - **No ACR**. Skip ACR configuration. You can [configure container image builds](configure-container-image-builds.md) later.
 
 :::image type="content" source="media/quickstart/quickstart-create-container-registry-settings.png" alt-text="Container registry settings tab with ACR mode set to Create new ACR and an auto-generated ACR name.":::
