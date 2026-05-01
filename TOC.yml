@@ -12,8 +12,8 @@
   href: networking.md
 - name: Identity and access
   href: identity-access.md
-- name: Enable container image build
-  href: enable-buildfarm.md
+- name: Configure container image builds
+  href: configure-container-image-builds.md
 - name: Support model
   href: support-model.md
 - name: Supported regions
