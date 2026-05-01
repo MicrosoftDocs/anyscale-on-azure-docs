@@ -33,7 +33,7 @@ Error: Cloud does not have ACR configuration. Please configure ACR for the cloud
 
 Skip this step if you already have an ACR you want to use.
 
-Anyscale recommends provisioning the ACR in the same subscription and resource group as your Anyscale cloud. This mirrors what the portal does for new clouds and keeps role-assignment scopes within one subscription boundary. Cross-subscription ACRs work but require role-assignment permission in the ACR's subscription.
+Anyscale recommends provisioning the ACR in the same subscription and resource group as your Anyscale cloud. This mirrors what the portal does for new clouds and keeps role-assignment scopes within one subscription boundary. Cross-subscription ACRs work but require role-assignment permission in the ACR subscription.
 
 ```azurecli
 az acr create \
@@ -140,7 +140,7 @@ az role assignment create \
 
 ## Step 4: Upgrade and restart the Anyscale operator
 
-The operator registers container image build support during startup. It must be on version **≥ 1.5.1** and must start *after* the cloud record has an `acrResourceId`.
+The operator registers container image build support during startup. It must be on version **≥ 1.5.1** and must start after the cloud record has an `acrResourceId`.
 
 If the operator is already on ≥ 1.5.1, a rollout restart is sufficient:
 
