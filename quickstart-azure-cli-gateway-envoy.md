@@ -145,7 +145,7 @@ Select **Next**.
 
 ### 2d: configure container registry settings
 
-The portal pre-populates an Azure Container Registry (ACR) name. Anyscale uses ACR for container image builds. Accept the default or enter a custom name.
+The portal pre-populates an Azure Container Registry (ACR) name. Anyscale uses ACR for container image builds. Accept the default or enter a custom name. ACR configuration is optional. To skip it, set **ACR mode** to **No ACR**. You can [configure container image builds](configure-container-image-builds.md) later.
 
 :::image type="content" source="media/quickstart/quickstart-create-container-registry-settings.png" alt-text="Container registry settings tab with ACR mode set to Create new ACR and an auto-generated ACR name.":::
 
