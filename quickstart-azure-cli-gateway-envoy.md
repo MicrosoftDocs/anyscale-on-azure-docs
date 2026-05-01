@@ -422,4 +422,5 @@ Overall Result: ALL 1 cloud resources verified successfully
 
 - [Networking](networking.md)
 - [Identity and access](identity-access.md)
+- [Enable container image build on an existing cloud](enable-buildfarm.md)
 - [Supported regions](supported-regions.md)
