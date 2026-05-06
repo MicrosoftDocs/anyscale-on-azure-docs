@@ -29,9 +29,9 @@ Authentication uses the OAuth 2.0 authorization code flow with PKCE. At the end 
 
 ## Managed identities for Azure resource access
 
-When you create an Anyscale cloud resource through the Azure portal, the portal creates two managed identities in your resource group. These identities govern Azure resource access (storage, container registry) by the Anyscale operator and cluster workloads. They're distinct from the user authentication and RBAC authorization described above.
+When you create an Anyscale cloud resource through the Azure portal, the portal creates two managed identities in your resource group. These identities govern Azure resource access by the Anyscale operator and cluster workloads, including access to storage and container registry. They're distinct from the user authentication and RBAC authorization described above.
 
-### Anyscale Operator managed identity
+### Anyscale operator managed identity
 
 This identity governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. The Azure portal configures the identity automatically when you [create the cloud resource](quickstart-azure-cli-gateway-envoy.md#step-2-create-an-anyscale-cloud-resource).
 
@@ -119,6 +119,8 @@ For instructions on creating a custom role, see [Create or update Azure custom r
 
 > [!div class="nextstepaction"]
 > [Quickstart: Create an Anyscale cloud](quickstart-azure-cli-gateway-envoy.md)
+
+## Related content
 
 - [Architecture overview](architecture.md) for how managed identities fit into the overall architecture.
 - [Networking](networking.md) for egress domains and network security considerations.
