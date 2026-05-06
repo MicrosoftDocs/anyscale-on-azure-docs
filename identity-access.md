@@ -52,7 +52,7 @@ Configure the mapping in the Anyscale console under **Cloud settings > IAM**. Fo
 
 ## Service principal for cloud registration
 
-During setup, you create a service principal in your tenant from the Anyscale Entra application. The Anyscale control plane uses this service principal to authenticate against your Azure subscription during the cloud registration flow.
+During setup, the first step in the [Quickstart](quickstart-azure-cli-gateway-envoy.md) is to create a service principal in your tenant from the Anyscale Entra application (app ID `086bc555-6989-4362-ba30-fded273e432b`). The Anyscale control plane uses this service principal to authenticate against your Azure subscription during the cloud registration flow.
 
 > [!IMPORTANT]
 > Anyscale uses the service principal only during cloud creation and initial configuration. It doesn't have ongoing access to your AKS cluster nodes or data plane resources.
