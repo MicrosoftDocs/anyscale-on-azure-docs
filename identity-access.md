@@ -52,10 +52,7 @@ Configure the mapping in the Anyscale console under **Cloud settings > IAM**. Fo
 
 ## Service principal for cloud registration
 
-You create a service principal in your tenant from the Anyscale Entra application (app ID `086bc555-6989-4362-ba30-fded273e432b`). Anyscale uses this service principal to sign Entra ID tokens that validate the connection between your AKS deployment and the Anyscale control plane. You only need to do this once per tenant. This is covered in the [Quickstart](quickstart-azure-cli-gateway-envoy.md).
-
-> [!IMPORTANT]
-> Anyscale uses the service principal only during cloud creation and initial configuration. It doesn't have ongoing access to your AKS cluster nodes or data plane resources.
+You create a service principal in your tenant from the Anyscale Entra application (app ID `086bc555-6989-4362-ba30-fded273e432b`). Anyscale uses this service principal to sign Entra ID tokens that validate the connection between your AKS deployment and the Anyscale control plane. You only need to do this once per tenant.
 
 ## Azure role requirements for setup
 
@@ -70,15 +67,13 @@ After setup, day-to-day Anyscale operations such as launching workloads and mana
 
 ## Azure built-in roles for Anyscale
 
-Anyscale on Azure provides three built-in Azure roles. Assign these roles to users or groups at the subscription or resource group scope in the Azure portal. Role assignments determine what users can do across the console, CLI, SDK, and API.
+Anyscale on Azure provides three built-in Azure roles managed in the Azure portal or through the Azure CLI. Assign these roles to users or groups at the subscription or resource group scope. Role assignments determine what users can do across the console, CLI, SDK, and API.
 
 | Role | Description |
 |------|-------------|
 | *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action for administrative operations such as managing resource quotas and usage budgets. |
 | *Anyscale Platform Contributor* | Read and write access to Anyscale clouds, projects, workspaces, jobs, services, compute configs, and images. Doesn't include administrative data actions. |
 | *Anyscale Platform Reader* | Read-only access to all Anyscale resources. Required for console sign-in. |
-
-These are Azure RBAC roles managed in the Azure portal or through the Azure CLI.
 
 ## Custom role permissions reference
 
