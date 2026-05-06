@@ -122,10 +122,5 @@ For instructions on creating a custom role, see [Create or update Azure custom r
 
 - [Architecture overview](architecture.md) for how managed identities fit into the overall architecture.
 - [Networking](networking.md) for egress domains and network security considerations.
-
-### Azure service integration guides in the Anyscale documentation
-
 - [Managed identities for AKS](https://docs.anyscale.com/admin/azure/aks-iam) for per-workload identity mapping.
 - [Access blob storage and ADLS](https://docs.anyscale.com/admin/azure/storage) for granting storage roles to managed identities.
-- [Configure shared storage with Azure Blob PVC](https://docs.anyscale.com/admin/azure/pvc) for setting up persistent volume claims for AKS.
-- [Access Azure Container Registry](https://docs.anyscale.com/admin/azure/container-registry) for attaching ACR pull permissions to your cluster.
