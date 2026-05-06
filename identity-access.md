@@ -1,6 +1,6 @@
 ---
 title: Anyscale on Azure identity and access
-description: Learn how Anyscale on Azure integrates with Microsoft Entra ID for single sign-on and uses Azure RBAC, managed identities, and built-in roles to control access to cloud resources.
+description: Learn how Anyscale on Azure uses Microsoft Entra ID for single sign-on and Azure RBAC built-in roles to control access to cloud resources.
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 05/06/2026
@@ -20,7 +20,7 @@ You don't need a separate Anyscale identity.
 
 Authentication uses the OAuth 2.0 authorization code flow with PKCE. At the end of the flow, the Anyscale backend verifies the JWT claims issued by Entra ID and resolves the caller to an Anyscale user account. Users must have at least read access to the Anyscale cloud resource through Azure RBAC before they can sign in.
 
-### How sign-in works
+### How does Entra ID sign-in work?
 
 1. The user navigates to `console.azure.anyscale.com` and selects **Continue with Microsoft**.
 1. Entra ID authenticates the user and issues an ID token containing the user's *tenant ID* (`tid`) and *object ID* (`oid`).
@@ -70,7 +70,7 @@ After setup, day-to-day Anyscale operations such as launching workloads and mana
 
 ## Azure built-in roles for Anyscale
 
-Anyscale on Azure provides three built-in Azure roles. Assign these roles to users or groups at the subscription or resource group scope in the Azure portal. Each Anyscale action maps to an Azure RBAC action on the `Anyscale.Platform` resource provider, so role assignments determine what users can do across the console, CLI, SDK, and API.
+Anyscale on Azure provides three built-in Azure roles. Assign these roles to users or groups at the subscription or resource group scope in the Azure portal. Role assignments determine what users can do across the console, CLI, SDK, and API.
 
 | Role | Description |
 |------|-------------|
@@ -81,18 +81,9 @@ Anyscale on Azure provides three built-in Azure roles. Assign these roles to use
 > [!IMPORTANT]
 > These are Azure RBAC roles managed in the Azure portal or through the Azure CLI. They're separate from any roles you assign within the Anyscale console.
 
-## Custom roles
+## Custom role permissions reference
 
 You can create custom Azure RBAC roles to grant a subset of Anyscale permissions. The following actions are available on the `Anyscale.Platform` resource provider:
-
-| Anyscale action | Azure RBAC action |
-|----------------|-------------------|
-| List clouds | `Anyscale.Platform/clouds/read` |
-| Create cloud | `Anyscale.Platform/clouds/write` |
-| Delete cloud | `Anyscale.Platform/clouds/delete` |
-| List workspaces | `Anyscale.Platform/clouds/projects/workspaces/read` |
-| Start service | `Anyscale.Platform/clouds/projects/services/write` |
-| Submit job | `Anyscale.Platform/clouds/projects/jobs/write` |
 
 | Action | Resource |
 |--------|----------|
