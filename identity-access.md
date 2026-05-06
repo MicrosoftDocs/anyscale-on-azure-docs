@@ -79,35 +79,19 @@ Anyscale on Azure provides three built-in Azure roles managed in the Azure porta
 
 You can create custom Azure RBAC roles to grant a subset of Anyscale permissions. The following actions are available on the `Anyscale.Platform` resource provider:
 
-| Action | Resource |
-|--------|----------|
-| `Anyscale.Platform/clouds/read` | Clouds |
-| `Anyscale.Platform/clouds/write` | Clouds |
-| `Anyscale.Platform/clouds/delete` | Clouds |
-| `Anyscale.Platform/clouds/cloudResources/read` | Cloud resources |
-| `Anyscale.Platform/clouds/cloudResources/write` | Cloud resources |
-| `Anyscale.Platform/clouds/cloudResources/delete` | Cloud resources |
-| `Anyscale.Platform/clouds/computeConfigs/read` | Compute configs |
-| `Anyscale.Platform/clouds/computeConfigs/write` | Compute configs |
-| `Anyscale.Platform/clouds/computeConfigs/delete` | Compute configs |
-| `Anyscale.Platform/clouds/images/read` | Images |
-| `Anyscale.Platform/clouds/images/write` | Images |
-| `Anyscale.Platform/clouds/images/delete` | Images |
-| `Anyscale.Platform/clouds/projects/read` | Projects |
-| `Anyscale.Platform/clouds/projects/write` | Projects |
-| `Anyscale.Platform/clouds/projects/delete` | Projects |
-| `Anyscale.Platform/clouds/projects/jobs/read` | Jobs |
-| `Anyscale.Platform/clouds/projects/jobs/write` | Jobs |
-| `Anyscale.Platform/clouds/projects/jobs/delete` | Jobs |
-| `Anyscale.Platform/clouds/projects/services/read` | Services |
-| `Anyscale.Platform/clouds/projects/services/write` | Services |
-| `Anyscale.Platform/clouds/projects/services/delete` | Services |
-| `Anyscale.Platform/clouds/projects/workspaces/read` | Workspaces |
-| `Anyscale.Platform/clouds/projects/workspaces/write` | Workspaces |
-| `Anyscale.Platform/clouds/projects/workspaces/delete` | Workspaces |
-| `Anyscale.Platform/admin/action` | Admin operations |
+| Resource type | Operations | Resource |
+|---------------|------------|----------|
+| `Anyscale.Platform/clouds` | read, write, delete | Clouds |
+| `Anyscale.Platform/clouds/cloudResources` | read, write, delete | Cloud resources |
+| `Anyscale.Platform/clouds/computeConfigs` | read, write, delete | Compute configs |
+| `Anyscale.Platform/clouds/images` | read, write, delete | Images |
+| `Anyscale.Platform/clouds/projects` | read, write, delete | Projects |
+| `Anyscale.Platform/clouds/projects/jobs` | read, write, delete | Jobs |
+| `Anyscale.Platform/clouds/projects/services` | read, write, delete | Services |
+| `Anyscale.Platform/clouds/projects/workspaces` | read, write, delete | Workspaces |
+| `Anyscale.Platform/admin` | action | Admin operations |
 
-For instructions on creating a custom role, see [Create or update Azure custom roles](https://learn.microsoft.com/azure/role-based-access-control/custom-roles) in the Azure documentation.
+To construct a full action string, append the operation to the resource type with a slash, for example, `Anyscale.Platform/clouds/read`. For instructions on creating a custom role, see [Create or update Azure custom roles](https://learn.microsoft.com/azure/role-based-access-control/custom-roles) in the Azure documentation.
 
 ## Next steps
 
