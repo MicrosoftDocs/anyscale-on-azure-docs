@@ -46,7 +46,7 @@ By default, the cluster managed identity has the following Azure built-in roles 
 | Storage Blob Data Contributor | Storage account | Read and write artifacts and datasets. |
 | AcrPull | Container registry | Pull container images. |
 
-For environments where different teams or workload types need separate permissions, create additional user-assigned managed identities and map them to Anyscale workloads. The mapping uses AKS workload identity. Each Kubernetes service account has a managed identity client ID annotation, and a federated identity credential links the two.
+For environments where different teams or workload types need separate permissions, create additional user-assigned managed identities and map them to Anyscale workloads using AKS workload identity.
 
 Configure the mapping in the Anyscale console under **Cloud settings > IAM**. For step-by-step instructions, see [Managed identities for AKS](https://docs.anyscale.com/admin/azure/aks-iam) in the Anyscale documentation.
 
@@ -105,7 +105,7 @@ You can create custom Azure RBAC roles to grant a subset of Anyscale permissions
 | `Anyscale.Platform/clouds/projects/workspaces/read` | Workspaces |
 | `Anyscale.Platform/clouds/projects/workspaces/write` | Workspaces |
 | `Anyscale.Platform/clouds/projects/workspaces/delete` | Workspaces |
-| `Anyscale.Platform/admin/action` (data action) | Admin operations |
+| `Anyscale.Platform/admin/action` | Admin operations |
 
 For instructions on creating a custom role, see [Create or update Azure custom roles](https://learn.microsoft.com/azure/role-based-access-control/custom-roles) in the Azure documentation.
 
