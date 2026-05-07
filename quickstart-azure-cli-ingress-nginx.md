@@ -110,7 +110,7 @@ Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloa
 
 ### 2a: navigate to the Anyscale clouds page
 
-In the [Azure portal](https://portal.azure.com), search for **Anyscale** in the global search bar and select **Anyscale** from the results.
+In the [Azure portal](https://portal.azure.com), search for **Anyscale clouds** in the global search bar and select **Anyscale clouds** under **Services** from the results.
 
 :::image type="content" source="media/quickstart/quickstart-anyscale-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
 
