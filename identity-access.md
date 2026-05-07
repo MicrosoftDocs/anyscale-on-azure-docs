@@ -60,11 +60,11 @@ After setup, day-to-day Anyscale operations such as launching workloads and mana
 
 ## Azure built-in roles for Anyscale
 
-Anyscale on Azure provides three built-in Azure roles managed in the Azure portal or through the Azure CLI. Role assignments determine what users, groups, and service principals can do across the console, CLI, SDK, and API.
+Anyscale on Azure provides three built-in Azure roles managed in the Azure portal or through the Azure CLI. Role assignments determine what users, groups, and service principals can do across the console, CLI, SDK, and API. You can assign a role at any level of the Azure scope hierarchy — subscription, resource group, cloud, project, or individual resource — and it is inherited by all resources below it.
 
 | Role | Description |
 |------|-------------|
-| *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action for administrative operations such as managing resource quotas and usage budgets. |
+| *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action for administrative operations such as managing resource quotas and usage budgets. Currently only effective at subscription scope. |
 | *Anyscale Platform Contributor* | Read and write access to Anyscale clouds, projects, workspaces, jobs, services, compute configs, and images. Doesn't include administrative data actions. |
 | *Anyscale Platform Reader* | Read-only access to all Anyscale resources. Required for console sign-in. |
 
