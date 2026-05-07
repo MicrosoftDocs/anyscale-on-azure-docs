@@ -1,5 +1,5 @@
 ---
-title: Anyscale on Azure identity and access
+title: Anyscale on Azure Identity and Access
 description: Learn how Anyscale on Azure uses Microsoft Entra ID for single sign-on and Azure RBAC built-in roles to control access to cloud resources.
 author: kaysieyu
 ms.author: kaysieyu
@@ -29,7 +29,7 @@ Authentication uses the OAuth 2.0 authorization code flow with PKCE. At the end 
 
 ## Managed identities for Azure resource access
 
-When you create an Anyscale cloud resource through the Azure portal, the portal creates two managed identities in your resource group. These identities govern Azure resource access by the Anyscale operator and cluster workloads, including access to storage and container registry. They're distinct from the user authentication and RBAC authorization described above.
+When you create an Anyscale cloud resource through the Azure portal, the portal creates two managed identities in your resource group. These identities govern Azure resource access by the Anyscale operator and cluster workloads, including access to storage and container registry. They're separate from user authentication and role assignment.
 
 ### Anyscale operator managed identity
 
@@ -39,14 +39,7 @@ This identity governs all actions the operator takes in your Azure subscription,
 
 This identity is the default that Anyscale uses when deploying clusters. By default, all workloads share it. You can create additional identities and map them to specific users, projects, or workload types for finer-grained access control.
 
-By default, the cluster managed identity has the following Azure built-in roles within your resource group:
-
-| Role | Scope | Purpose |
-|------|-------|---------|
-| Storage Blob Data Contributor | Storage account | Read and write artifacts and datasets. |
-| AcrPull | Container registry | Pull container images. |
-
-For environments where different teams or workload types need separate permissions, create additional user-assigned managed identities and map them to Anyscale workloads using AKS workload identity.
+For environments where different teams or workload types need separate permissions, create additional user-assigned managed identities and map them to Anyscale workloads.
 
 Configure the mapping in the Anyscale console under **Cloud settings > IAM**. For step-by-step instructions, see [Managed identities for AKS](https://docs.anyscale.com/admin/azure/aks-iam) in the Anyscale documentation.
 
