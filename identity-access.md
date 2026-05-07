@@ -60,13 +60,15 @@ After setup, day-to-day Anyscale operations such as launching workloads and mana
 
 ## Azure built-in roles for Anyscale
 
-Anyscale on Azure provides three built-in Azure roles managed in the Azure portal or through the Azure CLI. Assign these roles to users or groups at the subscription or resource group scope. Role assignments determine what users can do across the console, CLI, SDK, and API.
+Anyscale on Azure provides three built-in Azure roles managed in the Azure portal or through the Azure CLI. Role assignments determine what users, groups, and service principals can do across the console, CLI, SDK, and API.
 
 | Role | Description |
 |------|-------------|
 | *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action for administrative operations such as managing resource quotas and usage budgets. |
 | *Anyscale Platform Contributor* | Read and write access to Anyscale clouds, projects, workspaces, jobs, services, compute configs, and images. Doesn't include administrative data actions. |
 | *Anyscale Platform Reader* | Read-only access to all Anyscale resources. Required for console sign-in. |
+
+To assign a role, navigate to the Anyscale cloud resource in the Azure portal, select **Access control (IAM)** from the left menu, and select **Add** > **Add role assignment**. For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Custom role permissions reference
 
@@ -84,7 +86,7 @@ You can create custom Azure RBAC roles to grant a subset of Anyscale permissions
 | `Anyscale.Platform/clouds/projects/workspaces` | read, write, delete | Workspaces |
 | `Anyscale.Platform/admin` | action | Admin operations |
 
-To construct a full action string, append the operation to the resource type with a slash, for example, `Anyscale.Platform/clouds/read`. For instructions on creating a custom role, see [Create or update Azure custom roles](https://learn.microsoft.com/azure/role-based-access-control/custom-roles) in the Azure documentation.
+To construct a full action string, append the operation to the resource type with a slash, for example, `Anyscale.Platform/clouds/read`. For instructions on creating a custom role, see [Create or update Azure custom roles](/azure/role-based-access-control/custom-roles) in the Azure documentation.
 
 ## Next steps
 
