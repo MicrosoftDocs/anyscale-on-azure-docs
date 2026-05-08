@@ -60,7 +60,7 @@ Call the Anyscale RP API to set `properties.acrResourceId` on your cloud resourc
 
 ```azurecli
 az rest \
-  --method PUT \
+  --method PATCH \
   --url "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Anyscale.Platform/clouds/<cloud-name>?api-version=2026-02-01-preview" \
   --body '{
     "location": "<location>",
@@ -74,7 +74,7 @@ For example:
 
 ```azurecli
 az rest \
-  --method PUT \
+  --method PATCH \
   --url "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-cloud-rg/providers/Anyscale.Platform/clouds/mycloud?api-version=2026-02-01-preview" \
   --body '{"location": "westus2", "properties": {"acrResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-cloud-rg/providers/Microsoft.ContainerRegistry/registries/mycloudacr"}}'
 ```
