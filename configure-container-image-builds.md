@@ -76,7 +76,12 @@ For example:
 az rest \
   --method PATCH \
   --url "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-cloud-rg/providers/Anyscale.Platform/clouds/mycloud?api-version=2026-02-01-preview" \
-  --body '{"location": "westus2", "properties": {"acrResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-cloud-rg/providers/Microsoft.ContainerRegistry/registries/mycloudacr"}}'
+  --body '{
+    "location": "westus2",
+    "properties": {
+      "acrResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-cloud-rg/providers/Microsoft.ContainerRegistry/registries/mycloudacr"
+    }
+  }'
 ```
 
 ## Step 3: Grant RBAC on the ACR
