@@ -126,20 +126,18 @@ Fill in the following fields:
 1. Select the same **Region** you used in Step 1.
 1. Select your **Cluster** from the dropdown.
 
-Leave **Support tier** at the default value.
-
 :::image type="content" source="media/quickstart/quickstart-create-basics-filled.png" alt-text="Basics tab with subscription, resource group, cloud name, region, and AKS cluster filled in.":::
 
 Select **Next**.
 
 ### 2c: configure infrastructure settings
 
-The portal pre-populates a storage account name and operator identity name. Accept the defaults or enter custom names:
+The portal pre-populates a storage account name and Anyscale operator identity name. Accept the defaults or enter custom names:
 
 - **Storage account name**: 3 to 24 lowercase alphanumeric characters.
-- **Operator identity name**: the managed identity that the Anyscale operator uses.
+- **Anyscale operator identity name**: the user-assigned managed identity that the Anyscale operator uses.
 
-:::image type="content" source="media/quickstart/quickstart-create-infrastructure-settings.png" alt-text="Infrastructure settings tab showing storage account and managed identity configuration with default values pre-populated.":::
+:::image type="content" source="media/quickstart/quickstart-create-infrastructure-settings.png" alt-text="Infrastructure settings tab showing storage account and user-assigned managed identity configuration with default values pre-populated.":::
 
 Select **Next**.
 
@@ -151,11 +149,11 @@ The portal pre-populates an Azure Container Registry (ACR) name. Anyscale uses A
 
 Select **Next**.
 
-### 2e: review operator settings
+### 2e: review the support plan
 
-The Operator settings tab shows pre-populated values for the Anyscale operator. Leave these at their defaults.
+The Support plan tab shows the support tier for your Anyscale cloud. Leave this at the default value.
 
-:::image type="content" source="media/quickstart/quickstart-create-operator-settings.png" alt-text="Operator settings tab showing pre-populated extension resource name, control plane URL, and authentication audience.":::
+:::image type="content" source="media/quickstart/quickstart-create-support-plan.png" alt-text="Support plan tab showing the support tier set to Enterprise Tier (15% Consumption).":::
 
 Select **Next**.
 
