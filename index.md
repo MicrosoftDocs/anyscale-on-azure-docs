@@ -56,6 +56,7 @@ Anyscale on Azure is in Public Preview. The following limitations apply:
 - Anyscale on Azure supports only AKS-based deployment. VM stack features and Anyscale-hosted clouds aren't available.
 - The following CLI commands aren't supported: `anyscale workspace_v2 ssh`, `anyscale workspace_v2 pull`, and all `anyscale image` commands.
 - The Global Resource Scheduler (GRS) isn't supported.
+- Anyscale on Azure is available in a limited set of Azure regions. See [Supported regions](supported-regions.md).
 
 ## Get started with Anyscale on Azure
 

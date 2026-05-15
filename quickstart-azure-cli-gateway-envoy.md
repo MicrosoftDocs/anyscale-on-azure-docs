@@ -22,9 +22,9 @@ Before you begin, make sure you have:
 
 - An Azure subscription with the Owner or Administrator role.
 - Permission to create service principals from external Microsoft Entra tenants.
-- The following tools installed locally:
+- Install the following tools locally. Use the latest version of each.
   - [Azure CLI](/cli/azure/install-azure-cli)
-  - [kubectl](https://kubernetes.io/docs/tasks/tools/)
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/). Your version must be within one minor version of your AKS cluster. See the [Kubernetes version skew policy](https://kubernetes.io/releases/version-skew-policy/#kubectl).
   - [Helm](https://helm.sh/docs/intro/install/)
   - [Anyscale CLI](https://docs.anyscale.com/reference/quickstart-cli): `pip install anyscale`
 
@@ -151,7 +151,7 @@ Select **Next**.
 
 ### 2e: review the support plan
 
-The Support plan tab shows the support tier for your Anyscale cloud. Leave this at the default value.
+The Support plan tab shows the support tier for your Anyscale cloud. This value is fixed and can't be changed. For details, see [Support model](support-model.md).
 
 :::image type="content" source="media/quickstart/quickstart-create-support-plan.png" alt-text="Support plan tab showing the support tier set to Enterprise Tier (15% Consumption).":::
 
