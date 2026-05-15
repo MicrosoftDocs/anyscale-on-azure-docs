@@ -10,7 +10,7 @@ ms.topic: overview
 
 # What is Anyscale on Azure?
 
-Anyscale on Azure is a managed platform for running distributed Python workloads on [Ray](https://docs.ray.io). It deploys directly onto your Azure Kubernetes Service (AKS) cluster and integrates with the Azure services your team already uses.
+Anyscale on Azure is a managed platform for running distributed Python workloads on [Ray](https://docs.ray.io). It deploys directly onto your [Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/) cluster and integrates with the Azure services your team already uses.
 
 Anyscale and Microsoft jointly develop the platform as an Azure Native Integration. You access it through the Azure portal and the Anyscale console at [console.azure.anyscale.com](https://console.azure.anyscale.com).
 
