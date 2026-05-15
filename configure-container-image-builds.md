@@ -33,7 +33,7 @@ Error: Cloud does not have ACR configuration. Please configure ACR for the cloud
 
 Skip this step if you already have an ACR you want to use.
 
-Anyscale recommends provisioning the ACR in the same subscription and resource group as your Anyscale cloud. This mirrors what the portal does for new clouds and keeps role-assignment scopes within one subscription boundary. Cross-subscription ACRs work but require role-assignment permission in the ACR subscription.
+Anyscale recommends provisioning the ACR in the same subscription, resource group, and region as your Anyscale cloud. This mirrors what the portal does for new clouds, keeps role-assignment scopes within one subscription boundary, and avoids cross-region data transfer costs. Cross-subscription ACRs work but require role-assignment permission in the ACR subscription.
 
 ```azurecli
 az acr create \
