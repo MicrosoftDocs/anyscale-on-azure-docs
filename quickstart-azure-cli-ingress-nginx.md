@@ -168,11 +168,13 @@ Add name/value tag pairs to categorize the created resources for billing and cos
 
 Select **Next**.
 
-### 2g: review and submit
+### 2g: review the terms and conditions, then create
 
-:::image type="content" source="media/quickstart/quickstart-review-submit-summary.png" alt-text="Review + submit tab showing a summary of the cloud configuration across all tabs.":::
+:::image type="content" source="media/quickstart/quickstart-review-submit-summary.png" alt-text="Review + submit tab showing a summary of the cloud configuration, Marketplace terms, and contact fields.":::
 
-Azure validates your configuration before enabling the **Create** button. After validation passes, select **Create**.
+The **Review + submit** tab includes a **Terms** section with the Marketplace terms of use. It may take a moment for validation to complete and the terms to load. Select **Terms of use** or **Privacy policy** in the **Price** section to read the full documents.
+
+After validation passes, select **Create**.
 
 The portal creates the required storage, managed identity, container registry, and service account. It also installs the Anyscale Kubernetes operator. Wait for the deployment to finish before you proceed to Step 3.
 
