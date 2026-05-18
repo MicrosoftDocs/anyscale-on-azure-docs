@@ -1,5 +1,5 @@
 ---
-title: Configure container image builds for an existing cloud
+title: Configure Container Image Builds for an Existing Cloud
 description: Configure Azure Container Registry and the required RBAC role assignments on an existing Anyscale cloud in Azure to enable container image builds.
 author: kaysieyu
 ms.author: kaysieyu
@@ -10,11 +10,11 @@ ms.topic: how-to
 
 # Configure container image builds for an existing cloud
 
-When you create an Anyscale cloud using the Anyscale Clouds Resource Provider in the Azure portal, as described in the [Quickstart](quickstart-azure-cli-gateway-envoy.md), container image build support is configured by default using an Azure Container Registry (ACR). This configuration is optional and can be skipped at creation time. If your cloud was created without ACR configured, you can enable it manually. To do so, you need an ACR, the cloud record updated with its resource ID, three RBAC role assignments on the ACR, and the Anyscale operator on version **≥ 1.5.1**. Each requirement is covered by a step in this article.
+When you create an Anyscale cloud in the Azure portal, container image build support is configured by default using an Azure Container Registry (ACR). For setup instructions, see the [Quickstart](quickstart-azure-cli-gateway-envoy.md). This configuration is optional and can be skipped at creation time. If your cloud was created without ACR configured, you can enable it manually. To do so, you need an ACR, the cloud record updated with its resource ID, three RBAC role assignments on the ACR, and the Anyscale operator on version **≥ 1.5.1**. Each requirement is covered by a step in this article.
 
 If you attempt an image build on a cloud without ACR configured, the operation fails with this error:
 
-```text
+```plaintext
 Error: Cloud does not have ACR configuration. Please configure ACR for the cloud before creating a cluster environment.
 ```
 
