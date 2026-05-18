@@ -27,6 +27,10 @@ For guidance on opening Azure support requests, see [Create an Azure support req
 
 Anyscale on Azure is in Public Preview. Anyscale provides support during Public Preview on a best-effort basis. For information on Azure support plans and their coverage, see [Azure Support Plans](https://azure.microsoft.com/support/plans/).
 
+## Troubleshooting
+
+For self-serve guidance on common issues, see the [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure).
+
 ## Next steps
 
 - [Quickstart](quickstart-azure-cli-gateway-envoy.md) to deploy your first Anyscale cloud.
