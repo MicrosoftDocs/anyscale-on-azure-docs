@@ -3,7 +3,7 @@ title: "Quickstart: Deploy Anyscale on Azure with Envoy Gateway"
 description: Deploy your first Anyscale cloud on Azure Kubernetes Service using the Azure CLI and the Envoy Gateway controller. Configure your subscription, create an AKS cluster, and register through the Azure portal.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 04/29/2026
+ms.date: 05/19/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ---
@@ -103,7 +103,7 @@ By default, Ray head nodes and worker nodes share the default node pool. For pro
 
 Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloads from scheduling on it. Then configure matching tolerations in your Anyscale cluster configuration so Ray pods are admitted to the tainted pool. This setup keeps Ray workers isolated from operator and system pods on the default node pool.
 
-For production deployments, pair dedicated node pools with [declarative compute configs](https://docs.anyscale.com/configuration/compute/) to define instance types, resource requirements, and workload placement in code. Declarative compute configs are the preferred approach for Anyscale on Azure.
+For production deployments, pair dedicated node pools with [declarative compute configs](https://docs.anyscale.com/configuration/compute/) to define instance types, resource requirements, and workload placement in code. This is the preferred approach for Anyscale on Azure.
 
 ## Step 2: create an Anyscale cloud resource
 
@@ -420,14 +420,15 @@ Overall Result: ALL 1 cloud resources verified successfully
 
 ## Clean up resources
 
-To remove the Anyscale resources you created in this quickstart, delete them through the portal in the following order:
+Complete the following steps to remove the resources you created in this quickstart:
 
-1. **Stop running workloads**: In the [Anyscale console](https://console.azure.anyscale.com), make sure any jobs, workspaces, and services associated with the cloud are stopped before proceeding.
-1. **Delete the Anyscale cloud resource**: In the Azure portal, navigate to **Anyscale clouds**, open the cloud resource, and select **Delete**. This uninstalls the Anyscale operator and removes the Azure resources created during cloud setup, including the storage account, container registry, and managed identities.
-1. **Delete the AKS cluster**: Navigate to your AKS cluster resource in the Azure portal and select **Delete**.
-1. **Delete the resource group**: If you created a resource group specifically for this quickstart, delete it to remove any remaining resources.
+1. In the [Anyscale console](https://console.azure.anyscale.com), stop any running jobs, workspaces, and services associated with the cloud.
+1. In the Azure portal, navigate to **Anyscale clouds**, open the cloud resource, and select **Delete**.
+1. In the Anyscale console, delete the cloud itself.
+1. In the Azure portal, navigate to your AKS cluster and select **Delete**.
+1. If you created a resource group specifically for this quickstart, navigate to it in the Azure portal and select **Delete resource group** to remove any remaining resources.
 
-During Public Preview, if a state mismatch between Azure and Anyscale prevents a resource from being deleted through the portal, contact [Anyscale support](support-model.md) for assistance.
+During Public Preview, if you're unable to delete a resource through the portal, contact [Anyscale support](support-model.md) for assistance.
 
 ## Next steps
 
