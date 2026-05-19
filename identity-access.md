@@ -14,7 +14,9 @@ Anyscale on Azure uses Microsoft Entra ID for authentication and Azure managed i
 
 ## Microsoft Entra ID single sign-on
 
-Anyscale on Azure integrates with Entra ID to provide single sign-on (SSO) across your Azure tenant. Users sign in at [console.azure.anyscale.com](https://console.azure.anyscale.com) using their Azure credentials. You don't need a separate Anyscale identity.
+Anyscale on Azure integrates with Entra ID to provide single sign-on (SSO) across your Azure tenant. Users sign in at [console.azure.anyscale.com](https://console.azure.anyscale.com) using their Azure credentials. You can also launch the console directly from the Azure portal: select **Launch Anyscale** on your Anyscale cloud resource, or select **Go to Anyscale** from the essentials dropdown.
+
+You don't need a separate Anyscale identity.
 
 ### How it works
 
@@ -30,7 +32,7 @@ When you create an Anyscale cloud resource through the Azure portal, the portal 
 
 ### Anyscale Operator managed identity
 
-This identity governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. The Azure portal configures the identity automatically when you create the cloud resource.
+This identity governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. The Azure portal configures the identity automatically when you [create the cloud resource](quickstart-azure-cli-gateway-envoy.md#step-2-create-an-anyscale-cloud-resource).
 
 ### Cluster managed identity
 
