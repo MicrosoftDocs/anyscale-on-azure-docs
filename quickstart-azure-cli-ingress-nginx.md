@@ -3,7 +3,7 @@ title: "Quickstart: Deploy Anyscale on Azure with Ingress-Nginx"
 description: Deploy your first Anyscale cloud on Azure Kubernetes Service using the Azure CLI and the Ingress-Nginx controller. Configure your subscription, create an AKS cluster, and register through the Azure portal.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 04/29/2026
+ms.date: 05/19/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ---
@@ -106,6 +106,8 @@ By default, Ray head nodes and worker nodes share the default node pool. For pro
 
 Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloads from scheduling on it. Then configure matching tolerations in your Anyscale cluster configuration so Ray pods are admitted to the tainted pool. This setup keeps Ray workers isolated from operator and system pods on the default node pool.
 
+For production deployments, pair dedicated node pools with [declarative compute configs](https://docs.anyscale.com/configuration/compute/) to define instance types, resource requirements, and workload placement in code. This is the preferred approach for Anyscale on Azure.
+
 ## Step 2: create an Anyscale cloud resource
 
 > [!NOTE]
@@ -149,6 +151,9 @@ Select **Next**.
 The portal pre-populates an Azure Container Registry (ACR) name. Anyscale uses ACR for container image builds. Accept the default or enter a custom name.
 
 :::image type="content" source="media/quickstart/quickstart-create-container-registry-settings.png" alt-text="Container registry settings tab with ACR mode set to Create new ACR and an auto-generated ACR name.":::
+
+> [!NOTE]
+> This ACR is used exclusively for Anyscale container image builds. To configure your cluster to pull Ray images from a different container registry, see [Configure a custom container image registry](https://docs.anyscale.com/container-image/image-registry) in the Anyscale documentation.
 
 Select **Next**.
 
@@ -308,6 +313,18 @@ Overall Result: ALL 1 cloud resources verified successfully
 
    The command returns a URL to track job status and view output in the Anyscale console.
 
+
+## Clean up resources
+
+Complete the following steps to remove the resources you created in this quickstart:
+
+1. In the [Anyscale console](https://console.azure.anyscale.com), stop any running jobs, workspaces, and services associated with the cloud.
+1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud resources you wish to delete and select **Delete**. If you follow this guide, there should only be one cloud resource.
+1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud you wish to delete and select **Delete**.
+1. In the Azure portal, navigate to your AKS cluster and select **Delete**.
+1. If you created a resource group specifically for this quickstart, navigate to it in the Azure portal and select **Delete resource group** to remove any remaining resources.
+
+During Public Preview, if you're unable to delete a resource through the portal, contact [Anyscale support](support-model.md) for assistance.
 
 ## Next steps
 
