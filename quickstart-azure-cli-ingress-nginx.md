@@ -334,3 +334,4 @@ During Public Preview, if you're unable to delete a resource through the portal,
 - [Networking](networking.md)
 - [Identity and access](identity-access.md)
 - [Supported regions](supported-regions.md)
+- [Configure head node fault tolerance](https://docs.anyscale.com/administration/resource-management/head-node-fault-tolerance) before running production Anyscale Services

@@ -69,4 +69,5 @@ To deploy your first Anyscale cloud on Azure, see the [Quickstart](quickstart-az
 - [Identity and access](identity-access.md)
 - [Support model](support-model.md)
 - [Supported regions](supported-regions.md)
+- [Configure head node fault tolerance](https://docs.anyscale.com/administration/resource-management/head-node-fault-tolerance) for production Anyscale Services
 - [Anyscale documentation](https://docs.anyscale.com) for full platform reference
