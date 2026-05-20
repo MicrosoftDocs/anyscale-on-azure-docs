@@ -423,3 +423,4 @@ Overall Result: ALL 1 cloud resources verified successfully
 - [Networking](networking.md)
 - [Identity and access](identity-access.md)
 - [Supported regions](supported-regions.md)
+- [Configure head node fault tolerance for AKS](https://docs.anyscale.com/clouds/azure/aks-head-node-fault-tolerance) before running production Anyscale Services
