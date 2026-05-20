@@ -71,3 +71,9 @@ To deploy your first Anyscale cloud on Azure, see the [Quickstart](quickstart-az
 - [Supported regions](supported-regions.md)
 - [Configure head node fault tolerance](https://docs.anyscale.com/administration/resource-management/head-node-fault-tolerance) for production Anyscale Services
 - [Anyscale documentation](https://docs.anyscale.com) for full platform reference
+
+## Resources and policies
+
+- [Anyscale on Azure terms and conditions](https://www.anyscale.com/anyscale-on-azure-terms) — review before deploying production workloads.
+- [Anyscale Privacy Policy](https://www.anyscale.com/privacy-policy) — how Anyscale handles your data.
+- [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure) — troubleshooting and operational guidance beyond the MS Learn content.
