@@ -182,7 +182,18 @@ The **Review + submit** tab includes a **Terms** section with the Marketplace te
 
 After validation passes, select **Create**.
 
-The portal creates the required storage, managed identity, container registry, and service account. It also installs the Anyscale Kubernetes operator. Wait for the deployment to finish before you proceed to Step 3.
+The portal creates the required storage, managed identity, container registry, and service account. It also installs the Anyscale Kubernetes operator. Wait for the deployment to finish before you proceed.
+
+### 2h: assign access to your team
+
+After cloud creation completes, you and any teammates who need to create workspaces, jobs, or services must hold the **Anyscale Platform Contributor** role on the cloud resource. Subscription Owner or Contributor permissions on the underlying Azure resources don't carry over to the Anyscale resource provider. Workload operations require an explicit Anyscale platform role.
+
+To assign the role, navigate to your Anyscale cloud resource in the Azure portal, select **Access control (IAM)** > **Add** > **Add role assignment**, and assign **Anyscale Platform Contributor** to the appropriate users, groups, or service principals.
+
+For the full list of Anyscale platform roles and the resource-provider actions they control, see [Identity and access](identity-access.md#azure-built-in-roles-for-anyscale).
+
+> [!NOTE]
+> Skipping this step can cause workspace, job, or service creation to fail with a `404` error. Azure Resource Manager returns 404 instead of 403 when the caller doesn't have read permission on the parent Anyscale cloud resource.
 
 ## Step 3: install the Envoy Gateway controller
 
