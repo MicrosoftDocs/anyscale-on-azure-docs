@@ -105,9 +105,9 @@ Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloa
 
 For production deployments, pair dedicated node pools with [declarative compute configs](https://docs.anyscale.com/configuration/compute/) to define instance types, resource requirements, and workload placement in code. This is the preferred approach for Anyscale on Azure.
 
-For GPU workloads, you need a node pool backed by a GPU-capable VM SKU. If your subscription doesn't have sufficient GPU quota, [request a quota increase in the Azure portal](https://learn.microsoft.com/en-us/azure/quotas/quickstart-increase-quota-portal) before creating the node pool.
+For GPU workloads, you need a node pool backed by a GPU-capable VM SKU. If your subscription doesn't have sufficient GPU quota, [request a quota increase in the Azure portal](/azure/quotas/quickstart-increase-quota-portal) before creating the node pool.
 
-For full details on creating and configuring AKS node pools, see [Manage node pools in AKS](https://learn.microsoft.com/en-us/azure/aks/manage-node-pools).
+For full details on creating and configuring AKS node pools, see [Manage node pools in AKS](/azure/aks/manage-node-pools).
 
 ## Step 2: create an Anyscale cloud resource
 
