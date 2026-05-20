@@ -100,13 +100,17 @@ az aks create \
 
 After Azure creates the cluster, save the resource group name and cluster name. You need them in Steps 2 and 3.
 
-### Node pools and workload placement (optional)
+### Node pools and workload placement
 
 By default, Ray head nodes and worker nodes share the default node pool. For production workloads, create dedicated AKS node pools for Ray workloads and use Kubernetes taints and tolerations to steer Ray pods to those nodes.
 
 Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloads from scheduling on it. Then configure matching tolerations in your Anyscale cluster configuration so Ray pods are admitted to the tainted pool. This setup keeps Ray workers isolated from operator and system pods on the default node pool.
 
 For production deployments, pair dedicated node pools with [declarative compute configs](https://docs.anyscale.com/configuration/compute/) to define instance types, resource requirements, and workload placement in code. This is the preferred approach for Anyscale on Azure.
+
+For GPU workloads, you need a node pool backed by a GPU-capable VM SKU. If your subscription doesn't have sufficient GPU quota, [request a quota increase in the Azure portal](https://learn.microsoft.com/en-us/azure/quotas/quickstart-increase-quota-portal) before creating the node pool.
+
+For full details on creating and configuring AKS node pools, see [Manage node pools in AKS](https://learn.microsoft.com/en-us/azure/aks/manage-node-pools).
 
 ## Step 2: create an Anyscale cloud resource
 
@@ -185,7 +189,7 @@ The **Review + submit** tab includes a **Terms** section with the Marketplace te
 
 After validation passes, select **Create**.
 
-The portal creates the required storage, managed identity, container registry, and service account. It also installs the Anyscale Kubernetes operator. Wait for the deployment to finish before you proceed.
+The portal creates the required storage, managed identity, container registry, and service account. It also installs the Anyscale Kubernetes operator. The deployment operation takes about 5–8 minutes. Wait for it to finish before you proceed.
 
 ### 2h: assign access to your team
 
