@@ -432,6 +432,14 @@ Complete the following steps to remove the resources you created in this quickst
 
 During Public Preview, if you're unable to delete a resource through the portal, contact [Anyscale support](support-model.md) for assistance.
 
+## Add a second cloud resource
+
+To add another AKS cluster to an existing Anyscale cloud, use the Azure portal:
+
+1. Navigate to the Anyscale clouds page (the same page as [Step 2a](#2a-navigate-to-the-anyscale-clouds-page)) and select your cloud from the list.
+1. Select **Resources** to expand the menu, then select **Cloud Resources**.
+1. Select **Create** and follow the setup wizard.
+
 ## Next steps
 
 > [!div class="nextstepaction"]
