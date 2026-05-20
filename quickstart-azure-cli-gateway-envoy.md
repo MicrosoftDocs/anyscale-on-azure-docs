@@ -434,7 +434,9 @@ During Public Preview, if you're unable to delete a resource through the portal,
 
 ## Add a second cloud resource
 
-To add another AKS cluster to an existing Anyscale cloud, use the Azure portal:
+An Anyscale cloud can include multiple AKS clusters through cloud resources. Each cloud resource represents one AKS cluster, allowing you to run Ray workloads across different regions or configurations within the same cloud.
+
+To add another cloud resource to an existing Anyscale cloud, use the Azure portal:
 
 1. Navigate to the Anyscale clouds page (the same page as [Step 2a](#2a-navigate-to-the-anyscale-clouds-page)) and select your cloud from the list.
 1. Select **Resources** to expand the menu, then select **Cloud Resources**.
