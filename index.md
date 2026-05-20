@@ -54,7 +54,7 @@ Anyscale on Azure is in Public Preview. The following limitations apply:
 
 - Cloud creation and deletion require the Azure portal. The following CLI commands aren't supported: `anyscale cloud setup`, `anyscale cloud register`, `anyscale cloud delete`, `anyscale cloud resource create`, and `anyscale cloud resource delete`.
 - Anyscale on Azure supports only AKS-based deployment. VM stack features and Anyscale-hosted clouds aren't available.
-- The following CLI commands aren't supported: `anyscale workspace_v2 ssh`, `anyscale workspace_v2 pull`, and all `anyscale image` commands.
+- The following CLI commands aren't supported: `anyscale workspace_v2 ssh`, `anyscale workspace_v2 pull`, and `anyscale image archive`.
 - The Global Resource Scheduler (GRS) isn't supported.
 - Anyscale on Azure is available in a limited set of Azure regions. See [Supported regions](supported-regions.md).
 
