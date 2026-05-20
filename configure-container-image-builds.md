@@ -90,7 +90,7 @@ These role assignments mirror exactly what the portal creates for new clouds. Fi
 
 ### Find the AKS kubelet identity
 
-The kubelet identity is a managed identity assigned to AKS agent nodes for pulling images. For more information, see [Managed identities in AKS](https://learn.microsoft.com/azure/aks/managed-identity-overview).
+The kubelet identity is a managed identity assigned to AKS agent nodes for pulling images. For more information, see [Managed identities in AKS](/azure/aks/managed-identity-overview).
 
 ```azurecli
 KUBELET_PRINCIPAL_ID=$(az aks show \
