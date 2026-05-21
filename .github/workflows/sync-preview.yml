@@ -23,8 +23,3 @@ jobs:
           git checkout preview
           git merge origin/main
           git push origin preview
-
-      - name: Trigger preview deploy
-        run: gh workflow run docs-preview.yml --repo ${{ github.repository }} --ref preview
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
