@@ -10,6 +10,8 @@ ms.topic: concept-article
 
 # Anyscale on Azure identity and access
 
+[!INCLUDE [anyscale-public-preview](Includes/anyscale-public-preview.md)]
+
 Anyscale on Azure uses Microsoft Entra ID for authentication and Azure managed identities for resource access. Your team signs in with their existing Azure credentials. The Anyscale Kubernetes operator accesses Azure services through managed identities scoped to your resource group.
 
 ## Microsoft Entra ID single sign-on
