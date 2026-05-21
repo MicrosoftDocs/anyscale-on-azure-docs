@@ -229,7 +229,13 @@ kubectl get pods -n anyscale-operator
 
 The operator pod should show a status of `Running`.
 
-### 3b: Install Envoy Gateway
+### 3b: Install the Gateway API CRDs and Envoy Gateway
+
+The Kubernetes Gateway API CRDs aren't bundled with the Envoy Gateway Helm chart. Install the CRDs first, then install Envoy Gateway. Envoy Gateway v1.7 requires Gateway API v1.4.1.
+
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.1/standard-install.yaml
+```
 
 ```bash
 helm install eg oci://docker.io/envoyproxy/gateway-helm \
