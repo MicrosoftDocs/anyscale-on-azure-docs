@@ -62,7 +62,11 @@ Anyscale on Azure doesn't support the following features documented in the [Anys
 - Machine pools and the Global Resource Scheduler (GRS)
 - Lineage tracking
 - Job queues
-- Organization Settings, including billing, budgets, resource notifications, and cost analysis
+- The following Anyscale console organization settings: 
+   - Billing
+   - Budgets
+   - Resource notifications
+   - Cost analysis
 
 ## Get started with Anyscale on Azure
 
