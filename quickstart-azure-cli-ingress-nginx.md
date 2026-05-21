@@ -256,6 +256,9 @@ helm upgrade ingress-nginx ingress-nginx/ingress-nginx \
 
 ## Verify the deployment
 
+> [!NOTE]
+> During Public Preview, the Anyscale CLI supports only read operations against Azure cloud resources. Manage clouds and cloud resources through the Anyscale Clouds Resource Provider in the Azure portal. For details, see [Public Preview limitations](index.md#public-preview-limitations).
+
 Verify the deployment from the Anyscale CLI. First, set the Anyscale console URL and sign in:
 
 ```bash
