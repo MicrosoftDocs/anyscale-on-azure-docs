@@ -3,7 +3,7 @@ title: What is Anyscale on Azure?
 description: Anyscale on Azure is a managed Ray platform that runs on your Azure Kubernetes Service cluster, with Microsoft Entra ID SSO and built-in Azure service integrations.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 04/29/2026
+ms.date: 05/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: overview
 ---
@@ -55,8 +55,18 @@ Anyscale on Azure is in Public Preview. The following limitations apply:
 - Cloud creation and deletion require the Azure portal. The following CLI commands aren't supported: `anyscale cloud setup`, `anyscale cloud register`, `anyscale cloud delete`, `anyscale cloud resource create`, and `anyscale cloud resource delete`.
 - Anyscale on Azure supports only AKS-based deployment. VM stack features and Anyscale-hosted clouds aren't available.
 - The following CLI commands aren't supported: `anyscale workspace_v2 ssh`, `anyscale workspace_v2 pull`, and `anyscale image archive`.
-- The Global Resource Scheduler (GRS) isn't supported.
 - Anyscale on Azure is available in a limited set of Azure regions. See [Supported regions](supported-regions.md).
+
+Anyscale on Azure doesn't support the following features documented in the [Anyscale documentation](https://docs.anyscale.com):
+
+- Machine pools and the Global Resource Scheduler (GRS), including multi-cloud scheduling
+- Lineage
+- Organization Settings
+- Billing
+- Resource notifications
+- Budgets
+- Cost analysis
+- Job queues
 
 ## Get started with Anyscale on Azure
 
