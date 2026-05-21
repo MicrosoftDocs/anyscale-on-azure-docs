@@ -3,7 +3,7 @@ title: Anyscale on Azure Identity and Access
 description: Learn how Anyscale on Azure uses Microsoft Entra ID for single sign-on and Azure RBAC built-in roles to control access to cloud resources.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 05/06/2026
+ms.date: 05/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ---
@@ -41,7 +41,7 @@ This identity is the default that Anyscale uses when deploying clusters. By defa
 
 For environments where different teams or workload types need separate permissions, create additional user-assigned managed identities and map them to Anyscale workloads.
 
-Configure the mapping in the Anyscale console under **Cloud settings > IAM**. For step-by-step instructions, see [Managed identities for AKS](https://docs.anyscale.com/admin/azure/aks-iam) in the Anyscale documentation.
+Configure the mapping in the Anyscale console under **Cloud settings > IAM**. For AKS-specific configuration, see [Managed identities for AKS](https://docs.anyscale.com/clouds/azure/aks-iam) in the Anyscale documentation. For mapping rule syntax, see [Cloud IAM mapping](https://docs.anyscale.com/iam/cloud-iam-mapping).
 
 ## Service principal for cloud registration
 
@@ -97,5 +97,6 @@ To construct a full action string, append the operation to the resource type wit
 
 - [Architecture overview](architecture.md) for how managed identities fit into the overall architecture.
 - [Networking](networking.md) for egress domains and network security considerations.
-- [Managed identities for AKS](https://docs.anyscale.com/admin/azure/aks-iam) for per-workload identity mapping.
-- [Access blob storage and ADLS](https://docs.anyscale.com/admin/azure/storage) for granting storage roles to managed identities.
+- [Managed identities for AKS](https://docs.anyscale.com/clouds/azure/aks-iam) for per-workload identity mapping.
+- [Cloud IAM mapping](https://docs.anyscale.com/iam/cloud-iam-mapping) for rule syntax and supported parameters.
+- [Access blob storage and ADLS](https://docs.anyscale.com/clouds/azure/storage) for granting storage roles to managed identities.

@@ -106,7 +106,7 @@ By default, Ray head nodes and worker nodes share the default node pool. For pro
 
 Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloads from scheduling on it. Then configure matching tolerations in your Anyscale cluster configuration so Ray pods are admitted to the tainted pool. This setup keeps Ray workers isolated from operator and system pods on the default node pool.
 
-For production deployments, pair dedicated node pools with [declarative compute configs](https://docs.anyscale.com/configuration/compute/) to define instance types, resource requirements, and workload placement in code. This is the preferred approach for Anyscale on Azure.
+For production deployments, pair dedicated node pools with [declarative compute configs](https://docs.anyscale.com/configuration/compute) to define instance types, resource requirements, and workload placement in code. This is the preferred approach for Anyscale on Azure.
 
 For GPU workloads, you need a node pool backed by a GPU-capable VM SKU. If your subscription doesn't have sufficient GPU quota, [request a quota increase in the Azure portal](/azure/quotas/quickstart-increase-quota-portal) before creating the node pool.
 
