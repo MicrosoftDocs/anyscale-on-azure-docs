@@ -21,6 +21,7 @@ Anyscale on Azure is available in the following Azure regions during Public Prev
 | East US 2 | `eastus2` |
 | West US 2 | `westus2` |
 | West US 3 | `westus3` |
+| South Central US | `southcentralus` |
 
 ## GPU and compute availability
 
