@@ -3,7 +3,7 @@ title: "Quickstart: Deploy Anyscale on Azure with Envoy Gateway"
 description: Deploy your first Anyscale cloud on Azure Kubernetes Service using the Azure CLI and the Envoy Gateway controller. Configure your subscription, create an AKS cluster, and register through the Azure portal.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 05/19/2026
+ms.date: 05/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ---
@@ -106,6 +106,8 @@ Apply a `NoSchedule` taint to the dedicated node pool to prevent non-Ray workloa
 For production deployments, pair dedicated node pools with [declarative compute configs](https://docs.anyscale.com/configuration/compute/) to define instance types, resource requirements, and workload placement in code. This is the preferred approach for Anyscale on Azure.
 
 For GPU workloads, you need a node pool backed by a GPU-capable VM SKU. If your subscription doesn't have sufficient GPU quota, [request a quota increase in the Azure portal](/azure/quotas/quickstart-increase-quota-portal) before creating the node pool.
+
+For supported VM types and Ray sizing recommendations, see [Supported instance types](https://docs.anyscale.com/configuration/compute#supported-types) in the Anyscale documentation. To map model size to GPU memory for batch inference workloads, see [GPU costs and selection](https://docs.anyscale.com/llm/batch-inference/resource-allocation/cost-performance#gpu-costs).
 
 For full details on creating and configuring AKS node pools, see [Manage node pools in AKS](/azure/aks/manage-node-pools).
 
