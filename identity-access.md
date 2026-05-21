@@ -27,6 +27,9 @@ Authentication uses the OAuth 2.0 authorization code flow with PKCE. At the end 
 1. The Anyscale backend verifies the token and resolves the Entra identity to an Anyscale user account.
 1. Anyscale sets a session token in the browser for the duration of the session.
 
+> [!IMPORTANT]
+> To sign in to the Anyscale console, a user must hold at least the **Anyscale Platform Reader** role on the Anyscale cloud resource through Azure RBAC. Without this assignment, the sign-in flow completes against Entra ID but the user can't access any Anyscale resources. See [Azure built-in roles for Anyscale](#azure-built-in-roles-for-anyscale) for the full role list and how to assign one.
+
 ## Managed identities for Azure resource access
 
 When you create an Anyscale cloud resource through the Azure portal, the portal creates two managed identities in your resource group. These identities govern how the Anyscale operator and cluster workloads access Azure resources, including storage and container registry. They're separate from user authentication and role assignment.
