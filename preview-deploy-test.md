@@ -12,7 +12,7 @@ ms.topic: overview
 
 This page is intentionally unlinked. It exists only to verify that the automated `main → preview` sync workflow is deploying correctly.
 
-**If you see this page, the preview deploy pipeline is working. (canary v2)**
+**If you see this page, the preview deploy pipeline is working. (canary v3)**
 
 > [!NOTE]
 > This page is not in the site navigation and will be removed once the pipeline is confirmed.
