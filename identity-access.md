@@ -1,5 +1,5 @@
 ---
-title: Anyscale on Azure Identity and Access
+title: Anyscale on Azure identity and access
 description: Learn how Anyscale on Azure uses Microsoft Entra ID for single sign-on and Azure RBAC built-in roles to control access to cloud resources.
 author: kaysieyu
 ms.author: kaysieyu
@@ -29,7 +29,7 @@ Authentication uses the OAuth 2.0 authorization code flow with PKCE. At the end 
 
 ## Managed identities for Azure resource access
 
-When you create an Anyscale cloud resource through the Azure portal, the portal creates two managed identities in your resource group. These identities govern Azure resource access by the Anyscale operator and cluster workloads, including access to storage and container registry. They're separate from user authentication and role assignment.
+When you create an Anyscale cloud resource through the Azure portal, the portal creates two managed identities in your resource group. These identities govern how the Anyscale operator and cluster workloads access Azure resources, including storage and container registry. They're separate from user authentication and role assignment.
 
 ### Anyscale operator managed identity
 
@@ -60,7 +60,7 @@ After setup, day-to-day Anyscale operations such as launching workloads and mana
 
 ## Azure built-in roles for Anyscale
 
-Anyscale on Azure provides three built-in Azure roles managed in the Azure portal or through the Azure CLI. Role assignments determine what users, groups, and service principals can do across the console, CLI, SDK, and API. You can assign a role at any level of the Azure scope hierarchy — subscription, resource group, cloud, project, or individual resource — and it is inherited by all resources below it.
+Anyscale on Azure provides three built-in Azure roles managed in the Azure portal or through the Azure CLI. Role assignments determine what users, groups, and service principals can do across the console, CLI, SDK, and API. You can assign a role at any level of the Azure scope hierarchy, including subscription, resource group, cloud, project, or individual resource. All resources below that scope inherit the assignment.
 
 | Role | Description |
 |------|-------------|

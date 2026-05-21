@@ -33,11 +33,11 @@ Before you begin, make sure you have:
 
 Enroll in the Anyscale on Azure Public Preview before you start. Contact [Anyscale support](https://www.anyscale.com/support) to enroll, and provide your Azure subscription ID and preferred deployment regions.
 
-## Step 0: configure your Azure subscription
+## Step 0: Configure your Azure subscription
 
 Step 0a requires permission to create service principals from external Microsoft Entra tenants. Review the prerequisite above before you proceed.
 
-### 0a: create the Anyscale service principal
+### 0a: Create the Anyscale service principal
 
 To establish trust with the Anyscale control plane, run the following command:
 
@@ -45,7 +45,7 @@ To establish trust with the Anyscale control plane, run the following command:
 az ad sp create --id 086bc555-6989-4362-ba30-fded273e432b
 ```
 
-### 0b: register required resource providers
+### 0b: Register required resource providers
 
 Check which providers are already registered:
 
@@ -62,9 +62,9 @@ for provider in Microsoft.Storage Microsoft.ManagedIdentity Microsoft.Authorizat
 done
 ```
 
-## Step 1: provision Azure resources
+## Step 1: Provision Azure resources
 
-### 1a: create or select a resource group
+### 1a: Create or select a resource group
 
 You can use an existing resource group or create a new one in one of the [supported regions](supported-regions.md):
 
@@ -74,7 +74,7 @@ az group create \
   --location <location>
 ```
 
-### 1b: create the AKS cluster
+### 1b: Create the AKS cluster
 
 Before you create the cluster, confirm you have sufficient quota for the VM SKU you plan to use in your chosen region. Ray workloads require at least 4 vCPUs per worker node. `Standard_D4s_v5` or equivalent is a good starting point. Check your current quota:
 
@@ -114,18 +114,18 @@ For supported VM types and Ray sizing recommendations, see [Supported instance t
 
 For full details on creating and configuring AKS node pools, see [Manage node pools in AKS](/azure/aks/manage-node-pools).
 
-## Step 2: create an Anyscale cloud resource
+## Step 2: Create an Anyscale cloud resource
 
 > [!NOTE]
 > The Anyscale Operator is also available through the Azure Marketplace, but Anyscale doesn't recommend that route. Use the Anyscale Clouds Resource Provider in the Azure portal instead.
 
-### 2a: navigate to the Anyscale clouds page
+### 2a: Navigate to the Anyscale clouds page
 
 In the [Azure portal](https://portal.azure.com), search for **Anyscale clouds** in the global search bar and select **Anyscale clouds** under **Services** from the results.
 
 :::image type="content" source="media/quickstart/quickstart-anyscale-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
 
-### 2b: fill in the Basics tab
+### 2b: Fill in the Basics tab
 
 Select **Create** on the Anyscale clouds page.
 
@@ -141,7 +141,7 @@ Fill in the following fields:
 
 Select **Next**.
 
-### 2c: configure infrastructure settings
+### 2c: Configure infrastructure settings
 
 The portal pre-populates a storage account name and Anyscale operator identity name. Accept the defaults or enter custom names:
 
@@ -152,7 +152,7 @@ The portal pre-populates a storage account name and Anyscale operator identity n
 
 Select **Next**.
 
-### 2d: configure container registry settings
+### 2d: Configure container registry settings
 
 Anyscale uses Azure Container Registry (ACR) for container image builds. Select an **ACR mode**:
 
@@ -167,7 +167,7 @@ Anyscale uses Azure Container Registry (ACR) for container image builds. Select 
 
 Select **Next**.
 
-### 2e: review the support plan
+### 2e: Review the support plan
 
 The Support plan tab shows the support tier for your Anyscale cloud. This value is fixed and can't be changed. For details, see [Support model](support-model.md).
 
@@ -175,7 +175,7 @@ The Support plan tab shows the support tier for your Anyscale cloud. This value 
 
 Select **Next**.
 
-### 2f: add tags (optional)
+### 2f: Add tags (optional)
 
 Add name/value tag pairs to categorize the created resources for billing and cost management. Tags are optional.
 
@@ -183,7 +183,7 @@ Add name/value tag pairs to categorize the created resources for billing and cos
 
 Select **Next**.
 
-### 2g: review the terms and conditions, then create
+### 2g: Review the terms and conditions, then create
 
 :::image type="content" source="media/quickstart/quickstart-review-submit-summary.png" alt-text="Review + submit tab showing a summary of the cloud configuration, Marketplace terms, and contact fields.":::
 
@@ -193,7 +193,7 @@ After validation passes, select **Create**.
 
 The portal creates the required storage, managed identity, container registry, and service account. It also installs the Anyscale Kubernetes operator. The deployment operation takes about 5–8 minutes. Wait for it to finish before you proceed.
 
-### 2h: assign access to your team
+### 2h: Assign access to your team
 
 After cloud creation completes, you and any teammates who need to create workspaces, jobs, or services must hold the **Anyscale Platform Contributor** role on the cloud resource. Subscription Owner or Contributor permissions on the underlying Azure resources don't carry over to the Anyscale resource provider. Workload operations require an explicit Anyscale platform role.
 
@@ -204,9 +204,9 @@ For the full list of Anyscale platform roles and the resource-provider actions t
 > [!NOTE]
 > Skipping this step can cause workspace, job, or service creation to fail with a `404` error. Azure Resource Manager returns 404 instead of 403 when the caller doesn't have read permission on the parent Anyscale cloud resource.
 
-## Step 3: install the Ingress-Nginx controller
+## Step 3: Install the Ingress-Nginx controller
 
-### 3a: get AKS credentials
+### 3a: Get AKS credentials
 
 ```bash
 az aks get-credentials \
@@ -223,7 +223,7 @@ kubectl get pods -n anyscale-operator
 
 The operator pod should show a status of `Running`.
 
-### 3b: install Ingress-Nginx
+### 3b: Install Ingress-Nginx
 
 Create a file named `sample-values_nginx.yaml`:
 
@@ -343,8 +343,8 @@ Overall Result: ALL 1 cloud resources verified successfully
 Complete the following steps to remove the resources you created in this quickstart:
 
 1. In the [Anyscale console](https://console.azure.anyscale.com), stop any running jobs, workspaces, and services associated with the cloud.
-1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud resources you wish to delete and select **Delete**. If you follow this guide, there should only be one cloud resource.
-1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud you wish to delete and select **Delete**.
+1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud resources to delete, and select **Delete**. If you follow this guide, there should only be one cloud resource.
+1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud to delete, and select **Delete**.
 1. In the Azure portal, navigate to your AKS cluster and select **Delete**.
 1. If you created a resource group specifically for this quickstart, navigate to it in the Azure portal and select **Delete resource group** to remove any remaining resources.
 
@@ -352,7 +352,7 @@ During Public Preview, if you're unable to delete a resource through the portal,
 
 ## Add a second cloud resource
 
-An Anyscale cloud can include multiple AKS clusters through cloud resources. Each cloud resource represents one AKS cluster, allowing you to run Ray workloads across different configurations within the same cloud.
+An Anyscale cloud can include multiple AKS clusters through cloud resources. Each cloud resource represents one AKS cluster, so you can run Ray workloads across different configurations within the same cloud.
 
 To add another cloud resource to an existing Anyscale cloud, use the Azure portal:
 
