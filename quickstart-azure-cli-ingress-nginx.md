@@ -343,8 +343,8 @@ Overall Result: ALL 1 cloud resources verified successfully
 Complete the following steps to remove the resources you created in this quickstart:
 
 1. In the [Anyscale console](https://console.azure.anyscale.com), stop any running jobs, workspaces, and services associated with the cloud.
-1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud resources you wish to delete and select **Delete**. If you follow this guide, there should only be one cloud resource.
-1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud you wish to delete and select **Delete**.
+1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud resources to delete, and select **Delete**. If you follow this guide, there should only be one cloud resource.
+1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud to delete, and select **Delete**.
 1. In the Azure portal, navigate to your AKS cluster and select **Delete**.
 1. If you created a resource group specifically for this quickstart, navigate to it in the Azure portal and select **Delete resource group** to remove any remaining resources.
 
@@ -352,7 +352,7 @@ During Public Preview, if you're unable to delete a resource through the portal,
 
 ## Add a second cloud resource
 
-An Anyscale cloud can include multiple AKS clusters through cloud resources. Each cloud resource represents one AKS cluster, allowing you to run Ray workloads across different configurations within the same cloud.
+An Anyscale cloud can include multiple AKS clusters through cloud resources. Each cloud resource represents one AKS cluster, so you can run Ray workloads across different configurations within the same cloud.
 
 To add another cloud resource to an existing Anyscale cloud, use the Azure portal:
 

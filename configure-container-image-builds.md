@@ -1,16 +1,16 @@
 ---
-title: Configure Container Image Builds for an Existing Cloud
+title: Configure container image builds for an existing cloud
 description: Configure Azure Container Registry and the required RBAC role assignments on an existing Anyscale cloud in Azure to enable container image builds.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 05/01/2026
+ms.date: 05/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: how-to
 ---
 
 # Configure container image builds for an existing cloud
 
-When you create an Anyscale cloud in the Azure portal, container image build support is configured by default using an Azure Container Registry (ACR). For setup instructions, see the [Quickstart](quickstart-azure-cli-gateway-envoy.md). This configuration is optional and can be skipped at creation time. If your cloud was created without ACR configured, you can enable it manually. To do so, you need an ACR, the cloud record updated with its resource ID, three RBAC role assignments on the ACR, and the Anyscale operator on version **≥ 1.5.1**. Each requirement is covered by a step in this article.
+By default, the Azure portal configures container image build support using an Azure Container Registry (ACR) when you create an Anyscale cloud. For setup instructions, see the [Quickstart](quickstart-azure-cli-gateway-envoy.md). This configuration is optional. You can skip it at creation time. If you created your cloud without ACR, you can enable it manually. To do so, you need an ACR, a cloud record updated with the ACR resource ID, three RBAC role assignments on the ACR, and the Anyscale operator on version **≥ 1.5.1**. The following steps walk through each requirement.
 
 If you attempt an image build on a cloud without ACR configured, the operation fails with this error:
 
@@ -29,7 +29,7 @@ Error: Cloud does not have ACR configuration. Please configure ACR for the cloud
   - Azure Kubernetes Service (AKS) cluster name
   - Anyscale operator workload identity name (commonly `<cloud-name>-anyscale-operator-identity`)
 
-## Step 1: (Optional) Create an ACR
+## Step 1: (Optional) create an ACR
 
 Skip this step if you already have an ACR you want to use.
 
@@ -166,7 +166,7 @@ az k8s-extension update \
 ```
 
 > [!NOTE]
-> If you onboarded during the Anyscale on Azure Private Preview and installed the operator via Helm rather than the AKS cluster extension, upgrade using `helm upgrade` instead:
+> If you onboarded during the Anyscale on Azure Private Preview and installed the operator through Helm rather than the AKS cluster extension, upgrade using `helm upgrade` instead:
 >
 > ```bash
 > helm upgrade anyscale-operator <chart> \
