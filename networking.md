@@ -46,7 +46,7 @@ The Anyscale Kubernetes operator polls the Anyscale control plane for pending op
 
 Clients reach Ray cluster head nodes and Anyscale Services through an Azure Load Balancer that fronts the ingress or gateway controller in your AKS cluster.
 
-:::image type="complex" source="media/networking/azure-client-flows.png" alt-text="Authenticated user with two flows: to Anyscale control plane (1) and to Ray cluster nodes via Azure Load Balancer in customer AKS (2).":::
+:::image type="complex" source="media/networking/azure-client-flows.png" alt-text="Authenticated user with two flows: to Anyscale control plane (1) and to Ray cluster nodes through Azure Load Balancer in customer AKS (2).":::
    Two dashed-border tenant boxes divide the diagram. The Anyscale Azure Tenant (left) contains the Anyscale Control Plane. The Customer Azure Tenant (right) contains a VNet. Inside the VNet, an Azure Kubernetes Services box holds a Ray Cluster with a Head Node and Worker Nodes. An Azure Load Balancer sits inside the VNet but outside the AKS box. An Authenticated User box sits outside both tenants. Flow 1 runs from the user to the Anyscale Control Plane. Flow 2 runs from the user through the Azure Load Balancer into the Ray Cluster.
 :::image-end:::
 

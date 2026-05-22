@@ -12,7 +12,11 @@
   href: networking.md
 - name: Identity and access
   href: identity-access.md
+- name: Configure container image builds
+  href: configure-container-image-builds.md
 - name: Support model
   href: support-model.md
 - name: Supported regions
   href: supported-regions.md
+- name: Terms and privacy
+  href: legal.md

@@ -29,6 +29,8 @@ For guidance on opening Azure support requests, see [Create an Azure support req
 
 Anyscale on Azure is in Public Preview. Anyscale provides support during Public Preview on a best-effort basis. For information on Azure support plans and their coverage, see [Azure Support Plans](https://azure.microsoft.com/support/plans/).
 
+Before opening a support request, review the [Public Preview limitations](index.md#public-preview-limitations) to confirm the behavior isn't a known constraint. Anyscale CLI commands that write to Azure cloud resources aren't supported during Public Preview, for example.
+
 ## Troubleshooting
 
 For self-serve guidance on common issues, see the [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure).
