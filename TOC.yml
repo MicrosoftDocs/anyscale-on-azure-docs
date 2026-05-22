@@ -1,5 +1,5 @@
 - name: Overview
-  href: index.md
+  href: overview.md
 - name: Quickstart
   items:
   - name: With Envoy Gateway
@@ -18,5 +18,7 @@
   href: support-model.md
 - name: Supported regions
   href: supported-regions.md
+- name: FAQ
+  href: faq.yml
 - name: Terms and privacy
   href: legal.md

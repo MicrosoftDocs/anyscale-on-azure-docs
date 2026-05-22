@@ -1,0 +1,69 @@
+### YamlMime:FAQ
+metadata:
+  title: Anyscale on Azure FAQ
+  description: Frequently asked questions about Anyscale on Azure, including service availability, supported regions, identity, data residency, and support.
+  author: kaysieyu
+  ms.author: kaysieyu
+  ms.date: 05/22/2026
+  ms.service: azure-kubernetes-service
+  ms.topic: faq
+title: Anyscale on Azure frequently asked questions
+summary: |
+  This article answers common questions about Anyscale on Azure during public preview. For product-wide questions and self-serve troubleshooting, see the [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure).
+
+  > [!IMPORTANT]
+  > Anyscale on Azure is currently in public preview. This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
+  > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+sections:
+  - name: About the service
+    questions:
+      - question: What is Anyscale on Azure?
+        answer: |
+          Anyscale on Azure is a managed platform for running distributed Python workloads on [Ray](https://docs.ray.io). It deploys onto your Azure Kubernetes Service (AKS) cluster as an Azure Native Integration jointly developed by Anyscale and Microsoft. For details, see [What is Anyscale on Azure?](overview.md).
+
+      - question: Is Anyscale on Azure generally available?
+        answer: |
+          No. Anyscale on Azure is currently in public preview. For the current scope and constraints, see [Public preview limitations](overview.md#public-preview-limitations).
+
+      - question: How is Anyscale on Azure different from the Anyscale SaaS offering?
+        answer: |
+          Anyscale on Azure splits responsibilities across two planes. Anyscale hosts the control plane in its own Azure tenant for scheduling, monitoring, and the Anyscale console. The data plane runs in your Azure subscription on your AKS cluster, so your workloads, container images, and data stay in your tenant. For a full breakdown, see the [Architecture overview](architecture.md).
+
+  - name: Deployment and regions
+    questions:
+      - question: Which Azure regions support Anyscale on Azure?
+        answer: |
+          Anyscale on Azure is available in a limited set of regions during public preview. For the current list, see [Supported regions](supported-regions.md).
+
+      - question: What Azure resources are deployed by Anyscale on Azure in my subscription?
+        answer: |
+          Deployment creates and uses resources in your Azure subscription, including an AKS cluster, a storage account, an Azure Container Registry, a user-assigned managed identity with federated credentials, and an Azure Load Balancer. For the full picture, see the [Architecture overview](architecture.md) and [Identity and access](identity-access.md).
+
+  - name: Identity, security, and data
+    questions:
+      - question: How do users sign in to Anyscale on Azure?
+        answer: |
+          Users sign in with their existing Microsoft Entra ID credentials through single sign-on. You don't configure a separate identity provider. For details, see [Identity and access](identity-access.md).
+
+      - question: Where does my data and code reside?
+        answer: |
+          Your Ray workloads, container images, and datasets stay in your Azure subscription on your AKS cluster. The Anyscale-hosted control plane handles scheduling and management metadata only. For details, see the [Architecture overview](architecture.md).
+
+  - name: Support and more information
+    questions:
+      - question: How do I get support for Anyscale on Azure?
+        answer: |
+          Open a support request through the Azure portal. Azure Support handles all Anyscale on Azure cases and routes them appropriately. For details and current scope, see the [Support model](support-model.md).
+
+      - question: Where can I find more FAQs and troubleshooting?
+        answer: |
+          For product-wide questions and self-serve troubleshooting, see the [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure) and the broader [Anyscale documentation](https://docs.anyscale.com).
+
+additionalContent: |
+  ## Related content
+
+  - [What is Anyscale on Azure?](overview.md)
+  - [Architecture overview](architecture.md)
+  - [Support model](support-model.md)
+  - [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure)

@@ -5,7 +5,7 @@ author: kaysieyu
 ms.author: kaysieyu
 ms.date: 04/29/2026
 ms.service: azure-kubernetes-service
-ms.topic: reference, regions_reference
+ms.topic: reference
 ---
 
 # Anyscale on Azure supported regions

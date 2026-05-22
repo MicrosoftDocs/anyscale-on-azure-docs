@@ -18,7 +18,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is Anyscale on Azure?
-            url: index.md
+            url: overview.md
           - text: Architecture overview
             url: architecture.md
       - linkListType: concept

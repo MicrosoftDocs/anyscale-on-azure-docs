@@ -364,7 +364,7 @@ After the controller is up and running, verify that your Anyscale cloud is healt
    ```
 
 > [!NOTE]
-> During Public Preview, the Anyscale CLI supports only read operations against Azure cloud resources. Manage clouds and cloud resources through the Anyscale Clouds Resource Provider in the Azure portal. For details, see [Public Preview limitations](index.md#public-preview-limitations).
+> During Public Preview, the Anyscale CLI supports only read operations against Azure cloud resources. Manage clouds and cloud resources through the Anyscale Clouds Resource Provider in the Azure portal. For details, see [Public Preview limitations](overview.md#public-preview-limitations).
 
 
 ## Run your first workload
@@ -426,7 +426,7 @@ An Anyscale cloud can include multiple AKS clusters through cloud resources. Eac
 
 To add another cloud resource to an existing Anyscale cloud, use the Azure portal:
 
-1. Navigate to the Anyscale clouds page (the same page as [Navigate to the Anyscale clouds page](#navigate-to-the-anyscale-clouds-page)) and select your cloud from the list.
+1. Navigate to the Anyscale clouds page (the same page as [Create an Anyscale cloud resource](#create-an-anyscale-cloud-resource)) and select your cloud from the list.
 1. Select **Resources** to expand the menu, then select **Cloud Resources**.
 1. Select **Create** and follow the setup wizard.
 

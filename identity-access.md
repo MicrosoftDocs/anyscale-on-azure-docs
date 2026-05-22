@@ -38,7 +38,7 @@ When you create an Anyscale cloud resource through the Azure portal, the portal 
 
 ### Anyscale operator managed identity
 
-This identity governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. The Azure portal configures the identity automatically when you [create the cloud resource](quickstart-azure-cli-gateway-envoy.md#step-2-create-an-anyscale-cloud-resource).
+This identity governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. The Azure portal configures the identity automatically when you [create the cloud resource](quickstart-azure-cli-gateway-envoy.md#create-an-anyscale-cloud-resource).
 
 ### Cluster managed identity
 
