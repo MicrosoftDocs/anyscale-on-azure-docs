@@ -16,21 +16,21 @@ Anyscale on Azure uses Microsoft Entra ID for authentication and Azure role-base
 
 ## Microsoft Entra ID single sign-on
 
-Anyscale on Azure integrates with Entra ID to provide single sign-on (SSO) across your Azure tenant. Users sign in at [console.azure.anyscale.com](https://console.azure.anyscale.com) using their Azure credentials. You can also launch the console directly from the Azure portal: select **Launch Anyscale** on your Anyscale cloud resource, or select **Go to Anyscale** from the essentials dropdown.
+Anyscale on Azure integrates with Microsoft Entra ID to provide single sign-on (SSO) across your Azure tenant. Users sign in at [console.azure.anyscale.com](https://console.azure.anyscale.com) using their Azure credentials. You can also launch the console directly from the Azure portal: select **Launch Anyscale** on your Anyscale cloud resource, or select **Go to Anyscale** from the essentials dropdown.
 
 You don't need a separate Anyscale identity.
 
-Authentication uses the OAuth 2.0 authorization code flow with PKCE. At the end of the flow, the Anyscale backend verifies the JWT claims issued by Entra ID and resolves the caller to an Anyscale user account. Users must have at least read access to the Anyscale cloud resource through Azure RBAC before they can sign in.
+Authentication uses the OAuth 2.0 authorization code flow with PKCE. At the end of the flow, the Anyscale backend verifies the JWT claims issued by Microsoft Entra ID and resolves the caller to an Anyscale user account. Users must have at least read access to the Anyscale cloud resource through Azure RBAC before they can sign in.
 
-### How does Entra ID sign-in work?
+### How does Microsoft Entra ID sign-in work?
 
 1. The user navigates to `console.azure.anyscale.com` and selects **Continue with Microsoft**.
-1. Entra ID authenticates the user and issues an ID token containing the user's *tenant ID* (`tid`) and *object ID* (`oid`).
-1. The Anyscale backend verifies the token and resolves the Entra identity to an Anyscale user account.
+1. Microsoft Entra ID authenticates the user and issues an ID token containing the user's *tenant ID* (`tid`) and *object ID* (`oid`).
+1. The Anyscale backend verifies the token and resolves the Microsoft Entra identity to an Anyscale user account.
 1. Anyscale sets a session token in the browser for the duration of the session.
 
 > [!IMPORTANT]
-> To sign in to the Anyscale console, a user must hold at least the **Anyscale Platform Reader** role on the Anyscale cloud resource through Azure RBAC. Without this assignment, the sign-in flow completes against Entra ID but the user can't access any Anyscale resources. See [Azure built-in roles for Anyscale](#azure-built-in-roles-for-anyscale) for the full role list and how to assign one.
+> To sign in to the Anyscale console, a user must hold at least the **Anyscale Platform Reader** role on the Anyscale cloud resource through Azure RBAC. Without this assignment, the sign-in flow completes against Microsoft Entra ID but the user can't access any Anyscale resources. See [Azure built-in roles for Anyscale](#azure-built-in-roles-for-anyscale) for the full role list and how to assign one.
 
 ## Managed identities for Azure resource access
 
@@ -42,15 +42,15 @@ This identity governs all actions the operator takes in your Azure subscription,
 
 ### Cluster managed identity
 
-This identity is the default that Anyscale uses when deploying clusters. By default, all workloads share it. You can create additional identities and map them to specific users, projects, or workload types for finer-grained access control.
+This identity is the default that Anyscale uses when deploying clusters. By default, all workloads share it. You can create other identities and map them to specific users, projects, or workload types for finer-grained access control.
 
-For environments where different teams or workload types need separate permissions, create additional user-assigned managed identities and map them to Anyscale workloads.
+For environments where different teams or workload types need separate permissions, create other user-assigned managed identities and map them to Anyscale workloads.
 
 Configure the mapping in the Anyscale console under **Cloud settings > IAM**. For AKS-specific configuration, see [Managed identities for AKS](https://docs.anyscale.com/clouds/azure/aks-iam) in the Anyscale documentation. For mapping rule syntax, see [Cloud IAM mapping](https://docs.anyscale.com/iam/cloud-iam-mapping).
 
 ## Service principal for cloud registration
 
-You create a service principal in your tenant from the Anyscale Entra application (app ID `086bc555-6989-4362-ba30-fded273e432b`). Anyscale uses this service principal to sign Entra ID tokens that validate the connection between your AKS deployment and the Anyscale control plane. You only need to do this once per tenant.
+You create a service principal in your tenant from the Anyscale Entra application (app ID `00001111-aaaa-2222-bbbb-3333cccc4444`). Anyscale uses this service principal to sign Microsoft Entra ID tokens that validate the connection between your AKS deployment and the Anyscale control plane. You only need to do this once per tenant.
 
 ## Azure role requirements for setup
 

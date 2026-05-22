@@ -51,7 +51,7 @@ This polling model means all network connections originate from your cluster out
 
 ## Managed identities and permissions
 
-The operator authenticates to Azure services using a managed identity. The portal provisions this identity during cloud creation and scopes it to the resources in your resource group.
+The operator authenticates to Azure services using a managed identity. The portal deploys this identity during cloud creation and scopes it to the resources in your resource group.
 
 You can configure permissions at different levels of granularity:
 
@@ -63,7 +63,7 @@ For information on Microsoft Entra ID integration and Azure role assignments, se
 ## Architecture diagram overview
 
 :::image type="complex" source="media/architecture/anyscale-on-azure-architecture.png" alt-text="Anyscale on Azure architecture with two planes: Anyscale Control Plane on the left and Customer Data Plane on the right, connected by arrows.":::
-   The diagram shows two bordered boxes side by side. The left box is the Anyscale Control Plane in the Anyscale Azure tenant. It contains three stacked components: Scheduling and Job Management, Anyscale Console, and REST API / SDK. The right box is the Customer Data Plane in your Azure subscription and AKS cluster. It contains the Anyscale Kubernetes Operator in the center and two Ray Clusters to its right. Both Ray Clusters show a head and N workers. An arrow from the control plane to the operator is labeled "deploys clusters, runs jobs and services". An arrow back is labeled "logs, metrics". Two arrows from the operator to the Ray Clusters are labeled "deploys and manages". A user figure below connects to the control plane with "deploy, configure, monitor" and to the Customer Data Plane with "interact with Ray clusters".
+   The diagram shows two bordered boxes side by side. The left box is the Anyscale Control Plane in the Anyscale Azure tenant. It contains three stacked components: Scheduling and Job Management, Anyscale Console, and REST API / SDK. The right box is the Customer Data Plane in your Azure subscription and AKS cluster. It contains the Anyscale Kubernetes Operator in the center and two Ray Clusters to its right. Both Ray Clusters show a head and N workers. An arrow from the control plane to the operator is labeled deploys clusters, runs jobs and services. An arrow back is labeled logs, metrics. Two arrows from the operator to the Ray Clusters are labeled deploys and manages. A user figure connects to the control plane with deploy, configure, monitor and to the Customer Data Plane with interact with Ray clusters.
 :::image-end:::
 
 ## Component summary table

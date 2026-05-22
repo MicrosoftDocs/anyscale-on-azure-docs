@@ -23,6 +23,7 @@ This quickstart walks you through deploying Anyscale on an existing Azure Kubern
 Before you begin, make sure you have:
 
 - An Azure subscription with the Owner or Administrator role.
+- Enroll in the Anyscale on Azure Public Preview before you start. Contact [Anyscale support](https://www.anyscale.com/support) to enroll, and provide your Azure subscription ID and preferred deployment regions.
 - Permission to create service principals from external Microsoft Entra tenants.
 - Install the following tools locally. Use the latest version of each.
   - [Azure CLI](/cli/azure/install-azure-cli)
@@ -32,19 +33,19 @@ Before you begin, make sure you have:
 
 Enroll in the Anyscale on Azure Public Preview before you start. Contact [Anyscale support](https://www.anyscale.com/support) to enroll, and provide your Azure subscription ID and preferred deployment regions.
 
-## Step 0: Configure your Azure subscription
+## Configure your Azure subscription
 
 Step 0a requires permission to create service principals from external Microsoft Entra tenants. Review the prerequisite above before you proceed.
 
-### 0a: Create the Anyscale service principal
+### Create the Anyscale service principal
 
 To establish trust with the Anyscale control plane, run the following command:
 
 ```azurecli
-az ad sp create --id 086bc555-6989-4362-ba30-fded273e432b
+az ad sp create --id aaaaaaaa-bbbb-cccc-1111-222222222222
 ```
 
-### 0b: Register required resource providers
+### Register required resource providers
 
 Check which providers are already registered:
 
@@ -61,9 +62,9 @@ for provider in Microsoft.Storage Microsoft.ManagedIdentity Microsoft.Authorizat
 done
 ```
 
-## Step 1: Provision Azure resources
+## Provision Azure resources
 
-### 1a: Create or select a resource group
+### Create or select a resource group
 
 You can use an existing resource group or create a new one in one of the [supported regions](supported-regions.md):
 
@@ -73,7 +74,7 @@ az group create \
   --location <location>
 ```
 
-### 1b: Create the AKS cluster
+### Create the AKS cluster
 
 Before you create the cluster, confirm you have sufficient quota for the VM SKU you plan to use in your chosen region. Ray workloads require at least 4 vCPUs per worker node. `Standard_D4s_v5` or equivalent is a good starting point. Check your current quota:
 
@@ -113,86 +114,43 @@ For supported VM types and Ray sizing recommendations, see [Supported instance t
 
 For full details on creating and configuring AKS node pools, see [Manage node pools in AKS](/azure/aks/manage-node-pools).
 
-## Step 2: Create an Anyscale cloud resource
+## Create an Anyscale cloud resource
 
 > [!NOTE]
 > The Anyscale Operator is also available through the Azure Marketplace, but Anyscale doesn't recommend that route. Use the Anyscale Clouds Resource Provider in the Azure portal instead.
-
-### 2a: Navigate to the Anyscale clouds page
 
 In the [Azure portal](https://portal.azure.com), search for **Anyscale clouds** in the global search bar and select **Anyscale clouds** under **Services** from the results.
 
 :::image type="content" source="media/quickstart/quickstart-anyscale-clouds-landing.png" alt-text="Anyscale clouds page in the Azure portal showing a list of existing Anyscale cloud resources.":::
 
-### 2b: Fill in the Basics tab
+Select **Create** and complete the wizard:
 
-Select **Create** on the Anyscale clouds page.
+1. On the **Basics** tab, confirm your **Subscription**, select the **Resource group** you created, enter a unique **Cloud name**, select the same **Region**, and select your **Cluster**. Select **Next**.
 
-Fill in the following fields:
+   :::image type="content" source="media/quickstart/quickstart-create-basics-filled.png" alt-text="Basics tab with subscription, resource group, cloud name, region, and AKS cluster filled in.":::
 
-1. Confirm the **Subscription** matches the subscription you used in Step 1.
-1. Select the **Resource group** you created or used in Step 1.
-1. Enter a unique **Cloud name**.
-1. Select the same **Region** you used in Step 1.
-1. Select your **Cluster** from the dropdown.
+1. On the **Infrastructure settings** tab, the portal pre-populates a **Storage account name** and **Anyscale operator identity name**. Accept the defaults or enter custom names. Select **Next**.
 
-:::image type="content" source="media/quickstart/quickstart-create-basics-filled.png" alt-text="Basics tab with subscription, resource group, cloud name, region, and AKS cluster filled in.":::
+1. On the **Container registry** tab, select an **ACR mode**:
 
-Select **Next**.
+   - **Create new ACR** (default): The portal pre-populates a name. Accept the default or enter a custom name. Role assignments are configured automatically.
+   - **Use Existing ACR**: Select an existing ACR from the dropdown. Role assignments are configured automatically.
+   - **No ACR**: Skip ACR configuration. You can [configure container image builds](configure-container-image-builds.md) later.
 
-### 2c: Configure infrastructure settings
+   > [!NOTE]
+   > This ACR is used exclusively for Anyscale container image builds. To configure your cluster to pull Ray images from a different registry, see [Configure a custom container image registry](https://docs.anyscale.com/container-image/image-registry) in the Anyscale documentation.
 
-The portal pre-populates a storage account name and Anyscale operator identity name. Accept the defaults or enter custom names:
+   Select **Next**.
 
-- **Storage account name**: 3 to 24 lowercase alphanumeric characters.
-- **Anyscale operator identity name**: the user-assigned managed identity that the Anyscale operator uses.
+1. On the **Support plan** tab, review the support tier for your Anyscale cloud. This value is fixed and can't be changed. For details, see [Support model](support-model.md). Select **Next**.
 
-:::image type="content" source="media/quickstart/quickstart-create-infrastructure-settings.png" alt-text="Infrastructure settings tab showing storage account and user-assigned managed identity configuration with default values pre-populated.":::
+1. On the **Tags** tab, optionally add name/value pairs to categorize resources for billing and cost management. Select **Next**.
 
-Select **Next**.
+1. On the **Review + submit** tab, review the Marketplace terms of use. It may take a moment for validation to complete. After validation passes, select **Create**.
 
-### 2d: Configure container registry settings
+The portal creates the required storage, managed identity, container registry, and service account, and installs the Anyscale Kubernetes operator. The deployment takes about 5–8 minutes. Wait for it to finish before you proceed.
 
-Anyscale uses Azure Container Registry (ACR) for container image builds. Select an **ACR mode**:
-
-- **Create new ACR** (default). The portal pre-populates a name. Accept the default or enter a custom name. Role assignments are configured automatically.
-- **Use Existing ACR**. Select an existing ACR from the dropdown. Role assignments are configured automatically.
-- **No ACR**. Skip ACR configuration. You can [configure container image builds](configure-container-image-builds.md) later.
-
-:::image type="content" source="media/quickstart/quickstart-create-container-registry-settings.png" alt-text="Container registry settings tab with ACR mode set to Create new ACR and an auto-generated ACR name.":::
-
-> [!NOTE]
-> This ACR is used exclusively for Anyscale container image builds. To configure your cluster to pull Ray images from a different container registry, see [Configure a custom container image registry](https://docs.anyscale.com/container-image/image-registry) in the Anyscale documentation.
-
-Select **Next**.
-
-### 2e: Review the support plan
-
-The Support plan tab shows the support tier for your Anyscale cloud. This value is fixed and can't be changed. For details, see [Support model](support-model.md).
-
-:::image type="content" source="media/quickstart/quickstart-create-support-plan.png" alt-text="Support plan tab showing the support tier set to Enterprise Tier (15% Consumption).":::
-
-Select **Next**.
-
-### 2f: Add tags (optional)
-
-Add name/value tag pairs to categorize the created resources for billing and cost management. Tags are optional.
-
-:::image type="content" source="media/quickstart/quickstart-create-tags.png" alt-text="Tags tab showing name and value fields for adding resource tags for billing and cost management.":::
-
-Select **Next**.
-
-### 2g: Review the terms and conditions, then create
-
-:::image type="content" source="media/quickstart/quickstart-review-submit-summary.png" alt-text="Review + submit tab showing a summary of the cloud configuration, Marketplace terms, and contact fields.":::
-
-The **Review + submit** tab includes a **Terms** section with the Marketplace terms of use. It may take a moment for validation to complete and the terms to load. Select **Terms of use** or **Privacy policy** in the **Price** section to read the full documents.
-
-After validation passes, select **Create**.
-
-The portal creates the required storage, managed identity, container registry, and service account. It also installs the Anyscale Kubernetes operator. The deployment operation takes about 5–8 minutes. Wait for it to finish before you proceed.
-
-### 2h: Assign access to your team
+### Assign access to your team
 
 After cloud creation completes, you and any teammates who need to create workspaces, jobs, or services must hold the **Anyscale Platform Contributor** role on the cloud resource. Subscription Owner or Contributor permissions on the underlying Azure resources don't carry over to the Anyscale resource provider. Workload operations require an explicit Anyscale platform role.
 
@@ -203,7 +161,7 @@ For the full list of Anyscale platform roles and the resource-provider actions t
 > [!NOTE]
 > Skipping this step can cause workspace, job, or service creation to fail with a `404` error. Azure Resource Manager returns 404 instead of 403 when the caller doesn't have read permission on the parent Anyscale cloud resource.
 
-## Step 3: Install the Envoy Gateway controller
+## Install the Envoy Gateway controller
 
 After installation, the Anyscale operator creates the TLS certificate secrets (`anyscale-<cloud-resource-id>-certificate` and `anyscale-svc-<cloud-resource-id>-certificate`) automatically. Find the Cloud Resource ID in the Anyscale console under your cloud's settings.
 
@@ -214,7 +172,9 @@ After installation, the Anyscale operator creates the TLS certificate secrets (`
 
 Throughout Step 3, replace underscores in the Cloud Resource ID with hyphens: `cldrsrc-<id>`.
 
-### 3a: Get AKS credentials
+### Get AKS credentials
+
+
 
 ```bash
 az aks get-credentials \
@@ -231,7 +191,7 @@ kubectl get pods -n anyscale-operator
 
 The operator pod should show a status of `Running`.
 
-### 3b: Install Envoy Gateway
+### Install Envoy Gateway
 
 ```bash
 helm install eg oci://docker.io/envoyproxy/gateway-helm \
@@ -243,7 +203,7 @@ kubectl wait --for=condition=available deployment/envoy-gateway \
   -n envoy-gateway-system --timeout=120s
 ```
 
-### 3c: Create and apply envoyproxy.yaml
+### Create and apply envoyproxy.yaml
 
 ```yaml
 apiVersion: gateway.envoyproxy.io/v1alpha1
@@ -265,7 +225,7 @@ spec:
 kubectl apply -f envoyproxy.yaml
 ```
 
-### 3d: Create and apply gatewayclass.yaml
+### Create and apply gatewayclass.yaml
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
@@ -285,7 +245,7 @@ spec:
 kubectl apply -f gatewayclass.yaml
 ```
 
-### 3e: Create and apply gateway.yaml
+### Create and apply gateway.yaml
 
 Replace `<cloud-resource-id>` with the value from the table at the start of Step 3. Take the `global.cloudDeploymentId` value and convert underscores to hyphens, for example `cldrsrc-<id>`.
 
@@ -340,7 +300,7 @@ After applying, retrieve the load balancer address:
 kubectl get gateway gateway -n anyscale-operator -o jsonpath='{.status.addresses[0].value}'
 ```
 
-### 3f: Configure the Anyscale operator with gateway settings
+### Configure the Anyscale operator with gateway settings
 
 Update the operator extension configuration. Replace `<cluster-name>`, `<resource-group>`, and `<gateway-lb-address>` with your values:
 
@@ -366,48 +326,50 @@ Anyscale on Azure installs the operator as an AKS extension, not a standalone He
 
 ## Verify the deployment
 
+After the controller is up and running, verify that your Anyscale cloud is healthy and can communicate with the operator.
+
+1. Set the Anyscale console URL and sign in:
+
+   ```bash
+   export ANYSCALE_HOST=https://console.azure.anyscale.com
+   anyscale login
+   ```
+
+   To avoid setting `ANYSCALE_HOST` each session, add the export to your shell configuration file (`.bashrc` or `.zshrc`) and start a new shell.
+
+1. Set your `kubectl` context to the correct cluster:
+
+   ```bash
+   kubectl config use-context <cluster-name>
+   ```
+
+1. Find your cloud ID from the Anyscale console or by running:
+
+   ```bash
+   anyscale cloud list
+   ```
+
+   The cloud ID has the format `cld_*`.
+
+1. Verify the cloud:
+
+   ```bash
+   anyscale cloud verify --id <cloud-id>
+   ```
+
+   The CLI prompts you to select your `kubectl` context and confirm the operator namespace. After you confirm, a healthy cloud returns output similar to:
+
+   ```plaintext
+   Overall Result: ALL 1 cloud resources verified successfully
+   ```
+
 > [!NOTE]
 > During Public Preview, the Anyscale CLI supports only read operations against Azure cloud resources. Manage clouds and cloud resources through the Anyscale Clouds Resource Provider in the Azure portal. For details, see [Public Preview limitations](index.md#public-preview-limitations).
 
-Verify the deployment from the Anyscale CLI. First, set the Anyscale console URL and sign in:
-
-```bash
-export ANYSCALE_HOST=https://console.azure.anyscale.com
-anyscale login
-```
-
-To avoid setting `ANYSCALE_HOST` each session, add the following to your shell configuration file, such as `.bashrc` or `.zshrc`, and start a new shell:
-
-```bash
-export ANYSCALE_HOST=https://console.azure.anyscale.com
-```
-
-Make sure your `kubectl` context is set to the correct cluster:
-
-```bash
-kubectl config use-context <cluster-name>
-```
-
-Find your cloud ID from the Anyscale console or by running:
-
-```bash
-anyscale cloud list
-```
-
-The cloud ID has the format `cld_*`. Then run:
-
-```bash
-anyscale cloud verify --id <cloud-id>
-```
-
-The CLI prompts you to select your `kubectl` context and confirm the operator namespace. After you confirm, a healthy cloud returns output similar to:
-
-```plaintext
-Overall Result: ALL 1 cloud resources verified successfully
-```
-
 
 ## Run your first workload
+
+Now that your cloud is set up and verified, you can run a Ray job on it. Create a simple Ray program and submit it as a job through the Anyscale CLI.
 
 1. Create a file named `main.py`:
 
@@ -464,7 +426,7 @@ An Anyscale cloud can include multiple AKS clusters through cloud resources. Eac
 
 To add another cloud resource to an existing Anyscale cloud, use the Azure portal:
 
-1. Navigate to the Anyscale clouds page (the same page as [Step 2a](#2a-navigate-to-the-anyscale-clouds-page)) and select your cloud from the list.
+1. Navigate to the Anyscale clouds page (the same page as [Navigate to the Anyscale clouds page](#navigate-to-the-anyscale-clouds-page)) and select your cloud from the list.
 1. Select **Resources** to expand the menu, then select **Cloud Resources**.
 1. Select **Create** and follow the setup wizard.
 

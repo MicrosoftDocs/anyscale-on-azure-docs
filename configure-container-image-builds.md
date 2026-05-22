@@ -1,6 +1,6 @@
 ---
 title: Configure container image builds for an existing cloud
-description: Configure Azure Container Registry and the required RBAC role assignments on an existing Anyscale cloud in Azure to enable container image builds.
+description: Configure Azure Container Registry and the required Role-Based Access Control (RBAC) role assignments on an existing Anyscale cloud in Azure to enable container image builds.
 author: kaysieyu
 ms.author: kaysieyu
 ms.date: 05/21/2026
@@ -10,7 +10,13 @@ ms.topic: how-to
 
 # Configure container image builds for an existing cloud
 
-By default, the Azure portal configures container image build support using an Azure Container Registry (ACR) when you create an Anyscale cloud. For setup instructions, see the [Quickstart](quickstart-azure-cli-gateway-envoy.md). This configuration is optional. You can skip it at creation time. If you created your cloud without ACR, you can enable it manually. To do so, you need an ACR, a cloud record updated with the ACR resource ID, three RBAC role assignments on the ACR, and the Anyscale operator on version 1.5.1 or greater. The following steps walk through each requirement.
+By default, the Azure portal configures container image build support using an Azure Container Registry (ACR) when you create an Anyscale cloud. For setup instructions, see the [Quickstart](quickstart-azure-cli-gateway-envoy.md). This configuration is optional. You can skip it at creation time. If you created your cloud without ACR, you can enable it manually. Manual enablement requires the following:
+- an ACR
+- a cloud record updated with the ACR resource ID
+- three Role-Based Access Control (RBAC) role assignments on the ACR
+- the Anyscale operator on version 1.5.1 or greater. 
+
+The following steps walk through each requirement.
 
 If you attempt an image build on a cloud without ACR configured, the operation fails with this error:
 
@@ -29,7 +35,7 @@ Error: Cloud does not have ACR configuration. Please configure ACR for the cloud
   - Azure Kubernetes Service (AKS) cluster name
   - Anyscale operator workload identity name (commonly `<cloud-name>-anyscale-operator-identity`)
 
-## Step 1: (Optional) Create an ACR
+## (Optional) Create an ACR
 
 Skip this step if you already have an ACR you want to use.
 
@@ -54,7 +60,7 @@ ACR_RESOURCE_ID=$(az acr show \
   --output tsv)
 ```
 
-## Step 2: Update the cloud with the ACR resource ID
+## Update the cloud with the ACR resource ID
 
 Call the Anyscale RP API to set `properties.acrResourceId` on your cloud resource. Use API version `2026-02-01-preview` or newer.
 
@@ -84,7 +90,7 @@ az rest \
   }'
 ```
 
-## Step 3: Grant RBAC on the ACR
+## Grant RBAC on the ACR
 
 These role assignments mirror exactly what the portal creates for new clouds. First retrieve the principal IDs of the two identities that need access.
 
@@ -103,7 +109,7 @@ KUBELET_PRINCIPAL_ID=$(az aks show \
 
 ### Find the Anyscale operator workload identity
 
-The operator uses a user-assigned managed identity federated to the `anyscale-operator/anyscale-operator` service account. Its name is the value passed as `workloadIdentityName` during the original ARM deployment, commonly `<cloud-name>-anyscale-operator-identity`.
+The operator uses a user-assigned managed identity federated to the `anyscale-operator/anyscale-operator` service account. Its name is the value passed as `workloadIdentityName` during the original Azure Resource Manager deployment, commonly `<cloud-name>-anyscale-operator-identity`.
 
 ```azurecli
 OPERATOR_PRINCIPAL_ID=$(az identity show \
@@ -116,7 +122,7 @@ OPERATOR_PRINCIPAL_ID=$(az identity show \
 
 ### Assign the roles
 
-Assign `AcrPull` to the AKS kubelet identity so worker nodes can pull images that the build manager has pushed.
+Assign `AcrPull` to the AKS kubelet identity so worker nodes can pull images that the build manager pushed.
 
 ```azurecli
 az role assignment create \
@@ -143,7 +149,7 @@ az role assignment create \
   --scope $ACR_RESOURCE_ID
 ```
 
-## Step 4: Upgrade and restart the Anyscale operator
+## Upgrade and restart the Anyscale operator
 
 The operator registers container image build support during startup. It must be on version **≥ 1.5.1** and must start after the cloud record has an `acrResourceId`.
 
@@ -166,7 +172,7 @@ az k8s-extension update \
 ```
 
 > [!NOTE]
-> If you onboarded during the Anyscale on Azure Private Preview and installed the operator through Helm rather than the AKS cluster extension, upgrade using `helm upgrade` instead:
+> If you onboarded previously to Anyscale on Azure and installed the operator through Helm rather than the AKS cluster extension, upgrade using `helm upgrade` instead:
 >
 > ```bash
 > helm upgrade anyscale-operator <chart> \

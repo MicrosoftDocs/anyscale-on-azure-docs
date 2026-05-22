@@ -27,6 +27,8 @@ For a detailed breakdown of these components, see [Architecture overview](archit
 
 ## Key platform capabilities
 
+A
+
 ### Kubernetes-native deployment
 
 All Anyscale cloud resources on Azure use Kubernetes. Anyscale deploys an operator into your AKS cluster that manages Ray cluster lifecycles on your behalf.
@@ -86,6 +88,6 @@ To deploy your first Anyscale cloud on Azure, see the [Quickstart](quickstart-az
 
 ## Resources and policies
 
-- [Anyscale on Azure terms and conditions](https://www.anyscale.com/anyscale-on-azure-terms) — review before deploying production workloads.
-- [Anyscale Privacy Policy](https://www.anyscale.com/privacy-policy) — how Anyscale handles your data.
-- [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure) — troubleshooting and operational guidance beyond the MS Learn content.
+- [Anyscale on Azure terms and conditions](https://www.anyscale.com/anyscale-on-azure-terms)-review before deploying production workloads.
+- [Anyscale Privacy Policy](https://www.anyscale.com/privacy-policy)-how Anyscale handles your data.
+- [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure)-troubleshooting and operational guidance beyond the MS Learn content.
