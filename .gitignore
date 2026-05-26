@@ -6,3 +6,16 @@ _themes*/
 _repo.*/
 
 .openpublishing.buildcore.ps1
+
+# DocFX build output (when built without --output flag)
+*.html
+favicon.ico
+logo.svg
+manifest.json
+search-stopwords.json
+styles/
+breadcrumb/
+media/.DS_Store
+.DS_Store
+TOC.json
+xrefmap.ymldocfx.json
