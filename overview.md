@@ -3,7 +3,7 @@ title: What is Anyscale on Azure?
 description: Anyscale on Azure is a managed Ray platform that runs on your Azure Kubernetes Service cluster, with Microsoft Entra ID SSO and built-in Azure service integrations.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 05/21/2026
+ms.date: 05/26/2026
 ms.service: azure-kubernetes-service
 ms.topic: overview
 ---
@@ -14,7 +14,7 @@ ms.topic: overview
 
 Anyscale on Azure is a managed platform for running distributed Python workloads on [Ray](https://docs.ray.io). It deploys directly onto your [Azure Kubernetes Service (AKS)](/azure/aks/) cluster and integrates with the Azure services your team already uses.
 
-Anyscale and Microsoft jointly develop the platform as an Azure Native Integration. You access it through the Azure portal and the Anyscale console at [console.azure.anyscale.com](https://console.azure.anyscale.com).
+Anyscale and Microsoft jointly develop the platform as an Azure Native Integration. You access it through the Azure portal and the Anyscale console at [console.azure.anyscale.com](https://console.azure.anyscale.com). To sign in to the Anyscale console, your Azure tenant and your user account need the correct permissions. The [deployment quickstart](quickstart-azure-cli-gateway-envoy.md) walks you through the required configuration.
 
 ## How it works
 
