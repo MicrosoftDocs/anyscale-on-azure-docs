@@ -31,11 +31,9 @@ Before you begin, make sure you have:
   - [Helm](https://helm.sh/docs/intro/install/)
   - [Anyscale CLI](https://docs.anyscale.com/reference/quickstart-cli): `pip install anyscale`
 
-Enroll in the Anyscale on Azure Public Preview before you start. Contact [Anyscale support](https://www.anyscale.com/support) to enroll, and provide your Azure subscription ID and preferred deployment regions.
-
 ## Configure your Azure subscription
 
-Step 0a requires permission to create service principals from external Microsoft Entra tenants. Review the prerequisite above before you proceed.
+Creating the service principal requires permission to create service principals from external Microsoft Entra tenants. Review the prerequisite above before you proceed.
 
 ### Create the Anyscale service principal
 

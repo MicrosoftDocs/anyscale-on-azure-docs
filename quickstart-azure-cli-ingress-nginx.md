@@ -183,7 +183,6 @@ Before you can run Ray workloads on your cluster, you need to install an Ingress
 Run the following command to configure your local `kubectl` to connect to the AKS cluster. Replace the placeholders with your resource group and cluster name:
 
 ```bash
-Get AKS credentials to connect kubectl to the cluster
 az aks get-credentials \
   --resource-group <azure-resource-group-name> \
   --name <your-aks-cluster-name> \
@@ -193,15 +192,12 @@ az aks get-credentials \
 Confirm the Anyscale operator is running:
 
 ```bash
-
 kubectl get pods -n anyscale-operator
 ```
 
 The operator pod should show a status of `Running`.
 
 ### Install Ingress-Nginx
-
-Install the Ingress-Nginx controller with Helm, using a custom values file to configure the controller for use with Anyscale. The configuration includes:
 
 Create a file named `sample-values_nginx.yaml`:
 
