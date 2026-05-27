@@ -42,7 +42,7 @@ Step 0a requires permission to create service principals from external Microsoft
 To establish trust with the Anyscale control plane, run the following command:
 
 ```azurecli
-az ad sp create --id aaaaaaaa-bbbb-cccc-1111-222222222222
+az ad sp create --id 086bc555-6989-4362-ba30-fded273e432b
 ```
 
 ### Register required resource providers

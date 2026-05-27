@@ -43,7 +43,7 @@ Before
 To establish trust with the Anyscale control plane, run the following command to create a service principal with the Anyscale on Azure application ID. This is required for the Anyscale operator to manage cloud resources on your behalf:
 
 ```azurecli
-az ad sp create --id aaaaaaaa-bbbb-cccc-1111-222222222222
+az ad sp create --id 086bc555-6989-4362-ba30-fded273e432b
 ```
 
 ### Register required resource providers

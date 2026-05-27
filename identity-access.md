@@ -50,7 +50,7 @@ Configure the mapping in the Anyscale console under **Cloud settings > IAM**. Fo
 
 ## Service principal for cloud registration
 
-You create a service principal in your tenant from the Anyscale Entra application (app ID `00001111-aaaa-2222-bbbb-3333cccc4444`). Anyscale uses this service principal to sign Microsoft Entra ID tokens that validate the connection between your AKS deployment and the Anyscale control plane. You only need to do this once per tenant.
+You create a service principal in your tenant from the Anyscale Entra application (app ID `086bc555-6989-4362-ba30-fded273e432b`). Anyscale uses this service principal to sign Microsoft Entra ID tokens that validate the connection between your AKS deployment and the Anyscale control plane. You only need to do this once per tenant.
 
 ## Azure role requirements for setup
 
