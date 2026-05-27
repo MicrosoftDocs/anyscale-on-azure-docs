@@ -6,9 +6,12 @@ ms.author: kaysieyu
 ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
+ms.custom: references_regions
 ---
 
 # Anyscale on Azure terms and privacy
+
+[!INCLUDE [anyscale-public-preview](Includes/anyscale-public-preview.md)]
 
 Before you deploy Anyscale on Azure, review the legal documents that govern your use of the service.
 
