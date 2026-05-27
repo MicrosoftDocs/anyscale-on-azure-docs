@@ -3,7 +3,7 @@ title: Anyscale on Azure terms and privacy
 description: Review the Anyscale on Azure Terms of Service and Privacy Policy that govern use of the Anyscale on Azure service.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 05/19/2026
+ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ---

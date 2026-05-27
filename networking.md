@@ -3,7 +3,7 @@ title: Anyscale on Azure networking
 description: Understand the network traffic flows, required egress domains, and Kubernetes ingress configuration for Anyscale on Azure deployments.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 04/29/2026
+ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ---

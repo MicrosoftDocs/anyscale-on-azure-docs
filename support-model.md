@@ -3,7 +3,7 @@ title: Anyscale on Azure support model
 description: Learn how to get support for Anyscale on Azure. Azure Support handles support requests and routes them to the appropriate team.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 04/29/2026
+ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ---
