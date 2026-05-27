@@ -6,6 +6,7 @@ ms.author: kaysieyu
 ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
+ms.custom: references_regions
 ---
 
 # Quickstart: Deploy Anyscale on Azure with Ingress-Nginx

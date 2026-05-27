@@ -6,6 +6,7 @@ ms.author: kaysieyu
 ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
+ms.custom: references_regions
 ---
 
 # Anyscale on Azure identity and access
