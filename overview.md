@@ -27,8 +27,6 @@ For a detailed breakdown of these components, see [Architecture overview](archit
 
 ## Key platform capabilities
 
-A
-
 ### Kubernetes-native deployment
 
 All Anyscale cloud resources on Azure use Kubernetes. Anyscale deploys an operator into your AKS cluster that manages Ray cluster lifecycles on your behalf.
@@ -64,13 +62,30 @@ Anyscale on Azure is in Public Preview. The following limitations apply:
 Anyscale on Azure doesn't support the following features documented in the [Anyscale documentation](https://docs.anyscale.com):
 
 - Machine pools and the Global Resource Scheduler (GRS)
+- Services
 - Lineage tracking
 - Job queues
-- The following Anyscale console organization settings: 
+- The following Anyscale console organization settings:
    - Billing
    - Budgets
    - Resource notifications
    - Cost analysis
+
+### Multi-resource cloud support for Anyscale on Azure
+
+Because of limited support for multi-resource cloud features, Anyscale recommends only using the default cloud resource for each Anyscale cloud during Public Preview.
+
+During Public Preview, Anyscale on Azure has the following support for multi-resource clouds:
+
+- You can use the Azure portal to add new Anyscale cloud resources to an existing Anyscale cloud.
+  - Anyscale clouds deploy with a single cloud resource by default.
+  - Each cloud resource correspond to an Anyscale operator installed on an AKS cluster.
+  - Cloud resources serve as an isolation boundary for a dedicated environment. Each cloud resource can be in a different VPC.
+- Anyscale on Azure only supports cloud resources backed by AKS clusters. You can't add cloud resources from other Kubernetes offerings or backed by virtual machines.
+- Anyscale on Azure only supports defining compute configs for a single cloud resource.
+  - By default, compute configs always use the default cloud resource for an Anyscale cloud.
+  - If you have multiple cloud resources defined for a cloud, you can use the `cloud_resource` field in your compute config to specify a cloud resource while configuring a job or workspace.
+  - Anyscale on Azure doesn't support autoscaling or scheduling across multiple cloud resources.
 
 ## Get started with Anyscale on Azure
 
