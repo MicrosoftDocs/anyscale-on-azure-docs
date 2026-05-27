@@ -36,8 +36,6 @@ Before you begin, make sure you have:
 
 ## Configure your Azure subscription
 
-Before
-
 ### Create the Anyscale service principal
 
 To establish trust with the Anyscale control plane, run the following command to create a service principal with the Anyscale on Azure application ID. This is required for the Anyscale operator to manage cloud resources on your behalf:
