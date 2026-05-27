@@ -3,7 +3,7 @@ title: Anyscale on Azure supported regions
 description: View the Azure regions where Anyscale on Azure is available and find links to Microsoft regional availability documentation for GPU and compute SKUs.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 04/29/2026
+ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: reference
 ---
