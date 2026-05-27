@@ -105,7 +105,7 @@ az aks create \
   --generate-ssh-keys
 ```
 
-After Azure creates the cluster, save the resource group name and cluster name. You need them in Steps 2 and 3.
+After Azure creates the cluster, save the resource group name and cluster name. You'll need them later.
 
 ### Node pools and workload placement
 

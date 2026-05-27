@@ -102,7 +102,7 @@ az aks create \
   --generate-ssh-keys
 ```
 
-After Azure creates the cluster, save the resource group name and cluster name. You need them in Steps 2 and 3.
+After Azure creates the cluster, save the resource group name and cluster name. You'll need them later.
 
 ### Node pools and workload placement
 
@@ -184,7 +184,7 @@ After installation, the Anyscale operator creates the TLS certificate secrets (`
 | **Cloud ID** | `cld_*` | `anyscale cloud list` or the Anyscale console | `anyscale cloud verify --id` |
 | **Cloud Resource ID** | `cldrsrc_*` | Anyscale console, cloud settings page | TLS cert secret names in `gateway.yaml` |
 
-Throughout Step 3, replace underscores in the Cloud Resource ID with hyphens: `cldrsrc-<id>`.
+Throughout this section, replace underscores in the Cloud Resource ID with hyphens: `cldrsrc-<id>`.
 
 ### Get AKS credentials
 
@@ -261,7 +261,7 @@ kubectl apply -f gatewayclass.yaml
 
 ### Create and apply gateway.yaml
 
-Replace `<cloud-resource-id>` with the value from the table at the start of Step 3. Take the `global.cloudDeploymentId` value and convert underscores to hyphens, for example `cldrsrc-<id>`.
+Replace `<cloud-resource-id>` with your Cloud Resource ID from the table above, converting underscores to hyphens, for example `cldrsrc-<id>`.
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
