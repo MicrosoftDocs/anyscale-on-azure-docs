@@ -1,0 +1,19 @@
+---
+title: Anyscale on Azure terms and privacy
+description: Review the Anyscale on Azure Terms of Service and Privacy Policy that govern use of the Anyscale on Azure service.
+author: kaysieyu
+ms.author: kaysieyu
+ms.date: 06/02/2026
+ms.service: azure-kubernetes-service
+ms.topic: concept-article
+ms.custom: references_regions
+---
+
+# Anyscale on Azure terms and privacy
+
+[!INCLUDE [anyscale-public-preview](Includes/anyscale-public-preview.md)]
+
+Before you deploy Anyscale on Azure, review the legal documents that govern your use of the service.
+
+- [Anyscale on Azure Terms of Service](https://www.anyscale.com/anyscale-on-azure-terms)
+- [Anyscale Privacy Policy](https://www.anyscale.com/privacy-policy)
