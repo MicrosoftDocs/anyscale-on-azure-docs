@@ -1,0 +1,24 @@
+- name: Overview
+  href: overview.md
+- name: Quickstart
+  items:
+  - name: With Envoy Gateway
+    href: quickstart-azure-cli-gateway-envoy.md
+  - name: With Ingress-Nginx
+    href: quickstart-azure-cli-ingress-nginx.md
+- name: Architecture overview
+  href: architecture.md
+- name: Networking
+  href: networking.md
+- name: Identity and access
+  href: identity-access.md
+- name: Configure container image builds
+  href: configure-container-image-builds.md
+- name: Support model
+  href: support-model.md
+- name: Supported regions
+  href: supported-regions.md
+- name: FAQ
+  href: faq.yml
+- name: Terms and privacy
+  href: legal.md

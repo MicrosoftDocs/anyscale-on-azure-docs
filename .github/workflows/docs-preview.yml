@@ -1,0 +1,55 @@
+name: Deploy docs preview
+
+on:
+  workflow_run:
+    workflows: ["Sync main into preview"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages-root
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview
+          fetch-depth: 0
+
+      - name: Install docfx
+        run: dotnet tool install -g docfx
+
+      - name: Build
+        run: docfx build --output _site
+
+      - name: Deploy to gh-pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git clone --depth=1 --branch gh-pages \
+            "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" \
+            /tmp/gh-pages
+
+          # Copy PR preview subdirs (anything in gh-pages not produced by this build)
+          for d in /tmp/gh-pages/*/; do
+            name=$(basename "$d")
+            [ -e "_site/$name" ] && continue
+            cp -r "$d" "_site/$name"
+          done
+
+          # Full replace: removes stale files, keeps everything now in _site
+          rsync -a --delete --exclude='.git' _site/ /tmp/gh-pages/
+
+          cd /tmp/gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "deploy: ${{ github.sha }}"
+          git push

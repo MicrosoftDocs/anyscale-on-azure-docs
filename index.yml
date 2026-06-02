@@ -1,0 +1,58 @@
+### YamlMime:Landing
+
+title: Anyscale on Azure documentation
+summary: Anyscale on Azure is a managed Ray platform that runs on your Azure Kubernetes Service cluster. It integrates with Microsoft Entra ID, Azure Blob Storage, and Azure Container Registry to run distributed Python workloads in your own Azure tenant.
+
+metadata:
+  title: Anyscale on Azure documentation
+  description: Anyscale on Azure is a managed Ray platform that runs on your Azure Kubernetes Service cluster, with Microsoft Entra ID SSO and built-in Azure service integrations.
+  ms.service: azure-kubernetes-service
+  ms.topic: landing-page
+  author: kaysieyu
+  ms.author: kaysieyu
+  ms.date: 05/20/2026
+
+landingContent:
+  - title: About Anyscale on Azure
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Anyscale on Azure?
+            url: overview.md
+          - text: Architecture overview
+            url: architecture.md
+      - linkListType: concept
+        links:
+          - text: Networking
+            url: networking.md
+          - text: Identity and access
+            url: identity-access.md
+
+  - title: Deploy Anyscale on Azure
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Deploy with Envoy Gateway
+            url: quickstart-azure-cli-gateway-envoy.md
+          - text: Deploy with Ingress-Nginx
+            url: quickstart-azure-cli-ingress-nginx.md
+
+  - title: Plan and manage
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Support model
+            url: support-model.md
+          - text: Supported regions
+            url: supported-regions.md
+
+  - title: Related resources
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: Anyscale documentation
+            url: https://docs.anyscale.com
+          - text: Azure Kubernetes Service documentation
+            url: /azure/aks/
+          - text: Ray documentation
+            url: https://docs.ray.io
