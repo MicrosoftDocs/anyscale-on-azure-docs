@@ -13,7 +13,7 @@ ms.custom: references_regions
 
 [!INCLUDE [anyscale-public-preview](Includes/anyscale-public-preview.md)]
 
-Anyscale on Azure is available in the following Azure regions during Public Preview. Contact [Anyscale support](https://www.anyscale.com/support) to request enrollment and specify your preferred region.
+Anyscale on Azure is available in the following Azure regions during Public Preview.
 
 ## Available regions and region names
 
