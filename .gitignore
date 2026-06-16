@@ -4,6 +4,7 @@ _site/
 .optemp/
 _themes*/
 _repo.*/
+.claude/worktrees
 
 .openpublishing.buildcore.ps1
 

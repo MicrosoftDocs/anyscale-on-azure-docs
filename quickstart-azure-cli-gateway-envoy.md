@@ -24,7 +24,6 @@ This quickstart walks you through deploying Anyscale on an existing Azure Kubern
 Before you begin, make sure you have:
 
 - An Azure subscription with the Owner or Administrator role.
-- Enroll in the Anyscale on Azure Public Preview before you start. Contact [Anyscale support](https://www.anyscale.com/support) to enroll, and provide your Azure subscription ID and preferred deployment regions.
 - Permission to create service principals from external Microsoft Entra tenants.
 - Install the following tools locally. Use the latest version of each.
   - [Azure CLI](/cli/azure/install-azure-cli)
