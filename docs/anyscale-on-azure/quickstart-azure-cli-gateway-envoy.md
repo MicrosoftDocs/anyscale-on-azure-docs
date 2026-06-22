@@ -3,7 +3,7 @@ title: "Quickstart: Deploy Anyscale on Azure with Envoy Gateway"
 description: Deploy your first Anyscale cloud on Azure Kubernetes Service using the Azure CLI and the Envoy Gateway controller. Configure your subscription, create an AKS cluster, and register through the Azure portal.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 06/02/2026
+ms.date: 06/22/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ms.custom: references_regions
