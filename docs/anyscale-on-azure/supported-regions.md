@@ -11,7 +11,7 @@ ms.custom: references_regions
 
 # Anyscale on Azure supported regions
 
-[!INCLUDE [anyscale-public-preview](Includes/anyscale-public-preview.md)]
+[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 Anyscale on Azure is available in the following Azure regions during Public Preview.
 
