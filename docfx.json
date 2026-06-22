@@ -2,6 +2,8 @@
   "build": {
     "content": [
       {
+        "src": "docs/anyscale-on-azure",
+        "dest": ".",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -18,13 +20,20 @@
           "ThirdPartyNotices.md",
           "SECURITY.md"
         ]
+      },
+      {
+        "files": [
+          "legal.md"
+        ]
       }
     ],
     "resource": [
       {
+        "src": "docs/anyscale-on-azure",
+        "dest": ".",
         "files": [
-          "**/*.png",
-          "**/*.jpg"
+          "media/**/*.png",
+          "media/**/*.jpg"
         ],
         "exclude": [
           "**/obj/**",
@@ -39,7 +48,7 @@
     "externalReference": [],
     "globalMetadata": {
       "feedback_system": "Standard",
-      "breadcrumb_path": "~/breadcrumb/anyscale-on-azure/toc.yml",
+      "breadcrumb_path": "~/docs/anyscale-on-azure/breadcrumb/toc.yml",
       "permissioned-type": "public",
       "uhfHeaderId": "azure"
     },

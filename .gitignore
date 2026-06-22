@@ -16,6 +16,8 @@ manifest.json
 search-stopwords.json
 styles/
 breadcrumb/
+!docs/anyscale-on-azure/breadcrumb/
+!docs/anyscale-on-azure/breadcrumb/toc.yml
 media/.DS_Store
 .DS_Store
 TOC.json

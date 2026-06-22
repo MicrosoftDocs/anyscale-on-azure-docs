@@ -11,7 +11,7 @@ ms.custom: references_regions
 
 # Anyscale on Azure support model
 
-[!INCLUDE [anyscale-public-preview](Includes/anyscale-public-preview.md)]
+[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 Azure Support handles all Anyscale on Azure support requests. Open a support request through the Azure portal whether your issue concerns Azure infrastructure, AKS configuration, or the Anyscale platform itself. The support team routes your case appropriately.
 
