@@ -1,0 +1,6 @@
+# Codeowners file
+
+# Each line is a file pattern followed by one or more owners.
+
+# Request review from @mbender-ms for Anyscale on Azure documentation changes.
+/docs/anyscale-on-azure/ @mbender-ms
