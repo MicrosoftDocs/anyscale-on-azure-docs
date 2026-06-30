@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: kaysieyu
   ms.author: kaysieyu
-  ms.date: 05/20/2026
+  ms.date: 06/24/2026
 
 landingContent:
   - title: About Anyscale on Azure
@@ -45,6 +45,10 @@ landingContent:
             url: support-model.md
           - text: Supported regions
             url: supported-regions.md
+      - linkListType: reference
+        links:
+          - text: Anyscale on Azure pricing
+            url: https://azure.microsoft.com/pricing/details/anyscale-on-azure/
 
   - title: Related resources
     linkLists:
