@@ -4,6 +4,7 @@ metadata:
   description: Frequently asked questions about Anyscale on Azure, including service availability, supported regions, identity, data residency, and support.
   author: kaysieyu
   ms.author: kaysieyu
+  ms.reviewer: mbender
   ms.date: 06/24/2026
   ms.service: azure-kubernetes-service
   ms.topic: faq
