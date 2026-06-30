@@ -3,6 +3,7 @@ title: Configure container image builds for an existing cloud
 description: Configure Azure Container Registry and the required Role-Based Access Control (RBAC) role assignments on an existing Anyscale cloud in Azure to enable container image builds.
 author: kaysieyu
 ms.author: kaysieyu
+ms.reviewer: mbender
 ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: how-to
