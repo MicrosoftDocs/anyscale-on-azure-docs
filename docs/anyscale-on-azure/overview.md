@@ -3,7 +3,9 @@ title: What is Anyscale on Azure?
 description: Anyscale on Azure is a managed Ray platform that runs on your Azure Kubernetes Service cluster, with Microsoft Entra ID SSO and built-in Azure service integrations.
 author: kaysieyu
 ms.author: kaysieyu
-ms.date: 06/22/2026
+ms.reviewer: mbender
+reviewer: mbender-ms
+ms.date: 06/24/2026
 ms.service: azure-kubernetes-service
 ms.topic: overview
 ms.custom: references_regions
@@ -104,6 +106,7 @@ To deploy your first Anyscale cloud on Azure, see the [Quickstart](quickstart-az
 
 ## Resources and policies
 
-- [Anyscale on Azure terms and conditions](https://www.anyscale.com/anyscale-on-azure-terms)-review before deploying production workloads.
-- [Anyscale Privacy Policy](https://www.anyscale.com/privacy-policy)-how Anyscale handles your data.
-- [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure)-troubleshooting and operational guidance beyond the MS Learn content.
+- [Anyscale on Azure terms and conditions](https://www.anyscale.com/anyscale-on-azure-terms): review before deploying production workloads.
+- [Anyscale on Azure pricing](https://azure.microsoft.com/pricing/details/anyscale-on-azure/): review before planning a deployment.
+- [Anyscale Privacy Policy](https://www.anyscale.com/privacy-policy): how Anyscale handles your data.
+- [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure): troubleshooting and operational guidance beyond the MS Learn content.

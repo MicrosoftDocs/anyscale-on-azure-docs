@@ -4,7 +4,8 @@ metadata:
   description: Frequently asked questions about Anyscale on Azure, including service availability, supported regions, identity, data residency, and support.
   author: kaysieyu
   ms.author: kaysieyu
-  ms.date: 05/22/2026
+  ms.reviewer: mbender
+  ms.date: 06/24/2026
   ms.service: azure-kubernetes-service
   ms.topic: faq
 title: Anyscale on Azure frequently asked questions
@@ -29,6 +30,10 @@ sections:
       - question: How is Anyscale on Azure different from the Anyscale SaaS offering?
         answer: |
           Anyscale on Azure splits responsibilities across two planes. Anyscale hosts the control plane in its own Azure tenant for scheduling, monitoring, and the Anyscale console. The data plane runs in your Azure subscription on your AKS cluster, so your workloads, container images, and data stay in your tenant. For a full breakdown, see the [Architecture overview](architecture.md).
+
+      - question: How much does Anyscale on Azure cost?
+        answer: |
+          For current pricing, see [Anyscale on Azure pricing](https://azure.microsoft.com/pricing/details/anyscale-on-azure/). You also pay for the Azure resources that Anyscale on Azure deploys in your subscription, such as the AKS cluster and Azure Container Registry. For the full list, see the [Architecture overview](architecture.md).
 
   - name: Deployment and regions
     questions:

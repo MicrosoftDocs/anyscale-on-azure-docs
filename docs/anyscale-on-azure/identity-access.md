@@ -3,6 +3,7 @@ title: Anyscale on Azure identity and access
 description: Learn how Anyscale on Azure uses Microsoft Entra ID for single sign-on and Azure RBAC built-in roles to control access to cloud resources.
 author: kaysieyu
 ms.author: kaysieyu
+ms.reviewer: mbender
 ms.date: 06/02/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
