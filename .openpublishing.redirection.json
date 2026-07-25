@@ -1,0 +1,14 @@
+{
+  "redirections": [
+    {
+      "source_path": "docs/anyscale-on-azure/quickstart-azure-cli-ingress-nginx.md",
+      "redirect_url": "/azure/anyscale-on-azure/quickstart-azure-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/anyscale-on-azure/quickstart-azure-cli-gateway-envoy.md",
+      "redirect_url": "/azure/anyscale-on-azure/quickstart-azure-cli",
+      "redirect_document_id": false
+    }
+  ]
+}

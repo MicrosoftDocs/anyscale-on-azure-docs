@@ -40,7 +40,7 @@ When you create an Anyscale cloud resource through the Azure portal, the portal 
 
 ### Anyscale operator managed identity
 
-This identity governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. The Azure portal configures the identity automatically when you [create the cloud resource](quickstart-azure-cli-gateway-envoy.md#create-an-anyscale-cloud-resource).
+This identity governs all actions the operator takes in your Azure subscription, including provisioning nodes for Ray clusters. The Azure portal configures the identity automatically when you [create the cloud resource](quickstart-azure-cli.md#create-an-anyscale-cloud-resource).
 
 ### Cluster managed identity
 
@@ -56,7 +56,7 @@ You create a service principal in your tenant from the Anyscale Entra applicatio
 
 ## Azure role requirements for setup
 
-The person running the [Quickstart](quickstart-azure-cli-gateway-envoy.md) must have the following permissions on the target subscription:
+The person running the [Quickstart](quickstart-azure-cli.md) must have the following permissions on the target subscription:
 
 | Permission | Required for |
 |-----------|--------------|
@@ -98,7 +98,7 @@ To construct a full action string, append the operation to the resource type wit
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Quickstart: Create an Anyscale cloud](quickstart-azure-cli-gateway-envoy.md)
+> [Quickstart: Create an Anyscale cloud](quickstart-azure-cli.md)
 
 ## Related content
 

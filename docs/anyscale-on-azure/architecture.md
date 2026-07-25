@@ -4,7 +4,7 @@ description: Learn how Anyscale on Azure is structured, including the control pl
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 06/02/2026
+ms.date: 07/23/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -84,4 +84,4 @@ For information on Microsoft Entra ID integration and Azure role assignments, se
 
 - [Networking](networking.md) for required egress domains and traffic flow details.
 - [Identity and access](identity-access.md) for Microsoft Entra ID SSO and Azure role assignments.
-- [Quickstart](quickstart-azure-cli-gateway-envoy.md) to deploy your first Anyscale cloud on Azure.
+- [Quickstart](quickstart-azure-cli.md) to deploy your first Anyscale cloud on Azure.

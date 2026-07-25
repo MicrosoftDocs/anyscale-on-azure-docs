@@ -1,24 +1,23 @@
 ---
-title: "Quickstart: Deploy Anyscale on Azure with Envoy Gateway"
+title: "Quickstart: Deploy Anyscale on Azure"
 description: Deploy your first Anyscale cloud on Azure Kubernetes Service using the Azure CLI and the Envoy Gateway controller. Configure your subscription, create an AKS cluster, and register through the Azure portal.
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 06/22/2026
+ms.date: 07/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ms.custom: references_regions
 ---
 
-# Quickstart: Deploy Anyscale on Azure with Envoy Gateway
+# Quickstart: Deploy Anyscale on Azure
 
 [!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
-> [!div class="op_single_selector" title1="Ingress controller"]
-> - [Envoy Gateway](quickstart-azure-cli-gateway-envoy.md)
-> - [Ingress-Nginx](quickstart-azure-cli-ingress-nginx.md)
-
 This quickstart walks you through deploying Anyscale on an existing Azure Kubernetes Service (AKS) cluster using the Envoy Gateway controller. By the end, you have a registered Anyscale cloud and are ready to run Ray workloads.
+
+> [!TIP]
+> To provision a complete environment by using Terraform instead of following the manual steps in this quickstart, use the [Anyscale on Azure Terraform module](https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure/anyscale-on-azure-new-aks). A single `terraform apply` creates the AKS cluster, installs Envoy Gateway, and registers the cluster as an Anyscale cloud.
 
 ## Prerequisites and required tools
 

@@ -115,4 +115,4 @@ Anyscale on Azure supports private clusters that don't have public node IPs. Con
 
 - [Architecture overview](architecture.md) for how the control plane and data plane interact.
 - [Identity and access](identity-access.md) for managed identity and Microsoft Entra ID configuration.
-- [Quickstart](quickstart-azure-cli-gateway-envoy.md) to deploy your first Anyscale cloud on Azure.
+- [Quickstart](quickstart-azure-cli.md) to deploy your first Anyscale cloud on Azure.
