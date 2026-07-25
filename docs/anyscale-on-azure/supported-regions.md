@@ -4,7 +4,7 @@ description: View the Azure regions where Anyscale on Azure is available and fin
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 06/02/2026
+ms.date: 07/23/2026
 ms.service: azure-kubernetes-service
 ms.topic: reference
 ms.custom: references_regions
@@ -14,7 +14,7 @@ ms.custom: references_regions
 
 [!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
-Anyscale on Azure is available in the following Azure regions during Public Preview.
+Anyscale on Azure is available in the following Azure regions during Public Preview. If you need a region that isn't listed, [contact support](support-model.md) to request it.
 
 ## Available regions and region names
 
@@ -26,6 +26,12 @@ Anyscale on Azure is available in the following Azure regions during Public Prev
 | West US 2 | `westus2` |
 | West US 3 | `westus3` |
 | South Central US | `southcentralus` |
+| West Europe | `westeurope` |
+| North Europe | `northeurope` |
+| Sweden Central | `swedencentral` |
+| UK South | `uksouth` |
+| Australia East | `australiaeast` |
+| Southeast Asia | `southeastasia` |
 
 ## GPU and compute availability
 
@@ -51,7 +57,16 @@ All Anyscale clouds are region-specific. A cloud created in `eastus` can only ru
 
 The region you select when you create the AKS cluster and Anyscale cloud resource sets the region for all resources in the cloud.
 
+## Data residency and the control plane
+
+Each Anyscale cloud runs in the Azure region you select, within your Azure subscription. Your application data and datasets stay in your data plane, in that region.
+
+The Anyscale control plane runs separately in the United States, not in the region you select. Operational metadata flows from your data plane to that control plane, regardless of the region you select. This metadata includes system logs, observability metrics, and cluster state. When log ingestion is enabled, it also includes structured application logs. For the full breakdown of what Anyscale stores in the control plane versus what stays in your data plane, see [Data classification](https://docs.anyscale.com/administration/security-and-compliance/data-classification).
+
+> [!IMPORTANT]
+> If your deployment is subject to data-residency or regulatory requirements, review what operational metadata leaves your data plane before you select a region. For how Anyscale handles your data, see the [Anyscale Privacy Policy](https://www.anyscale.com/privacy-policy) and [Terms and privacy](../../legal.md).
+
 ## Next steps
 
-- [Quickstart](quickstart-azure-cli-gateway-envoy.md) to deploy your first Anyscale cloud.
+- [Quickstart](quickstart-azure-cli.md) to deploy your first Anyscale cloud.
 - [Architecture overview](architecture.md) to understand the deployment model.

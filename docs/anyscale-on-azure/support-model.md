@@ -39,6 +39,6 @@ For self-serve guidance on common issues, see the [Anyscale on Azure knowledge b
 
 ## Next steps
 
-- [Quickstart](quickstart-azure-cli-gateway-envoy.md) to deploy your first Anyscale cloud.
+- [Quickstart](quickstart-azure-cli.md) to deploy your first Anyscale cloud.
 - [Architecture overview](architecture.md) to understand the deployment model.
 - [Supported regions](supported-regions.md).

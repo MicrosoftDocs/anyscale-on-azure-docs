@@ -11,7 +11,7 @@ ms.topic: how-to
 
 # Configure container image builds for an existing cloud
 
-By default, the Azure portal configures container image build support using an Azure Container Registry (ACR) when you create an Anyscale cloud. For setup instructions, see the [Quickstart](quickstart-azure-cli-gateway-envoy.md). This configuration is optional. You can skip it at creation time. If you created your cloud without ACR, you can enable it manually. Manual enablement requires the following:
+By default, the Azure portal configures container image build support by using an Azure Container Registry (ACR) when you create an Anyscale cloud. For setup instructions, see the [Quickstart](quickstart-azure-cli.md). This configuration is optional. You can skip it at creation time. If you created your cloud without ACR, you can enable it manually. Manual enablement requires the following items:
 - an ACR
 - a cloud record updated with the ACR resource ID
 - three Role-Based Access Control (RBAC) role assignments on the ACR
@@ -186,4 +186,4 @@ az k8s-extension update \
 
 - [Identity and access](identity-access.md) for managed identities and role assignments in Anyscale on Azure.
 - [Architecture overview](architecture.md) for how the data plane components fit together.
-- [Quickstart](quickstart-azure-cli-gateway-envoy.md) to deploy your first Anyscale cloud on Azure.
+- [Quickstart](quickstart-azure-cli.md) to deploy your first Anyscale cloud on Azure.
