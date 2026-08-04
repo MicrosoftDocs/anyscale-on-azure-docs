@@ -4,7 +4,7 @@ description: Learn how to get support for Anyscale on Azure. Azure Support handl
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 06/02/2026
+ms.date: 08/03/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -23,7 +23,16 @@ Azure Support handles all Anyscale on Azure support requests. Open a support req
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Select **Portal menu** in the upper-left corner, then select **Help + support** at the bottom of the navigation panel.
-1. Select **Create a support request** and follow the prompts.
+1. Select **Create a support request**.
+1. For **Which service are you having an issue with?**, select **None of the above**.
+1. In the **Select a service** dropdown, search for `Anyscale` and select **Anyscale on Azure** under **Compute**.
+
+   :::image type="content" source="media/support/support-select-service.png" alt-text="Support + troubleshooting pane with None of the above selected and Anyscale on Azure listed under Compute in the Select a service dropdown.":::
+
+1. Follow the remaining prompts to describe your issue and submit the request.
+
+> [!IMPORTANT]
+> Always select **Anyscale on Azure** in the **Select a service** dropdown when you open a support request in the Azure portal. Selecting any other service routes your case to the wrong team and delays resolution.
 
 For guidance on opening Azure support requests, see [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
