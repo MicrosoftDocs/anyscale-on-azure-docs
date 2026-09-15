@@ -4,7 +4,7 @@ description: Learn how to get support for Anyscale on Azure. Azure Support handl
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 08/03/2026
+ms.date: 09/15/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -14,10 +14,18 @@ ms.custom: references_regions
 
 [!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
-Azure Support handles all Anyscale on Azure support requests. Open a support request through the Azure portal whether your issue concerns Azure infrastructure, AKS configuration, or the Anyscale platform itself. The support team routes your case appropriately.
+Microsoft and Anyscale provide a co-support model for Anyscale on Azure. You use the standard Azure support process, and Microsoft coordinates with Anyscale when an issue requires Anyscale product expertise.
 
 > [!NOTE]
 > Customers with direct support channels set up with Anyscale Support can contact Anyscale Support directly for Anyscale platform issues. At launch, Anyscale on Azure provides [Enterprise tier](https://www.anyscale.com/support) service level agreements (SLAs).
+
+## How support works
+
+A support request moves through the following stages:
+
+1. **Open an Azure support request.** If you experience an issue with Anyscale on Azure, open a support request with Microsoft Customer Service and Support through the Azure portal, as you would for any other Azure resource.
+1. **Microsoft performs initial triage.** Microsoft reviews the request, gathers the information needed to diagnose the issue, and determines the appropriate support path.
+1. **Anyscale joins when needed.** If the issue requires Anyscale product expertise, Microsoft might engage or route the case to Anyscale Support. Microsoft and Anyscale coordinate on the case through resolution, and either support team might contact you for diagnostic information or next steps.
 
 ## How to get support
 
