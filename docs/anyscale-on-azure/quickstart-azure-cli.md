@@ -4,7 +4,7 @@ description: Deploy your first Anyscale cloud on Azure Kubernetes Service using 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 07/21/2026
+ms.date: 09/15/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ms.custom: references_regions
@@ -17,7 +17,10 @@ ms.custom: references_regions
 This quickstart walks you through deploying Anyscale on an existing Azure Kubernetes Service (AKS) cluster using the Envoy Gateway controller. By the end, you have a registered Anyscale cloud and are ready to run Ray workloads.
 
 > [!TIP]
-> To provision a complete environment by using Terraform instead of following the manual steps in this quickstart, use the [Anyscale on Azure Terraform module](https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure/anyscale-on-azure-new-aks). A single `terraform apply` creates the AKS cluster, installs Envoy Gateway, and registers the cluster as an Anyscale cloud.
+> To provision a complete environment with Terraform instead of following the manual steps in this quickstart, use a validated Anyscale on Azure Terraform example. A single `terraform apply` creates the AKS cluster, installs the gateway, and registers the cluster as an Anyscale cloud:
+>
+> - [Anyscale on AKS reference deployment](https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure/anyscale-on-azure): The recommended flow for most AKS users. It stands up a new AKS cluster by using only generally available Azure features and keeps preview features as opt-in flags.
+> - [Anyscale on AKS Automatic](https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure/anyscale-on-azure-aks-automatic): The same deployment re-cut onto AKS Automatic, which manages node pools, ingress, and GPU drivers for you.
 
 ## Prerequisites and required tools
 

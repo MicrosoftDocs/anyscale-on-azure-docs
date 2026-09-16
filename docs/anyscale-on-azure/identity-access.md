@@ -71,7 +71,7 @@ Anyscale on Azure provides three built-in Azure roles managed in the Azure porta
 
 | Role | Description |
 |------|-------------|
-| *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action for administrative operations such as managing resource quotas and usage budgets. Currently only effective at subscription scope. |
+| *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action for administrative operations such as editing the Anyscale scheduler config, managing resource quotas, and setting usage budgets. Because this permission is a data action, roles with an empty `dataActions` list, including the Azure built-in Owner and Contributor roles, don't grant it. Currently only effective at subscription scope. |
 | *Anyscale Platform Contributor* | Read and write access to Anyscale clouds, projects, workspaces, jobs, services, compute configs, and images. Doesn't include administrative data actions. |
 | *Anyscale Platform Reader* | Read-only access to all Anyscale resources. Required for console sign-in. |
 
