@@ -61,11 +61,11 @@ Anyscale on Azure is in Public Preview. The following limitations apply:
 - Cloud creation and deletion require the Azure portal. The following CLI commands aren't supported: `anyscale cloud setup`, `anyscale cloud register`, `anyscale cloud delete`, `anyscale cloud resource create`, and `anyscale cloud resource delete`.
 - The following workload CLI commands aren't supported: `anyscale workspace_v2 ssh`, `anyscale workspace_v2 pull`, and `anyscale image archive`.
 - Anyscale on Azure is available in a limited set of Azure regions. See [Supported regions](supported-regions.md).
+- The Anyscale scheduler applies workload priority to jobs and workspaces, not to services.
 
 Anyscale on Azure doesn't support the following features documented in the [Anyscale documentation](https://docs.anyscale.com):
 
 - Machine pools and the Global Resource Scheduler (GRS)
-- Services
 - Lineage tracking
 - Job queues
 - The following Anyscale console organization settings:
