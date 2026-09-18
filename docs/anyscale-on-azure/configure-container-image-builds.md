@@ -4,12 +4,14 @@ description: Configure Azure Container Registry and the required Role-Based Acce
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 06/02/2026
+ms.date: 09/18/2026
 ms.service: azure-kubernetes-service
 ms.topic: how-to
 ---
 
 # Configure container image builds for an existing cloud
+
+[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 By default, the Azure portal configures container image build support by using an Azure Container Registry (ACR) when you create an Anyscale cloud. For setup instructions, see the [Quickstart](quickstart-azure-cli.md). This configuration is optional. You can skip it at creation time. If you created your cloud without ACR, you can enable it manually. Manual enablement requires the following items:
 - an ACR

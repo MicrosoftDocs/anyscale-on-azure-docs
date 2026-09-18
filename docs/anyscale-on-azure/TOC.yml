@@ -6,10 +6,16 @@
   href: architecture.md
 - name: Networking
   href: networking.md
+- name: Private Link
+  href: configure-private-link.md
 - name: Identity and access
   href: identity-access.md
 - name: Configure container image builds
   href: configure-container-image-builds.md
+- name: Cloud resources
+  href: cloud-resources-overview.md
+- name: Add a cloud resource
+  href: add-cloud-resource.md
 - name: Support model
   href: support-model.md
 - name: Supported regions

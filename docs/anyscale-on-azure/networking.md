@@ -4,7 +4,7 @@ description: Understand the network traffic flows, required egress domains, and 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 06/02/2026
+ms.date: 09/18/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -110,6 +110,8 @@ Anyscale manages TLS certificates automatically and rotates them at least every 
 For clusters without public internet access, route all egress traffic through an Azure NAT Gateway or equivalent. Make sure your network security group (NSG) rules and any Azure Firewall policies allow outbound traffic to all domains listed in [Required egress domains](#required-egress-domains).
 
 Anyscale on Azure supports private clusters that don't have public node IPs. Configure the ingress controller's load balancer as internal, and use a private DNS zone with VPN or Azure ExpressRoute for client access.
+
+To route the data plane's outbound connections to the Anyscale control plane over a private endpoint instead of the public internet, see [Configure Private Link for Anyscale on Azure](configure-private-link.md).
 
 ## Next steps
 

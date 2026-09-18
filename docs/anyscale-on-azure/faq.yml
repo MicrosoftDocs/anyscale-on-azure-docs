@@ -5,16 +5,14 @@ metadata:
   author: kaysieyu
   ms.author: kaysieyu
   ms.reviewer: mbender
-  ms.date: 06/24/2026
+  ms.date: 09/18/2026
   ms.service: azure-kubernetes-service
   ms.topic: faq
 title: Anyscale on Azure frequently asked questions
 summary: |
   This article answers common questions about Anyscale on Azure during public preview. For product-wide questions and self-serve troubleshooting, see the [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure).
 
-  > [!IMPORTANT]
-  > Anyscale on Azure is currently in public preview. This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
-  > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+  [!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 sections:
   - name: About the service
