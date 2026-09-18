@@ -4,7 +4,7 @@ description: Learn how Anyscale on Azure uses Microsoft Entra ID for single sign
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 06/02/2026
+ms.date: 09/18/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -72,7 +72,7 @@ Anyscale on Azure provides three built-in Azure roles managed in the Azure porta
 | Role | Description |
 |------|-------------|
 | *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action for administrative operations such as editing the Anyscale scheduler config, managing resource quotas, and setting usage budgets. Because this permission is a data action, roles with an empty `dataActions` list, including the Azure built-in Owner and Contributor roles, don't grant it. Currently only effective at subscription scope. |
-| *Anyscale Platform Contributor* | Read and write access to Anyscale clouds, projects, workspaces, jobs, services, compute configs, and images. Doesn't include administrative data actions. |
+| *Anyscale Platform Contributor* | Read and write access to Anyscale clouds, projects, workspaces, jobs, services, compute configs, and container images. Doesn't include administrative data actions. |
 | *Anyscale Platform Reader* | Read-only access to all Anyscale resources. Required for console sign-in. |
 
 To assign a role, navigate to the Anyscale cloud resource in the Azure portal, select **Access control (IAM)** from the left menu, and select **Add** > **Add role assignment**. For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
@@ -86,14 +86,47 @@ You can create custom Azure RBAC roles to grant a subset of Anyscale permissions
 | `Anyscale.Platform/clouds` | read, write, delete | Clouds |
 | `Anyscale.Platform/clouds/cloudResources` | read, write, delete | Cloud resources |
 | `Anyscale.Platform/clouds/computeConfigs` | read, write, delete | Compute configs |
-| `Anyscale.Platform/clouds/images` | read, write, delete | Images |
+| `Anyscale.Platform/clouds/containerImages` | read, write, delete | Container images |
 | `Anyscale.Platform/clouds/projects` | read, write, delete | Projects |
 | `Anyscale.Platform/clouds/projects/jobs` | read, write, delete | Jobs |
 | `Anyscale.Platform/clouds/projects/services` | read, write, delete | Services |
 | `Anyscale.Platform/clouds/projects/workspaces` | read, write, delete | Workspaces |
+| `Anyscale.Platform/agreements` | read, write, delete, accept/action | Agreements |
 | `Anyscale.Platform/admin` | action | Admin operations |
 
 To construct a full action string, append the operation to the resource type with a slash, for example, `Anyscale.Platform/clouds/read`. For instructions on creating a custom role, see [Create or update Azure custom roles](/azure/role-based-access-control/custom-roles) in the Azure documentation.
+
+## Tracked and proxied resources
+
+The `Anyscale.Platform` resource provider exposes two kinds of resources. Azure Resource Manager (ARM) inventories *tracked* resources directly. It forwards *proxied* resources to the Anyscale control plane. The kind determines where a resource appears in Azure tooling and which lifecycle operations ARM supports.
+
+| Attribute | Tracked resources | Proxied resources |
+|---|---|---|
+| Resource types | `clouds`, `clouds/cloudResources` | `projects`, `computeConfigs`, `containerImages`, `workspaces`, `jobs`, `services`, and the subscription-scoped agreement |
+| Region and tags | Yes | No |
+| In ARM inventory | Yes | No |
+| How to access | Standard ARM inventory and navigation | Navigate from the parent cloud, or GET the resource ID directly |
+
+Tracked resources appear in standard ARM inventory, including the resource group blade in the Azure portal, `az resource list`, and Azure Resource Graph queries. Proxied resources don't. Both kinds are browsable in the Azure portal. The difference is inventory and metadata, not visibility. To reach a proxied resource in the portal, start from the Anyscale cloud and drill down, for example **Cloud** > **Projects** > **Workspaces** for a workspace, or **Cloud** > **Compute configs** for a compute config.
+
+### Resource lifecycle through ARM
+
+ARM supports create, read, delete, and list operations across Anyscale resources. Update support is limited. An update triggers a rollout on a service, but other resource types ignore updates sent through ARM. ARM doesn't expose actions to run workloads. You can create and delete an Anyscale workload through ARM, but you use the Anyscale console or CLI to run it.
+
+Use the Anyscale console or CLI for runtime operations, including:
+
+- Starting and terminating workspaces, jobs, and services.
+- Retrying a job.
+- Rolling back a service or promoting a canary.
+- Archiving a compute config.
+
+Azure RBAC defines which operations a role can be granted, as listed in [Custom role permissions reference](#custom-role-permissions-reference). Deletes behave differently depending on the resource.
+
+A delete on a workspace, job, or service returns HTTP 409 unless the workload is already in a terminal state. Terminate the workload first, then delete it.
+
+A delete on a compute config or a container image always returns HTTP 409. Azure RBAC lists a delete permission for both resource types and ARM accepts the request, but the operation never succeeds. Anyscale retains these resources because workloads reference the compute config and image they ran with. Reuse a stable compute config or image name instead of deleting and recreating.
+
+<!-- DJS 18 Sep 2026: Delete behavior confirmed by Dwai (RP owner) on PR #60. Workspace/job/service: HTTP 409 unless terminal (verified live on qs-sim-prod-aks-0-rg, DOC-1602, 2026-09-16). Compute config/container image: delete always returns 409. The GA spec advertises delete on both (ComputeConfigs and ContainerImages interfaces, no @removed decorator) but the RP refuses it unconditionally. That mismatch is an RP bug, filed as FDN-5276. Both facts are runtime behavior, not expressible in the swagger. -->
 
 ## Next steps
 
