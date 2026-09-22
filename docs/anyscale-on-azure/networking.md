@@ -4,7 +4,7 @@ description: Understand the network traffic flows, required egress domains, and 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/18/2026
+ms.date: 09/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -30,6 +30,9 @@ Four primary traffic paths connect the Anyscale components:
 | 2 | Client to AKS cluster | Dashboard access, job submission, and service requests through Azure Load Balancer. |
 | 3 | AKS cluster to control plane | Operator polling for scheduling instructions, telemetry, and health reporting. |
 | 4 | AKS cluster to and from Azure resources | Application data access in Azure Blob Storage and Azure Container Registry. |
+
+> [!NOTE]
+> `anyscale job submit` uploads your local `working_dir` to the cloud's Azure Blob storage account from the machine where you run it. This client-side upload is separate from flow 4, which covers cluster access to storage. When the storage account restricts access to a virtual network, run the command from a machine with connectivity to that network.
 
 ## Operator and Ray cluster communication
 
@@ -61,6 +64,17 @@ The ingress controller terminates TLS and forwards traffic to port 80 of the hea
 
 > [!IMPORTANT]
 > Anyscale on Azure requires a Layer 4 (TCP) load balancer. Azure Load Balancer (standard SKU) satisfies this requirement. Anyscale on Azure doesn't support Application Gateway as the primary ingress load balancer.
+
+## Ingress or gateway controller requirement
+
+Anyscale on Azure requires an ingress controller or a Gateway API controller in your AKS cluster. Anyscale uses the controller to reach the Ray head node for the dashboard, terminal, Jupyter, VS Code, and Anyscale Services requests. The Anyscale operator creates the routing resources that point at the controller, but it doesn't install a controller. You install and maintain the controller yourself.
+
+Install one of the following controllers before you create a workspace, job, or service:
+
+- An ingress controller, such as ingress-nginx, that the operator configures through an Ingress resource. The operator uses ingress routing by default.
+- A Gateway API controller, such as Envoy Gateway, that the operator configures through a Gateway resource. To use gateway routing, set `networking.gateway.enabled=true` on the operator. The [Quickstart](quickstart-azure-cli.md) uses Envoy Gateway.
+
+Without a controller, the routing resources the operator creates never receive a load balancer address, and client traffic can't reach the head node. Workspace, job, and service creation then fails with a connectivity timeout instead of an error that names the missing controller. To catch a missing controller before you deploy a workload, run `anyscale cloud verify`. The command reports the controller as not found when your cluster doesn't have one.
 
 ## Container image flow
 
@@ -109,7 +123,7 @@ Anyscale manages TLS certificates automatically and rotates them at least every 
 
 For clusters without public internet access, route all egress traffic through an Azure NAT Gateway or equivalent. Make sure your network security group (NSG) rules and any Azure Firewall policies allow outbound traffic to all domains listed in [Required egress domains](#required-egress-domains).
 
-Anyscale on Azure supports private clusters that don't have public node IPs. Configure the ingress controller's load balancer as internal, and use a private DNS zone with VPN or Azure ExpressRoute for client access.
+Anyscale on Azure supports private clusters that don't have public node IPs. These clusters still require an ingress or gateway controller. A missing controller is a common cause of failed workspace creation on locked-down AKS. See [Ingress or gateway controller requirement](#ingress-or-gateway-controller-requirement). Configure the controller's load balancer as internal, and use a private DNS zone with VPN or Azure ExpressRoute for client access.
 
 To route the data plane's outbound connections to the Anyscale control plane over a private endpoint instead of the public internet, see [Configure Private Link for Anyscale on Azure](configure-private-link.md).
 
