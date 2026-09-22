@@ -4,7 +4,7 @@ description: Deploy your first Anyscale cloud on Azure Kubernetes Service using 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/15/2026
+ms.date: 09/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ms.custom: references_regions
@@ -180,7 +180,15 @@ For the full list of Anyscale platform roles and the resource-provider actions t
 
 ## Install the Envoy Gateway controller
 
-After installation, the Anyscale operator creates the TLS certificate secrets (`anyscale-<cloud-resource-id>-certificate` and `anyscale-svc-<cloud-resource-id>-certificate`) automatically. Find the Cloud Resource ID in the Anyscale console under your cloud's settings.
+> [!IMPORTANT]
+> Anyscale on Azure requires an ingress or gateway controller in your AKS cluster. Anyscale uses the controller to reach the Ray head node for the dashboard, terminal, Jupyter, VS Code, and Anyscale Services requests. This quickstart installs the Envoy Gateway controller. Without a controller, workspace creation fails with a connectivity timeout. For details, see [Ingress or gateway controller requirement](networking.md#ingress-or-gateway-controller-requirement).
+
+The Gateway configuration references two TLS certificate secrets that Anyscale provisions automatically, but at different times:
+
+- `anyscale-<cloud-resource-id>-certificate` covers head node access and exists after operator installation.
+- `anyscale-svc-<cloud-resource-id>-certificate` covers service access and doesn't exist until your first Anyscale service runs.
+
+Both secret names include your Cloud Resource ID. The following table shows where to find the identifiers this section uses:
 
 | Identifier | Format | Where to find it | Used for |
 |---|---|---|---|
@@ -311,6 +319,9 @@ spec:
 kubectl apply -f gateway.yaml
 ```
 
+> [!NOTE]
+> Anyscale doesn't provision the `anyscale-svc-<cloud-resource-id>-certificate` secret until your first service runs. It might not exist when you apply this configuration. The `kubectl apply` command succeeds regardless. Kubernetes processes the `https-session` listener and picks up the secret automatically once Anyscale provisions it.
+
 After applying, retrieve the load balancer address:
 
 ```bash
@@ -423,6 +434,9 @@ Now that your cloud is set up and verified, you can run a Ray job on it. Create 
    ```
 
    The command returns a URL to track job status and view output in the Anyscale console.
+
+> [!NOTE]
+> `anyscale job submit` uploads your local `working_dir` to the cloud's Azure Blob storage account from the machine where you run the command. When that storage account restricts access to a virtual network, the upload fails unless the machine has connectivity to that network. Run the command from inside the virtual network or from a peered network.
 
 ## Clean up resources
 
