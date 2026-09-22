@@ -4,7 +4,7 @@ description: Learn how Anyscale on Azure is structured, including the control pl
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 07/23/2026
+ms.date: 09/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -47,9 +47,11 @@ The Anyscale operator is a Kubernetes controller. The Azure portal installs it i
 1. Polls the control plane endpoint (`<cloud-id>.anyscale-cloud.dev`) for pending operations.
 1. Creates and manages Kubernetes resources, such as pods, services, and ingress rules, for Ray clusters.
 1. Reports cluster health and telemetry to the control plane.
-1. Manages the ingress or gateway controller for head node access.
+1. Creates the ingress or gateway routing resources that connect clients to the Ray head node.
 
 This polling model means all network connections originate from your cluster outbound to the Anyscale control plane. You don't need inbound firewall rules. For details on required egress domains and ports, see [Networking](networking.md).
+
+The operator creates the ingress or gateway routing resources, but you provide the ingress or gateway controller that serves them. Without a controller, client traffic can't reach the head node, and workspace creation fails. For the controller requirement, see [Ingress or gateway controller requirement](networking.md#ingress-or-gateway-controller-requirement).
 
 ## Managed identities and permissions
 

@@ -5,7 +5,7 @@ author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
 reviewer: mbender-ms
-ms.date: 06/24/2026
+ms.date: 09/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: overview
 ms.custom: references_regions
@@ -74,21 +74,23 @@ Anyscale on Azure doesn't support the following features documented in the [Anys
    - Resource notifications
    - Cost analysis
 
-### Multi-resource cloud support for Anyscale on Azure
+### Multi-resource cloud support
 
-Because of limited support for multi-resource cloud features, Anyscale recommends only using the default cloud resource for each Anyscale cloud during Public Preview.
+An Anyscale cloud on Azure can hold more than one *cloud resource*, where each cloud resource is a Kubernetes cluster attached to the cloud. Use additional cloud resources to isolate environments, add capacity in another region, or attach clusters from other Kubernetes offerings. Add them in the Azure portal or by using an Azure Resource Manager (ARM) template.
 
-During Public Preview, Anyscale on Azure has the following support for multi-resource clouds:
+Support for cloud resources other than the primary cloud resource depends on the workload type:
 
-- You can use the Azure portal to add new Anyscale cloud resources to an existing Anyscale cloud.
-  - Anyscale clouds deploy with a single cloud resource by default.
-  - Each cloud resource correspond to an Anyscale operator installed on an AKS cluster.
-  - Cloud resources serve as an isolation boundary for a dedicated environment. Each cloud resource can be in a different VPC.
-- Anyscale on Azure only supports cloud resources backed by AKS clusters. You can't add cloud resources from other Kubernetes offerings or backed by virtual machines.
-- Anyscale on Azure only supports defining compute configs for a single cloud resource.
-  - By default, compute configs always use the default cloud resource for an Anyscale cloud.
-  - If you have multiple cloud resources defined for a cloud, you can use the `cloud_resource` field in your compute config to specify a cloud resource while configuring a job or workspace.
-  - Anyscale on Azure doesn't support autoscaling or scheduling across multiple cloud resources.
+- Jobs run on any cloud resource and can fall back across several when one can't start a cluster in time.
+- Workspaces run on any single cloud resource. Anyscale doesn't support fallback across resources.
+- Services run on the primary cloud resource only.
+
+The following constraints apply:
+
+- Anyscale creates each cloud with one primary cloud resource named `default`. It's AKS-backed and must use the `Azure` provider.
+- Each cluster runs entirely within one cloud resource. Anyscale doesn't autoscale or schedule a single workload across cloud resources.
+- The Anyscale CLI and console are read-only for cloud resources. Create and delete cloud resources through Azure.
+
+To learn how cloud resources work on Azure and how to add one, see [What is a cloud resource on Azure?](cloud-resources-overview.md) and [Add a cloud resource](add-cloud-resource.md).
 
 ## Get started with Anyscale on Azure
 
