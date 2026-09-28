@@ -5,7 +5,7 @@ metadata:
   author: kaysieyu
   ms.author: kaysieyu
   ms.reviewer: mbender
-  ms.date: 09/18/2026
+  ms.date: 09/22/2026
   ms.service: azure-kubernetes-service
   ms.topic: faq
 title: Anyscale on Azure frequently asked questions
@@ -42,6 +42,17 @@ sections:
       - question: What Azure resources are deployed by Anyscale on Azure in my subscription?
         answer: |
           Deployment creates and uses resources in your Azure subscription, including an AKS cluster, a storage account, an Azure Container Registry, a user-assigned managed identity with federated credentials, and an Azure Load Balancer. For the full picture, see the [Architecture overview](architecture.md) and [Identity and access](identity-access.md).
+
+      - question: Why does creating an Anyscale cloud fail with a Private Marketplace error?
+        answer: |
+          If your Azure tenant uses Azure Private Marketplace, creating an Anyscale cloud through the Azure portal can fail and return the following error:
+
+          > The plan "Anyscale on Azure" is not approved in the Private Marketplace.
+
+          Azure Private Marketplace blocks the Anyscale offer until a Marketplace administrator approves it for your tenant. To deploy without going through the blocked Marketplace offer, use one of the Terraform examples. Each one stands up the AKS cluster and registers the Anyscale cloud directly:
+
+          - [Anyscale on AKS reference deployment](https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure/anyscale-on-azure): The recommended flow for most AKS users.
+          - [Anyscale on AKS Automatic](https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure/anyscale-on-azure-aks-automatic): The same deployment on AKS Automatic, which manages node pools, ingress, and GPU drivers for you.
 
   - name: Identity, security, and data
     questions:
