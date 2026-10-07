@@ -4,15 +4,13 @@ description: Deploy your first Anyscale cloud on Azure Kubernetes Service using 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/21/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ms.custom: references_regions
 ---
 
 # Quickstart: Deploy Anyscale on Azure
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 This quickstart walks you through deploying Anyscale on an existing Azure Kubernetes Service (AKS) cluster using the Envoy Gateway controller. By the end, you have a registered Anyscale cloud and are ready to run Ray workloads.
 
@@ -60,9 +58,21 @@ Register any of the following that aren't listed:
 ```azurecli
 # Register required providers
 for provider in Microsoft.Storage Microsoft.ManagedIdentity Microsoft.Authorization \
-  Microsoft.Resources Microsoft.Network Microsoft.ContainerService; do
+  Microsoft.Resources Microsoft.Network Microsoft.ContainerService \
+  Microsoft.ContainerRegistry Microsoft.KubernetesConfiguration; do
   az provider register --namespace "$provider"
 done
+```
+
+The portal flow creates an Azure Container Registry during cloud creation and installs the Anyscale operator as an AKS cluster extension. On a subscription that never used a container registry or cluster extensions, cloud creation fails if `Microsoft.ContainerRegistry` and `Microsoft.KubernetesConfiguration` aren't registered. A missing `Microsoft.KubernetesConfiguration` registration surfaces as an operator-extension `ResourceNotFound` error.
+
+### Register the Anyscale resource provider
+
+Register the `Anyscale.Platform` resource provider:
+
+```azurecli
+# Register the Anyscale resource provider
+az provider register --namespace Anyscale.Platform
 ```
 
 ## Create Azure resources
@@ -120,6 +130,57 @@ For GPU workloads, you need a node pool backed by a GPU-capable VM SKU. If your 
 For supported VM types and Ray sizing recommendations, see [Supported instance types](https://docs.anyscale.com/configuration/compute#supported-types) in the Anyscale documentation. To map model size to GPU memory for batch inference workloads, see [GPU costs and selection](https://docs.anyscale.com/llm/batch-inference/resource-allocation/cost-performance#gpu-costs).
 
 For full details on creating and configuring AKS node pools, see [Manage node pools in AKS](/azure/aks/manage-node-pools).
+
+## Accept the Anyscale agreement for CLI or template deployments
+
+The portal **Create** flow accepts the Anyscale terms of use inline on the **Review + submit** tab. If you deploy the Anyscale cloud with the Azure CLI or an Azure Resource Manager (ARM) template instead of the portal, you must accept the agreement through the Anyscale Agreements API before you create the cloud. Anyscale gates cloud creation until the subscription has an active agreement.
+
+The agreement is a subscription-scoped resource named `default` under the `Anyscale.Platform` resource provider. You accept it once per subscription. This section assumes you already registered the `Anyscale.Platform` resource provider and its feature flag in [Register the Anyscale resource provider](#register-the-anyscale-resource-provider).
+
+<!-- DJS 18 Sep 2026: RP + DefaultFeature registration is owned by PR #61 (djs-260918-ga-spec-corrections), which adds a "Register the Anyscale resource provider" H3 earlier in this file. This section deliberately doesn't duplicate it and links to that anchor instead. Sequence this branch after #61 (stack on it, or rebase once it merges), since both edit this file. -->
+
+<!-- DJS 18 Sep 2026: This documents the GA (2026-09) CLI/ARM path. GA cutover applied: the Public Preview include and the "during Preview" phrasing on the CLI read-only note are removed. The CLI-read-only / portal-only cloud-lifecycle limitation is retained as a standing limitation; confirm whether it's actually lifted at the 09-01 API GA, since this page's CLI/ARM cloud-deployment content implies CLI cloud deployment is now possible. Confirm section placement before publish. -->
+
+> [!NOTE]
+> The Terraform examples linked at the top of this quickstart accept the agreement for you through the `accept_anyscale_platform_agreement` variable. Follow the steps in this section only when you deploy without those examples.
+
+### Review the agreement
+
+Retrieve the agreement to review its terms and status. Replace `<subscription-id>` with your subscription ID and remove the angle brackets:
+
+```azurecli
+az rest \
+  --method GET \
+  --url "https://management.azure.com/subscriptions/<subscription-id>/providers/Anyscale.Platform/agreements/default?api-version=2026-09-01"
+```
+
+The response includes an `agreementLink` property that points to the terms of use. It also includes a `status` property that reads `Pending` until you accept.
+
+### Accept the agreement
+
+Accept the agreement with a PUT request to the same URL:
+
+```azurecli
+az rest \
+  --method PUT \
+  --url "https://management.azure.com/subscriptions/<subscription-id>/providers/Anyscale.Platform/agreements/default?api-version=2026-09-01" \
+  --body '{"properties":{}}'
+```
+
+<!-- DJS 18 Sep 2026: Accept verb confirmed by Daniel Arrizza in #azure-internal-dev (2026-09-18): PUT is the GA path, POST /accept is deprecated. https://anyscale.enterprise.slack.com/archives/C09UDKEEJTD/p1789746342814339 -->
+
+### Confirm the agreement is active
+
+Acceptance isn't immediately consistent. Check the agreement status until it reads `Active`:
+
+```azurecli
+az rest \
+  --method GET \
+  --url "https://management.azure.com/subscriptions/<subscription-id>/providers/Anyscale.Platform/agreements/default?api-version=2026-09-01" \
+  --query properties.status -o tsv
+```
+
+When the command returns `Active`, the subscription is ready. If you create the Anyscale cloud before the agreement is `Active`, the deployment fails. Accept the agreement, wait for `Active`, then create the cloud.
 
 ## Create an Anyscale cloud resource
 
@@ -392,7 +453,7 @@ After the controller is up and running, verify that your Anyscale cloud is healt
    ```
 
 > [!NOTE]
-> During Public Preview, the Anyscale CLI supports only read operations against Azure cloud resources. Manage clouds and cloud resources through the Anyscale Clouds Resource Provider in the Azure portal. For details, see [Public Preview limitations](overview.md#public-preview-limitations).
+> The Anyscale CLI supports only read operations against Azure cloud resources. Manage clouds and cloud resources through the Anyscale Clouds Resource Provider in the Azure portal. For details, see [Limitations](overview.md#limitations).
 
 
 ## Run your first workload
@@ -440,7 +501,7 @@ Now that your cloud is set up and verified, you can run a Ray job on it. Create 
 
 ## Clean up resources
 
-Complete the following steps to remove the resources you created in this quickstart:
+The Anyscale operator runs in your AKS cluster and terminates your workloads. If you delete the AKS cluster or its resource group first, your workloads can't terminate. Complete the following steps, in order, to remove the resources you created in this quickstart:
 
 1. In the [Anyscale console](https://console.azure.anyscale.com), stop any running jobs, workspaces, and services associated with the cloud.
 1. In the Azure portal, navigate to **Anyscale clouds**, select the cloud resources to delete, and select **Delete**. If you follow this guide, there should only be one cloud resource.
@@ -448,7 +509,7 @@ Complete the following steps to remove the resources you created in this quickst
 1. In the Azure portal, navigate to your AKS cluster and select **Delete**.
 1. If you created a resource group specifically for this quickstart, navigate to it in the Azure portal and select **Delete resource group** to remove any remaining resources.
 
-During Public Preview, if you're unable to delete a resource through the portal, contact [Anyscale support](support-model.md) for assistance.
+If you can't delete a resource through the portal, open a support request through the Azure portal. For details, see [Support model](support-model.md).
 
 ## Add a second cloud resource
 

@@ -4,14 +4,12 @@ description: Configure Azure Container Registry and the required Role-Based Acce
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/18/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: how-to
 ---
 
 # Configure container image builds for an existing cloud
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 By default, the Azure portal configures container image build support by using an Azure Container Registry (ACR) when you create an Anyscale cloud. For setup instructions, see the [Quickstart](quickstart-azure-cli.md). This configuration is optional. You can skip it at creation time. If you created your cloud without ACR, you can enable it manually. Manual enablement requires the following items:
 - an ACR
@@ -65,12 +63,12 @@ ACR_RESOURCE_ID=$(az acr show \
 
 ## Update the cloud with the ACR resource ID
 
-Call the Anyscale RP API to set `properties.acrResourceId` on your cloud resource. Use API version `2026-02-01-preview` or newer.
+Call the Anyscale RP API to set `properties.acrResourceId` on your cloud resource. Use API version `2026-09-01`.
 
 ```azurecli
 az rest \
   --method PATCH \
-  --url "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Anyscale.Platform/clouds/<cloud-name>?api-version=2026-02-01-preview" \
+  --url "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Anyscale.Platform/clouds/<cloud-name>?api-version=2026-09-01" \
   --body '{
     "location": "<location>",
     "properties": {
@@ -84,7 +82,7 @@ For example:
 ```azurecli
 az rest \
   --method PATCH \
-  --url "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-cloud-rg/providers/Anyscale.Platform/clouds/mycloud?api-version=2026-02-01-preview" \
+  --url "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-cloud-rg/providers/Anyscale.Platform/clouds/mycloud?api-version=2026-09-01" \
   --body '{
     "location": "westus2",
     "properties": {
