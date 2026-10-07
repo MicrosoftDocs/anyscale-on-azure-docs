@@ -4,15 +4,13 @@ description: Learn how Anyscale on Azure uses Microsoft Entra ID for single sign
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/18/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
 ---
 
 # Anyscale on Azure identity and access
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 Anyscale on Azure uses Microsoft Entra ID for authentication and Azure role-based access control (RBAC) for authorization. Your team signs in with their existing Azure credentials. The Anyscale Kubernetes operator accesses Azure services through managed identities scoped to your resource group.
 

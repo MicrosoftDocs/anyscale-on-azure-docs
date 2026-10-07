@@ -4,15 +4,13 @@ description: Learn how to get support for Anyscale on Azure. Azure Support handl
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/15/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
 ---
 
 # Anyscale on Azure support model
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 Microsoft and Anyscale provide a co-support model for Anyscale on Azure. You use the standard Azure support process, and Microsoft coordinates with Anyscale when an issue requires Anyscale product expertise.
 
@@ -44,11 +42,11 @@ A support request moves through the following stages:
 
 For guidance on opening Azure support requests, see [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-## Support scope during Public Preview
+## Support scope
 
-Anyscale on Azure is in Public Preview. Anyscale provides support during Public Preview on a best-effort basis. For information on Azure support plans and their coverage, see [Azure Support Plans](https://azure.microsoft.com/support/plans/).
+Anyscale provides support for Anyscale on Azure. For information on Azure support plans and their coverage, see [Azure Support Plans](https://azure.microsoft.com/support/plans/).
 
-Before opening a support request, review the [Public Preview limitations](overview.md#public-preview-limitations) to confirm the behavior isn't a known constraint. Anyscale CLI commands that write to Azure cloud resources aren't supported during Public Preview, for example.
+Before opening a support request, review the [Limitations](overview.md#limitations) to confirm the behavior isn't a known constraint. For example, Anyscale doesn't support Anyscale CLI commands that write to Azure cloud resources.
 
 ## Troubleshooting
 
