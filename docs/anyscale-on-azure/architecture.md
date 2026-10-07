@@ -4,15 +4,13 @@ description: Learn how Anyscale on Azure is structured, including the control pl
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/23/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
 ---
 
 # Anyscale on Azure architecture overview
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 Anyscale on Azure separates the platform into two distinct planes. The **control plane** is managed by Anyscale and hosted in Azure. The **data plane** runs entirely within your Azure subscription. This separation keeps your workloads, data, and container images inside your tenant while Anyscale handles orchestration and management.
 
@@ -44,7 +42,7 @@ Your subscription owns all compute, data, and networking resources in the data p
 
 The Anyscale operator is a Kubernetes controller. The Azure portal installs it into your AKS cluster automatically during cloud creation. The operator:
 
-1. Polls the control plane endpoint (`<cloud-id>.anyscale-cloud.dev`) for pending operations.
+1. Polls the control plane endpoint (`cld-<cloud-id>.azure.anyscale-cloud.dev`) for pending operations.
 1. Creates and manages Kubernetes resources, such as pods, services, and ingress rules, for Ray clusters.
 1. Reports cluster health and telemetry to the control plane.
 1. Creates the ingress or gateway routing resources that connect clients to the Ray head node.

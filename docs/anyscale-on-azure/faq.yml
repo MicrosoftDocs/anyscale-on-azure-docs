@@ -5,14 +5,12 @@ metadata:
   author: kaysieyu
   ms.author: kaysieyu
   ms.reviewer: mbender
-  ms.date: 09/22/2026
+  ms.date: 10/06/2026
   ms.service: azure-kubernetes-service
   ms.topic: faq
 title: Anyscale on Azure frequently asked questions
 summary: |
-  This article answers common questions about Anyscale on Azure during public preview. For product-wide questions and self-serve troubleshooting, see the [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure).
-
-  [!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
+  This article answers common questions about Anyscale on Azure. For product-wide questions and self-serve troubleshooting, see the [Anyscale on Azure knowledge base](https://docs.anyscale.com/kb/azure).
 
 sections:
   - name: About the service
@@ -20,10 +18,6 @@ sections:
       - question: What is Anyscale on Azure?
         answer: |
           Anyscale on Azure is a managed platform for running distributed Python workloads on [Ray](https://docs.ray.io). It deploys onto your Azure Kubernetes Service (AKS) cluster as an Azure Native Integration. For details, see [What is Anyscale on Azure?](overview.md).
-
-      - question: Is Anyscale on Azure generally available?
-        answer: |
-          No. Anyscale on Azure is currently in public preview. For the current scope and constraints, see [Public preview limitations](overview.md#public-preview-limitations).
 
       - question: How is Anyscale on Azure different from the Anyscale SaaS offering?
         answer: |
@@ -37,7 +31,7 @@ sections:
     questions:
       - question: Which Azure regions support Anyscale on Azure?
         answer: |
-          Anyscale on Azure is available in a limited set of regions during public preview. For the current list, see [Supported regions](supported-regions.md).
+          Anyscale on Azure is available in a limited set of regions. For the current list, see [Supported regions](supported-regions.md).
 
       - question: What Azure resources are deployed by Anyscale on Azure in my subscription?
         answer: |
@@ -53,6 +47,12 @@ sections:
 
           - [Anyscale on AKS reference deployment](https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure/anyscale-on-azure): The recommended flow for most AKS users.
           - [Anyscale on AKS Automatic](https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure/anyscale-on-azure-aks-automatic): The same deployment on AKS Automatic, which manages node pools, ingress, and GPU drivers for you.
+
+      - question: In what order should I delete Anyscale on Azure resources?
+        answer: |
+          Delete resources in the reverse order that you created them. Terminate running jobs, workspaces, and services, then delete the Anyscale cloud resources, then the Anyscale cloud, then the AKS cluster, and then the resource group. For the steps, see [Clean up resources](quickstart-azure-cli.md#clean-up-resources).
+
+          The Anyscale operator runs in your AKS cluster and drives workload termination. If you delete the AKS cluster or its resource group first, workloads can't terminate, and the Anyscale console can keep showing jobs, services, or workspaces that no longer exist. If this happens, open a support request in the Azure portal and select **Anyscale on Azure** as the service. For steps, see [Support model](support-model.md).
 
   - name: Identity, security, and data
     questions:
