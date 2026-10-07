@@ -11,8 +11,6 @@ ms.custom: references_regions
 
 # Anyscale on Azure terms and privacy
 
-[!INCLUDE [anyscale-public-preview](Includes/anyscale-public-preview.md)]
-
 Before you deploy Anyscale on Azure, review the legal documents that govern your use of the service.
 
 - [Anyscale on Azure Terms of Service](https://www.anyscale.com/anyscale-on-azure-terms)

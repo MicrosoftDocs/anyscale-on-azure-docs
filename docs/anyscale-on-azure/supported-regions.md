@@ -4,7 +4,7 @@ description: View the Azure regions where Anyscale on Azure is available and fin
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 07/23/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: reference
 ms.custom: references_regions
@@ -12,9 +12,7 @@ ms.custom: references_regions
 
 # Anyscale on Azure supported regions
 
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
-
-Anyscale on Azure is available in the following Azure regions during Public Preview. If you need a region that isn't listed, [contact support](support-model.md) to request it.
+Anyscale on Azure is available in the following Azure regions. If you need a region that isn't listed, [contact support](support-model.md) to request it.
 
 ## Available regions and region names
 
@@ -53,7 +51,7 @@ For AKS-specific cluster limits, see [Quotas, virtual machine size restrictions,
 
 ## Regional behavior and constraints
 
-All Anyscale clouds are region-specific. A cloud created in `eastus` can only run workloads on AKS node pools in `eastus`. Public Preview doesn't support cross-region replication or multi-region clusters.
+All Anyscale clouds are region-specific. A cloud created in `eastus` can only run workloads on AKS node pools in `eastus`. Anyscale on Azure doesn't support cross-region replication or multi-region clusters.
 
 The region you select when you create the AKS cluster and Anyscale cloud resource sets the region for all resources in the cloud.
 

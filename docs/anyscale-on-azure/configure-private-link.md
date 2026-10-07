@@ -4,15 +4,13 @@ description: Connect an existing AKS cluster to the Anyscale control plane over 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/18/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: how-to
 ms.custom: references_regions
 ---
 
 # Configure Private Link for Anyscale on Azure
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 Azure Private Link connects components in your Anyscale data plane to Anyscale-hosted services through a private endpoint in your Azure virtual network. Supported outbound traffic then travels across the Microsoft backbone network instead of the public internet.
 
