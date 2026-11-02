@@ -4,15 +4,13 @@ description: Add a Kubernetes cluster to an existing Anyscale cloud on Azure as 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/18/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: how-to
 ms.custom: references_regions
 ---
 
 # Add a cloud resource with an ARM template
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 This article shows you how to add a Kubernetes cluster to an existing Anyscale cloud as a new cloud resource by deploying an Azure Resource Manager (ARM) template. For background on cloud resources, see [What is a cloud resource on Azure?](cloud-resources-overview.md)
 

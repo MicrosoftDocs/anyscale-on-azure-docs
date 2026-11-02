@@ -4,15 +4,13 @@ description: Learn how an Anyscale cloud on Azure can hold multiple cloud resour
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/18/2026
+ms.date: 10/05/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
 ---
 
 # What is a cloud resource on Anyscale on Azure?
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 An Anyscale cloud on Azure can contain more than one *cloud resource*. A cloud resource is one Kubernetes cluster attached to the cloud. Each one is an independent deployment target with its own:
 
