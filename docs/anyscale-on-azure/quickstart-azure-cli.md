@@ -4,7 +4,7 @@ description: Deploy your first Anyscale cloud on Azure Kubernetes Service using 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 10/05/2026
+ms.date: 10/21/2026
 ms.service: azure-kubernetes-service
 ms.topic: quickstart
 ms.custom: references_regions
@@ -106,7 +106,7 @@ Create the cluster with OIDC issuer and workload identity enabled:
 ```azurecli
 az aks create \
   --resource-group <resource-group> \
-  --name <cluster-name> \
+  --name <aks-cluster-name> \
   --location <location> \
   --node-count 3 \
   --node-vm-size Standard_D4s_v5 \
@@ -265,7 +265,7 @@ Run the following command to configure your local `kubectl` to connect to the AK
 ```bash
 az aks get-credentials \
   --resource-group <azure-resource-group-name> \
-  --name <your-aks-cluster-name> \
+  --name <aks-cluster-name> \
   --overwrite-existing
 ```
 
@@ -391,11 +391,11 @@ kubectl get gateway gateway -n anyscale-operator -o jsonpath='{.status.addresses
 
 ### Configure the Anyscale operator with gateway settings
 
-Update the operator extension configuration. Replace `<cluster-name>`, `<resource-group>`, and `<gateway-lb-address>` with your values:
+Update the operator extension configuration. Replace `<aks-cluster-name>`, `<resource-group>`, and `<gateway-lb-address>` with your values:
 
 ```azurecli
 az k8s-extension update \
-  --cluster-name <cluster-name> \
+  --cluster-name <aks-cluster-name> \
   --resource-group <resource-group> \
   --cluster-type managedClusters \
   --name anyscaleoperator \
@@ -429,7 +429,7 @@ After the controller is up and running, verify that your Anyscale cloud is healt
 1. Set your `kubectl` context to the correct cluster:
 
    ```bash
-   kubectl config use-context <cluster-name>
+   kubectl config use-context <aks-cluster-name>
    ```
 
 1. Find your cloud ID from the Anyscale console or by running:

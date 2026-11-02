@@ -4,7 +4,7 @@ description: Learn how Anyscale on Azure uses Microsoft Entra ID for single sign
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 10/05/2026
+ms.date: 10/28/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -67,30 +67,51 @@ After setup, day-to-day Anyscale operations such as launching workloads and mana
 
 Anyscale on Azure provides three built-in Azure roles managed in the Azure portal or through the Azure CLI. Role assignments determine what users, groups, and service principals can do across the console, CLI, SDK, and API. You can assign a role at any level of the Azure scope hierarchy, including subscription, resource group, cloud, project, or individual resource. All resources below that scope inherit the assignment.
 
+Anyscale reads only the following three roles. The Azure built-in Owner and Contributor roles don't grant access to the Anyscale console. Subscription Owner satisfies the setup permissions in [Azure role requirements for setup](#azure-role-requirements-for-setup), but it still doesn't grant Anyscale console access.
+
+The scope of a role assignment determines what the role reaches. For organization-level operations, see [Assign organization-level access](#assign-organization-level-access).
+
 | Role | Description |
 |------|-------------|
-| *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action for administrative operations such as editing the Anyscale scheduler config, managing resource quotas, and setting usage budgets. Because this permission is a data action, roles with an empty `dataActions` list, including the Azure built-in Owner and Contributor roles, don't grant it. Currently only effective at subscription scope. |
+| *Anyscale Platform Administrator* | Full access to all Anyscale resources within the assigned scope, including infrastructure management and workload execution. Includes the `Anyscale.Platform/admin/action` data action, which governs organization-level operations. Because this permission is a data action, roles with an empty `dataActions` list, including the Azure built-in Owner and Contributor roles, don't grant it. See [Assign organization-level access](#assign-organization-level-access). |
 | *Anyscale Platform Contributor* | Read and write access to Anyscale clouds, projects, workspaces, jobs, services, compute configs, and container images. Doesn't include administrative data actions. |
-| *Anyscale Platform Reader* | Read-only access to all Anyscale resources. Required for console sign-in. |
+| *Anyscale Platform Reader* | Read-only access to Anyscale resources within the assigned scope. The minimum role for a user to see any Anyscale resource in the console. |
 
 To assign a role, navigate to the Anyscale cloud resource in the Azure portal, select **Access control (IAM)** from the left menu, and select **Add** > **Add role assignment**. For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
+## Assign organization-level access
+
+To grant organization-level access, assign the Anyscale Platform Administrator role at one of the following scopes:
+
+- **The tenant root management group.** Anyscale recommends this scope. The assignment reaches every subscription in your tenant. The administrator gets organization-level access and full access to every Anyscale cloud, including clouds you add later.
+- **The subscription that holds the first Anyscale cloud in your organization.** Use this scope when your tenant policy doesn't allow a tenant-wide role assignment. Anyscale checks organization-level operations against this subscription, so the administrator gets organization-level access. Resource operations still follow the normal scope rules, so the administrator reaches only the clouds in that subscription. For clouds in other subscriptions, assign a role on each of those subscriptions as well. If you delete that first cloud, Anyscale checks organization-level operations against the subscription of the next cloud your organization created. Move the role assignment to that subscription.
+
+> [!IMPORTANT]
+> A role assignment scoped to a resource group doesn't grant organization-level access. Azure RBAC role assignments inherit downward only, so an assignment on a resource group doesn't reach the parent subscription. A user who holds Anyscale Platform Administrator on a resource group can manage every Anyscale resource in that group, but the console still denies them organization-level operations.
+
+> [!NOTE]
+> Anyscale on Azure doesn't offer resource quotas, usage budgets, or aggregated usage reporting. Track cost and consumption in the Azure portal instead.
+
 ## Custom role permissions reference
 
-You can create custom Azure RBAC roles to grant a subset of Anyscale permissions. The following actions are available on the `Anyscale.Platform` resource provider:
+You can create custom Azure RBAC roles to grant a subset of Anyscale permissions. The following table lists the operations available on the `Anyscale.Platform` resource provider:
 
-| Resource type | Operations | Resource |
-|---------------|------------|----------|
-| `Anyscale.Platform/clouds` | read, write, delete | Clouds |
-| `Anyscale.Platform/clouds/cloudResources` | read, write, delete | Cloud resources |
-| `Anyscale.Platform/clouds/computeConfigs` | read, write, delete | Compute configs |
-| `Anyscale.Platform/clouds/containerImages` | read, write, delete | Container images |
-| `Anyscale.Platform/clouds/projects` | read, write, delete | Projects |
-| `Anyscale.Platform/clouds/projects/jobs` | read, write, delete | Jobs |
-| `Anyscale.Platform/clouds/projects/services` | read, write, delete | Services |
-| `Anyscale.Platform/clouds/projects/workspaces` | read, write, delete | Workspaces |
-| `Anyscale.Platform/agreements` | read, write, delete, accept/action | Agreements |
-| `Anyscale.Platform/admin` | action | Admin operations |
+| Resource type | Operations | Action type | Resource |
+|---------------|------------|-------------|----------|
+| `Anyscale.Platform/clouds` | read, write, delete | Action | Clouds |
+| `Anyscale.Platform/clouds/cloudResources` | read, write, delete | Action | Cloud resources |
+| `Anyscale.Platform/clouds/computeConfigs` | read, write, delete | Action | Compute configs |
+| `Anyscale.Platform/clouds/containerImages` | read, write, delete | Data action | Container images |
+| `Anyscale.Platform/clouds/projects` | read, write, delete | Action | Projects |
+| `Anyscale.Platform/clouds/projects/jobs` | read, write, delete | Action | Jobs |
+| `Anyscale.Platform/clouds/projects/services` | read, write, delete | Action | Services |
+| `Anyscale.Platform/clouds/projects/workspaces` | read, write, delete | Action | Workspaces |
+| `Anyscale.Platform/agreements` | read, write, delete | Action | Agreements |
+| `Anyscale.Platform/admin` | action | Data action | Organization-level operations |
+| `Anyscale.Platform/register` | action | Action | Resource provider registration |
+| `Anyscale.Platform/unregister` | action | Action | Resource provider registration |
+
+In your custom role definition, put actions in the `actions` array and data actions in the `dataActions` array. A role definition that lists a data action under `actions` doesn't grant that data action.
 
 To construct a full action string, append the operation to the resource type with a slash, for example, `Anyscale.Platform/clouds/read`. For instructions on creating a custom role, see [Create or update Azure custom roles](/azure/role-based-access-control/custom-roles) in the Azure documentation.
 
