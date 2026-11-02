@@ -4,7 +4,7 @@ description: Understand the network traffic flows, required egress domains, and 
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 10/05/2026
+ms.date: 10/28/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -27,7 +27,9 @@ Four primary traffic paths connect the Anyscale components:
 | 1 | Client to control plane | Console access, CLI commands, and SDK calls through `console.azure.anyscale.com`. |
 | 2 | Client to AKS cluster | Dashboard access, job submission, and service requests through Azure Load Balancer. |
 | 3 | AKS cluster to control plane | Operator polling for scheduling instructions, telemetry, and health reporting. |
-| 4 | AKS cluster to and from Azure resources | Application data access in Azure Blob Storage and Azure Container Registry. |
+| 4 | AKS cluster to and from Azure resources | Application data access in your Azure Blob Storage and Azure Container Registry. |
+
+Ray cluster nodes also reach Azure Blob Storage that Anyscale owns, outside your tenant. At startup, each node downloads its bootstrap files from an Anyscale storage account. Allow this host in your egress rules. See [Anyscale storage](#anyscale-storage).
 
 > [!NOTE]
 > `anyscale job submit` uploads your local `working_dir` to the cloud's Azure Blob storage account from the machine where you run it. This client-side upload is separate from flow 4, which covers cluster access to storage. When the storage account restricts access to a virtual network, run the command from a machine with connectivity to that network.
@@ -100,6 +102,14 @@ Configure your AKS cluster's egress rules to allow outbound HTTPS (port 443) tra
 | `*.azure.anyscale-cloud.dev` | Operator polling, health checks, and operational reporting |
 | `grafana-*.azure.anyscale-cloud.dev` | Metrics collection and visualization |
 | `registry-*.azure.anyscale-cloud.dev` | Anyscale container image distribution |
+
+### Anyscale storage
+
+When Ray cluster nodes start, they download their bootstrap files from an Anyscale-owned storage account. Allow this host for AKS clusters in every region. If nodes can't reach it, Ray clusters fail to start.
+
+| Domain | Purpose |
+|--------|---------|
+| `anyscaleazwestus2prod.blob.core.windows.net` | Node bootstrap files from Anyscale-owned Azure Blob Storage |
 
 ### Ray cluster routing
 
