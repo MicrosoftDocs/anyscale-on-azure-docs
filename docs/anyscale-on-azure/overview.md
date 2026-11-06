@@ -5,15 +5,13 @@ author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
 reviewer: mbender-ms
-ms.date: 09/21/2026
+ms.date: 10/29/2026
 ms.service: azure-kubernetes-service
 ms.topic: overview
 ms.custom: references_regions
 ---
 
 # What is Anyscale on Azure?
-
-[!INCLUDE [anyscale-public-preview](../../Includes/anyscale-public-preview.md)]
 
 Anyscale on Azure is a managed platform for running distributed Python workloads on [Ray](https://docs.ray.io). It deploys directly onto your [Azure Kubernetes Service (AKS)](/azure/aks/) cluster and integrates with the Azure services your team already uses.
 
@@ -53,30 +51,22 @@ Anyscale on Azure works with the Azure services you use:
 
 Azure managed identities govern access to cloud resources. You can use a single shared identity or map permissions granularly to users, projects, or workload types.
 
-## Public Preview limitations
+## Limitations
 
-Anyscale on Azure is in Public Preview. The following limitations apply:
+Anyscale on Azure has the following limitations:
 
 - Anyscale on Azure supports only AKS-based deployment. VM stack features and Anyscale-hosted clouds aren't available.
 - Cloud creation and deletion require the Azure portal. The following CLI commands aren't supported: `anyscale cloud setup`, `anyscale cloud register`, `anyscale cloud delete`, `anyscale cloud resource create`, and `anyscale cloud resource delete`.
 - The following workload CLI commands aren't supported: `anyscale workspace_v2 ssh`, `anyscale workspace_v2 pull`, and `anyscale image archive`.
 - Anyscale on Azure is available in a limited set of Azure regions. See [Supported regions](supported-regions.md).
 - The Anyscale scheduler applies workload priority to jobs and workspaces, not to services.
+- Anyscale reports usage to Azure and bills it to the Azure subscription that contains your Anyscale cloud. The Anyscale console doesn't include the **Billing**, **Usage**, or **Resource quotas** organization settings. For pricing, see [Anyscale on Azure pricing](https://azure.microsoft.com/pricing/details/anyscale-on-azure/).
 
-Anyscale on Azure doesn't support the following features documented in the [Anyscale documentation](https://docs.anyscale.com):
-
-- Machine pools and the Global Resource Scheduler (GRS)
-- Lineage tracking
-- Job queues
-- The following Anyscale console organization settings:
-   - Billing
-   - Budgets
-   - Resource notifications
-   - Cost analysis
+For Anyscale features that aren't available on Anyscale on Azure, see [Feature availability](#feature-availability).
 
 ### Multi-resource cloud support
 
-An Anyscale cloud on Azure can hold more than one *cloud resource*, where each cloud resource is a Kubernetes cluster attached to the cloud. Use additional cloud resources to isolate environments, add capacity in another region, or attach clusters from other Kubernetes offerings. Add them in the Azure portal or by using an Azure Resource Manager (ARM) template.
+An Anyscale cloud on Azure can hold more than one *cloud resource*, where each cloud resource is a Kubernetes cluster attached to the cloud. Use extra cloud resources to isolate environments, add capacity in another region, or attach clusters from other Kubernetes offerings. Add them in the Azure portal or by using an Azure Resource Manager (ARM) template.
 
 Support for cloud resources other than the primary cloud resource depends on the workload type:
 
@@ -91,6 +81,34 @@ The following constraints apply:
 - The Anyscale CLI and console are read-only for cloud resources. Create and delete cloud resources through Azure.
 
 To learn how cloud resources work on Azure and how to add one, see [What is a cloud resource on Azure?](cloud-resources-overview.md) and [Add a cloud resource](add-cloud-resource.md).
+
+## Feature availability
+
+Feature availability on Anyscale on Azure differs from the rest of the Anyscale platform. Some Anyscale features are in Public Preview, some features are in preview on Anyscale on Azure only, and some Anyscale features aren't available on Anyscale on Azure.
+
+### Anyscale features in Public Preview
+
+The following Anyscale platform features are in Public Preview, which the Anyscale documentation calls *beta*. Public Preview features are in active development and might change, and Anyscale doesn't recommend them for production workloads. This list omits features that Anyscale on Azure doesn't support, such as features that require virtual machines. For the definition of each release level, see [Feature release maturity](https://docs.anyscale.com/release-notes#feature-release-maturity).
+
+[!INCLUDE [Anyscale features in Public Preview](includes/feature-availability-preview.md)]
+
+### Features in preview on Anyscale on Azure only
+
+The following Azure-specific features are in preview:
+
+[!INCLUDE [Features in preview on Anyscale on Azure only](includes/feature-availability-azure-preview.md)]
+
+### Anyscale features not available on Anyscale on Azure
+
+For deployment and CLI constraints, see [Limitations](#limitations). Anyscale on Azure doesn't support the following features documented in the [Anyscale documentation](https://docs.anyscale.com). The table lists a recommended alternative for each feature where one exists.
+
+| Feature | Alternative on Anyscale on Azure |
+|---|---|
+| [Budgets](https://docs.anyscale.com/admin/billing/budgets) | Create budgets for your Azure subscription in Microsoft Cost Management. See [Tutorial: Create and manage budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets). |
+| Cost analysis | Analyze costs for your Azure subscription in Microsoft Cost Management. See [Quickstart: Start using Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis). |
+| [Job queues](https://docs.anyscale.com/jobs/queues) | Use the [Anyscale scheduler](https://docs.anyscale.com/scheduler) to queue and prioritize jobs. The Anyscale scheduler is in Public Preview. |
+| [Lineage tracking](https://docs.anyscale.com/lineage) | None. Lineage tracking is in private preview on the Anyscale platform. |
+| [Resource notifications](https://docs.anyscale.com/monitoring/custom-notifications) | Use Azure Monitor alerts to monitor the AKS resources that run your Anyscale workloads. See [Overview of Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview). |
 
 ## Get started with Anyscale on Azure
 
