@@ -1,26 +1,53 @@
-- name: Overview
+- name: Anyscale on Azure documentation
+  href: index.yml
+- name: What is Anyscale on Azure
   href: overview.md
-- name: Quickstart
+- name: Deploy to AKS
   href: quickstart-azure-cli.md
-- name: Architecture overview
+- name: Control and data plane architecture
   href: architecture.md
-- name: Networking
+- name: Networking and traffic flows
   href: networking.md
-- name: Private Link
+- name: Configure Private Link
   href: configure-private-link.md
-- name: Identity and access
+- name: Identity, SSO, and access
   href: identity-access.md
 - name: Configure container image builds
   href: configure-container-image-builds.md
+- name: Create workloads through Azure Resource Manager
+  href: create-workloads-arm.md
 - name: Cloud resources
   href: cloud-resources-overview.md
-- name: Add a cloud resource
+- name: Add a cloud resource with ARM
   href: add-cloud-resource.md
-- name: Support model
+- name: Get support
   href: support-model.md
-- name: Supported regions
+- name: Regions and availability
   href: supported-regions.md
-- name: FAQ
+- name: Frequently asked questions
   href: faq.yml
-- name: Terms and privacy
-  href: ../../legal.md
+- name: Reference
+  items:
+    - name: Anyscale REST API specification
+      href: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/anyscale/resource-manager/Anyscale.Platform/platform
+    - name: Anyscale CLI
+      href: https://docs.anyscale.com/reference/quickstart-cli
+    - name: Anyscale Helm chart
+      href: https://docs.anyscale.com/clouds/kubernetes/helm-ref
+    - name: ARM template for Anyscale clouds
+      href: /azure/templates/anyscale.platform/clouds?toc=/azure/anyscale-on-azure/toc.json
+- name: Resources
+  items:
+    - name: Anyscale documentation
+      href: https://docs.anyscale.com/
+    - name: Anyscale on Azure knowledge base
+      href: https://docs.anyscale.com/kb/azure
+    - name: Ray documentation
+      href: https://docs.ray.io/
+    - name: Terraform deployment examples
+      href: https://github.com/anyscale/terraform-kubernetes-anyscale-foundation-modules/tree/main/examples/azure
+    - name: Pricing
+      href: https://azure.microsoft.com/pricing/details/anyscale-on-azure/
+    - name: Terms and privacy
+      href: ../../legal.md?toc=/azure/anyscale-on-azure/toc.json
+
