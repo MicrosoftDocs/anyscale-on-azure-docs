@@ -4,7 +4,7 @@ description: Learn how Anyscale on Azure is structured, including the control pl
 author: kaysieyu
 ms.author: kaysieyu
 ms.reviewer: mbender
-ms.date: 09/21/2026
+ms.date: 09/23/2026
 ms.service: azure-kubernetes-service
 ms.topic: concept-article
 ms.custom: references_regions
@@ -70,17 +70,28 @@ For information on Microsoft Entra ID integration and Azure role assignments, se
    The diagram shows two bordered boxes side by side. The left box is the Anyscale Control Plane in the Anyscale Azure tenant. It contains three stacked components: Scheduling and Job Management, Anyscale Console, and REST API / SDK. The right box is the Customer Data Plane in your Azure subscription and AKS cluster. It contains the Anyscale Kubernetes Operator in the center and two Ray Clusters to its right. Both Ray Clusters show a head and N workers. An arrow from the control plane to the operator is labeled deploys clusters, runs jobs and services. An arrow back is labeled logs, metrics. Two arrows from the operator to the Ray Clusters are labeled deploys and manages. A user figure connects to the control plane with deploy, configure, monitor and to the Customer Data Plane with interact with Ray clusters.
 :::image-end:::
 
-## Component summary table
+## Responsibility matrix
 
-| Component | Location | Owner |
-|-----------|----------|-------|
-| Anyscale console | Anyscale-hosted Azure tenant | Anyscale |
-| Scheduling and management APIs | Anyscale-hosted Azure tenant | Anyscale |
-| AKS cluster | Your Azure subscription | You |
-| Anyscale Kubernetes operator | Your AKS cluster | Anyscale, installed by the Azure portal |
-| Ray clusters | Your AKS cluster | You |
-| Azure Blob Storage and Azure Data Lake Storage (ADLS) | Your Azure subscription | You |
-| Azure Load Balancer | Your Azure subscription | You |
+Owning a component is distinct from operating it and from supporting it. Anyscale on Azure uses a shared-responsibility model similar to the model Azure Kubernetes Service (AKS) defines. For each component, the following matrix separates three responsibilities:
+
+- **Owns**: the party whose Azure subscription or tenant holds the resource.
+- **Operates and maintains**: the party that runs, patches, and upgrades the component.
+- **Support responsibility**: the team that owns resolving issues with the component. You start every support request through the standard Azure support process. Microsoft triages the request and routes it to Anyscale when the issue needs Anyscale product expertise. For the full flow, see [Support model](support-model.md).
+
+Several components are shared. For a shared component, Anyscale provides and manages the software while you provision, configure, or run it inside your subscription. For the AKS shared-responsibility model that this matrix builds on, see [AKS support policies](/azure/aks/support-policies).
+
+| Component | Location | Owns | Operates and maintains | Support responsibility |
+|-----------|----------|------|------------------------|------------------------|
+| Anyscale console | Anyscale-hosted Azure tenant | Anyscale | Anyscale | Anyscale |
+| Scheduling and management APIs | Anyscale-hosted Azure tenant | Anyscale | Anyscale | Anyscale |
+| AKS cluster | Your Azure subscription | You | You and Microsoft | Microsoft |
+| Anyscale Kubernetes operator | Your AKS cluster | Anyscale | Anyscale | Anyscale |
+| Ray clusters | Your AKS cluster | You | You and Anyscale | Anyscale |
+| Azure Blob Storage and Azure Data Lake Storage (ADLS) | Your Azure subscription | You | You | Microsoft |
+| Azure Load Balancer | Your Azure subscription | You | You and Anyscale | Microsoft |
+| Managed identity and role assignments | Your Azure subscription | You | You and Microsoft | Microsoft |
+
+The Anyscale Kubernetes operator shows the ownership distinction most clearly. It runs inside your AKS cluster, but Anyscale develops the software, and the Azure portal installs it during cloud creation. You own the cluster it runs in, and Anyscale owns and maintains the operator itself.
 
 ## Next steps
 
